@@ -11,4 +11,9 @@ public class Testcontroller {
 	public String test() {
 		return "main";
 	}
+	
+	@GetMapping("/join")
+	public String join() {
+		return "join";
+	}
 }
