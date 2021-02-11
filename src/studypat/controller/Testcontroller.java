@@ -15,5 +15,10 @@ public class Testcontroller {
 	@RequestMapping("/password")
 	public String password() {
 		return "forgotpass";
+
+    
+	@GetMapping("/join")
+	public String join() {
+		return "join";
 	}
 }
