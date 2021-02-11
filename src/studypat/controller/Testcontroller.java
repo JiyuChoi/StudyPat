@@ -26,4 +26,29 @@ public class Testcontroller {
 	public String forgotId() {
 		return "forgotid";
 	}
+	
+	@RequestMapping("/uploadPost")
+	public String uploadPost() {
+		return "uploadPost";
+	}
+	@RequestMapping("/postList")
+	public String postList() {
+		return "postList";
+	}
+	@RequestMapping("/detailPost")
+	public String detailPost() {
+		return "detailPost";
+	}
+	@RequestMapping("/userPost")
+	public String userPost() {
+		return "userPost";
+	}
+	@RequestMapping("/userPage")
+	public String userPage() {
+		return "userPage";
+	}
+	@RequestMapping("/adminPage")
+	public String adminPage() {
+		return "adminPage";
+	}
 }
