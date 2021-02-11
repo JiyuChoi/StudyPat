@@ -41,60 +41,85 @@
           <!-- end: Left Menu -->
           <!-- start: content -->
             <div id="content">
-                <div class="col-md-12" style="padding:20px;">
-                    <div class="col-md-12 padding-0">
-                        <div class="col-md-8 padding-0">
-                            <div class="col-md-12">
-                                <div class="panel box-v4">
-                                    <div class="panel-heading bg-white border-none">
-                                      <h4><span class="icon-notebook icons"></span> 스터디 모집글</h4>
-                                    </div>
-                                    
-                                </div> 
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="col-md-12 padding-0">
-                              <div class="panel box-v2">
-                                  <div class="panel-body">
-                                    <div class="col-md-12 padding-0 text-center">
-                                     	로그인창
-                                    </div>
-                                  </div>
-                              </div>
-                            </div>
+			<div class="col-md-12" style="padding: 20px;">
+				<div class="col-md-12 padding-0">
+					<div class="col-md-8 padding-0">
+						<div class="col-md-12">
+							<div class="panel box-v4">
+								<div class="panel-heading bg-white border-none">
+									<h4>
+										<span class="icon-notebook icons"></span> 스터디 모집글
+									</h4>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 col-sm-12 profile-v1-wrapper">
+							<div class="panel box-v7">
+								<div class="panel-body">
+									<div class="col-md-12 padding-0 box-v7-header">
+										<div class="col-md-12 padding-0">
+											<div class="col-md-10 padding-0">
+												<h4>제목</h4>
+												<p>작성자</p>
+												<div>작성일</div>
+											</div>
+											<div class="col-md-2 padding-0">
+												<div class="btn-group right-option-v1">
+													<i class="icon-options-vertical icons box-v7-menu"
+														data-toggle="dropdown"></i>
+													<ul class="dropdown-menu" role="menu">
+														<li><a href="#">수정</a></li>
+														<li><a href="#">삭제</a></li>
+														<li><a href="#">신고하기</a></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="col-md-12 padding-0">
+							<div class="panel box-v2">
+								<div class="panel-body">
+									<div class="col-md-12 padding-0 text-center">로그인창</div>
+								</div>
+							</div>
+						</div>
 
-                            <div class="col-md-12 padding-0">
-                              <div class="panel box-v3">
-                                <div class="panel-heading bg-white border-none">
-                                  <h4>내 스크랩 글</h4>
-                                </div>
-                                <div class="panel-body">
-                                    
-                                  <div class="media">
-                                    <div class="media-left">
-                                        <span class="icon-folder icons" style="font-size:2em;"></span>
-                                    </div>
-                                    <div class="media-body">
-                                      <h5 class="media-heading">Document Handling</h5>
-                                        <div class="progress progress-mini">
-                                          <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%;">
-                                            <span class="sr-only">60% Complete</span>
-                                          </div>
-                                        </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+						<div class="col-md-12 padding-0">
+							<div class="panel box-v3">
+								<div class="panel-heading bg-white border-none">
+									<h4>내 스크랩 글</h4>
+								</div>
+								<div class="panel-body">
 
-                            <div class="col-md-12 padding-0">
-                              
-                            </div>
-                        </div>
-                    </div>
-                </div>
-      		  </div>
+									<div class="media">
+										<div class="media-left">
+											<span class="icon-folder icons" style="font-size: 2em;"></span>
+										</div>
+										<div class="media-body">
+											<h5 class="media-heading">Document Handling</h5>
+											<div class="progress progress-mini">
+												<div class="progress-bar" role="progressbar"
+													aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"
+													style="width: 10%;">
+													<span class="sr-only">60% Complete</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-12 padding-0"></div>
+					</div>
+				</div>
+			</div>
+		</div>
       </div>
 
     <!-- start: Javascript -->
