@@ -12,8 +12,8 @@ public class Testcontroller {
 		return "main";
 	}
 	
-	@RequestMapping("/password")
-	public String password() {
+	@RequestMapping("/forgotPass")
+	public String forgotPass() {
 		return "forgotpass";
   }
     
