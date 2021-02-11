@@ -11,7 +11,17 @@ public class Testcontroller {
 	public String test() {
 		return "main";
 	}
-
+	
+	@RequestMapping("/password")
+	public String password() {
+		return "forgotpass";
+  }
+    
+	@GetMapping("/join")
+	public String join() {
+		return "join";
+  }
+    
 	@RequestMapping("/forgotId")
 	public String forgotId() {
 		return "forgotid";

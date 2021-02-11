@@ -309,7 +309,7 @@ p.quote{
     .form-signin .panel{background: #2196f3;color: #fff;padding: 10px;border:none !important;box-shadow: 0 7px 16px #0a86e9, 0 4px 5px #0a86e9;}
     .form-signin .panel-body{padding-bottom: 50px;padding-top: 30px;}
     .form-signin .atomic-number{font-size: 20px;}
-    .form-signin .atomic-symbol{font-size: 10em !important;font-weight: 500;padding-bottom: 20spx;}
+    .form-signin .atomic-symbol{font-size: 3.5em !important;font-weight: 500;padding-bottom: 20spx;}
     .form-signin .element-name,.form-signin .atomic-mass{font-size: 18px;margin-top: -10px;font-weight: 600;line-height: 1.2;}
     .form-signin label{color:#fff !important;}
     .form-signin .bar:before,.form-signin .bar:after{background-color:#fff !important;}
