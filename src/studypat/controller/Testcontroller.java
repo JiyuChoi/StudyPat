@@ -11,4 +11,9 @@ public class Testcontroller {
 	public String test() {
 		return "main";
 	}
+
+	@RequestMapping("/forgotId")
+	public String forgotId() {
+		return "forgotid";
+	}
 }
