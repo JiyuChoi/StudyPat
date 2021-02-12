@@ -22,15 +22,17 @@ public class MvcConfig implements WebMvcConfigurer {
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("asset/js/**").addResourceLocations("classpath:/static/asset/js/");
-		registry.addResourceHandler("asset/css/**").addResourceLocations("classpath:/static/asset/css/");
-		registry.addResourceHandler("asset/img/**").addResourceLocations("classpath:/static/asset/img/");
+		registry.addResourceHandler("**/asset/css/**").addResourceLocations("classpath:/static/asset/css/");
+		registry.addResourceHandler("**/asset/fonts/**").addResourceLocations("classpath:/static/asset/fonts/");
+		registry.addResourceHandler("**/asset/img/**").addResourceLocations("classpath:/static/asset/img/");
+		registry.addResourceHandler("**/asset/js/**").addResourceLocations("classpath:/static/asset/js/");
+		registry.addResourceHandler("**/asset/media/**").addResourceLocations("classpath:/static/asset/media/");
 	}
 	
-//	@Override
-//	public void addViewControllers(ViewControllerRegistry registry) {
-//		//registry.addRedirectViewController("/", "/user/loginForm");
-//	}
+	@Override
+	public void addViewControllers(ViewControllerRegistry registry) {
+		registry.addRedirectViewController("/", "main");
+	}
 
 	@Bean(name = "multipartResolver")
 	public CommonsMultipartResolver multipartResolver() {
