@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,10 +82,45 @@
 						</div>
 					</div>
 					<div class="col-md-4">
-						<div class="col-md-12 padding-0">
-							<div class="panel box-v2">
-								<div class="panel-body">
-									<div class="col-md-12 padding-0 text-center">로그인창</div>
+						 <div class="col-md-12 padding-0">
+                              <div class="panel bg-light-blue">
+                                <div class="panel-body text-white">
+									<div class="col-md-12 padding-0 text-center">
+									<!-- 로그인 부분 -->
+									<%
+										String errMsg = (String) session.getAttribute("errMsg");
+										if(errMsg==null) errMsg = "";
+										session.invalidate();
+									%>
+									<form action="login" method="post">
+										<c:if test="${session_id ne user.id}">
+											<div class="login">
+											     <div class="col-sm-10">
+											     	<input type="text" id="id" class="form-control border-bottom" name="id" placeholder="아이디" required>
+											     </div>
+											     <div class="col-sm-10">
+											     	<input type="text" id="password" class="form-control border-bottom" name="password" placeholder="비밀번호" required style="margin-top:10px !important;"/>
+											     </div>
+												<input type="submit" class="btn" value="로그인" style="margin-top:10px !important;"/>
+											</div>
+											<div>
+												<span><a href="findId">아이디 찾기</a></span>
+												<span><a href="findPW">비밀번호 찾기</a></span>
+												<span><a href="joinForm">회원가입</a></span>
+											</div>
+											<input type="submit" class="btn col-md-12" value="네이버 아이디로 로그인" style="margin-top:10px !important;"/>
+										</c:if>
+										
+										<c:if test= "${session_id eq user.id}">
+											<div>
+											<p>${session_id}님 환영합니다.</p>
+											<button id="logoutBtn" type="button"><a href="logout">로그아웃</a></button>
+											</div>
+										</c:if>
+										
+									</form>
+									
+									</div>
 								</div>
 							</div>
 						</div>

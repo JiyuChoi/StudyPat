@@ -63,29 +63,31 @@
 
 						<div class="panel-body" style="padding-bottom: 30px;">
 							<div class="col-md-12">
-
+							<!-- 회원정보 수정 -->
+							<form action="updateProfile" method="post">
 								<div class="form-group">
 									<label class="col-sm-2 control-label text-right">닉네임</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control">
+										<input type="text" class="form-control" name="user_nickname">
 									</div>
 								</div>
 								
 								<div class="form-group">
 									<label class="col-sm-2 control-label text-right">현재 비밀번호</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control">
+										<input type="text" class="form-control"  name="user_password">
 									</div>
 								</div>
 								
 								<div class="form-group">
 									<label class="col-sm-2 control-label text-right">변경할 비밀번호</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control">
+										<input type="text" class="form-control"  name="update_user_password">
 									</div>
 								</div>
+								<button class="btn">변경</button>
+							</form>
 							</div>
-							<button class="btn">변경</button>
 							<span>회원탈퇴</span>
 						</div>
 					</div>
