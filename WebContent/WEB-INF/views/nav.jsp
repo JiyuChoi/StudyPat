@@ -3,8 +3,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+
+<meta charset="utf-8">
+<meta name="description" content="Miminium Admin Template v.1">
+<meta name="author" content="Isna Nur Azis">
+<meta name="keyword" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StudyPat</title>
+
+<!-- start: Css -->
+<link rel="stylesheet" type="text/css" href="asset/css/bootstrap.min.css">
+
+<!-- plugins -->
+<link rel="stylesheet" type="text/css" href="asset/css/plugins/font-awesome.min.css"/>
+<link rel="stylesheet" type="text/css" href="asset/css/plugins/simple-line-icons.css"/>
+<link rel="stylesheet" type="text/css" href="asset/css/plugins/mediaelementplayer.css"/>
+<link rel="stylesheet" type="text/css" href="asset/css/plugins/animate.min.css"/>
+<link rel="stylesheet" type="text/css" href="asset/css/plugins/icheck/skins/flat/red.css"/>
+<link href="asset/css/style.css" rel="stylesheet">
+<!-- end: Css -->
+
+<link rel="shortcut icon" href="asset/img/logomi.png">
 </head>
 <body>
 
@@ -68,7 +87,18 @@
 						class="fa-diamond fa"></span> 기타 <span
 						class="fa-angle-right fa right-arrow text-right"></span>
 				</a></li>
-
+				
+				<!-- 권한 설정 -->
+				<li class="active ripple">
+				  <a class="tree-toggle nav-header">
+				  	<span class="fa-home fa"></span> 관리자 페이지 
+				    <span class="fa-angle-right fa right-arrow text-right"></span>
+				  </a>
+				  <ul class="nav nav-list tree">
+				      <li><a href="/studypat/adminuser">회원 관리</a></li>
+				      <li><a href="/studypat/adminpost">게시글 관리</a></li>
+				  </ul>
+				</li>
 			</ul>
 		</div>
 	</div>
