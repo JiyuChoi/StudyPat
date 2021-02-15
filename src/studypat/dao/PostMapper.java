@@ -17,5 +17,9 @@ public interface PostMapper {
 	
 	public List<Post> getPostList();
 	public void deletePost(int postNo);
+	
+	public List<Post> getPostListLatest();
+	public List<Post> getUserScrapPost(int userNo);
+	
 
 }

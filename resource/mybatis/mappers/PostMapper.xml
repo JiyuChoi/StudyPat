@@ -88,6 +88,24 @@
 		<if test="area != 'all'"> and area = #{area}</if>
 	</select>
 	
+	<select id="getPostListLatest" resultMap="Post">
+		select *
+			from (
+			    select * from sp_post order by create_date DESC
+			)
+		where ROWNUM BETWEEN 0 AND 5
+	</select>
+	
+	<select id="getUserScrapPost" resultMap="Post">
+		select *
+			from sp_post
+			where ROWNUM between 0 and 5 and post_no in (
+			    select post_no
+			    from sp_scrap
+			    where user_no = #{userNo}
+			)order by create_date DESC
+	</select>
+	
 	<select id="getPostList" resultMap="Post">
 		select * from sp_post
 	</select>

@@ -50,18 +50,60 @@
 		<div class="col-md-12 padding-0" style="padding-bottom: 20px;">
 			<div class="col-md-6" style="padding-left: 10px;">
 				<div>
-					<a onclick="location.href='/studypat/postList/category?category=${category}&sort=createDate&area=${area}'"><span>최신순</span></a>
-					<a onclick="location.href='/studypat/postList/category?category=${category}&sort=comment&area=${area}'"><span>댓글순</span></a>
-					<a onclick="location.href='/studypat/postList/category?category=${category}&sort=view&area=${area}'"><span>조회순</span></a>
-					<a onclick="location.href='/studypat/postList/category?category=${category}&sort=scrap&area=${area}'"><span>스크랩순</span></a>
+					<a onclick="location.href='/studypat/category?category=${category}&sort=createDate&area=${area}'"><span>최신순</span></a>
+					<a onclick="location.href='/studypat/category?category=${category}&sort=comment&area=${area}'"><span>댓글순</span></a>
+					<a onclick="location.href='/studypat/category?category=${category}&sort=view&area=${area}'"><span>조회순</span></a>
+					<a onclick="location.href='/studypat/category?category=${category}&sort=scrap&area=${area}'"><span>스크랩순</span></a>
 				
 					<select onchange="if(this.value) location.href=(this.value);">
-						<option value="/studypat/postList/category?category=${category}&sort=${sort}&area=all">전체</option>
-						<option value="/studypat/postList/category?category=${category}&sort=${sort}&area=seoul" 
-							<c:if test="${area eq 'seoul'}">selected</c:if>>서울
+						<option value="/studypat/category?category=${category}&sort=${sort}&area=all">전체</option>
+						<option value="/studypat/category?category=${category}&sort=${sort}&area=서울" 
+							<c:if test="${area eq '서울'}">selected</c:if>>서울
 						</option>
-						<option value="/studypat/postList/category?category=${category}&sort=${sort}&area=gyeonggi" 
-							<c:if test="${area eq 'gyeonggi'}">selected</c:if>>경기
+						<option value="/studypat/category?category=${category}&sort=${sort}&area=경기" 
+							<c:if test="${area eq '경기'}">selected</c:if>>경기
+						</option>
+						<option value="/studypat/category?category=${category}&sort=${sort}&area=인천" 
+							<c:if test="${area eq '인천'}">selected</c:if>>인천
+						</option>
+						<option value="/studypat/category?category=${category}&sort=${sort}&area=대전" 
+							<c:if test="${area eq '대전'}">selected</c:if>>대전
+						</option>
+						<option value="/studypat/category?category=${category}&sort=${sort}&area=대구" 
+							<c:if test="${area eq '대구'}">selected</c:if>>대구
+						</option>
+						<option value="/studypat/category?category=${category}&sort=${sort}&area=부산" 
+							<c:if test="${area eq '부산'}">selected</c:if>>부산
+						</option>
+						<option value="/studypat/category?category=${category}&sort=${sort}&area=광주" 
+							<c:if test="${area eq '광주'}">selected</c:if>>광주
+						</option>
+						<option value="/studypat/category?category=${category}&sort=${sort}&area=세종" 
+							<c:if test="${area eq '세종'}">selected</c:if>>세종
+						</option>
+						<option value="/studypat/category?category=${category}&sort=${sort}&area=울산" 
+							<c:if test="${area eq '울산'}">selected</c:if>>울산
+						</option>
+						<option value="/studypat/category?category=${category}&sort=${sort}&area=충북" 
+							<c:if test="${area eq '충북'}">selected</c:if>>충북
+						</option>
+						<option value="/studypat/category?category=${category}&sort=${sort}&area=충남" 
+							<c:if test="${area eq '충남'}">selected</c:if>>충남
+						</option>
+						<option value="/studypat/category?category=${category}&sort=${sort}&area=전북" 
+							<c:if test="${area eq '전북'}">selected</c:if>>전북
+						</option>
+						<option value="/studypat/category?category=${category}&sort=${sort}&area=전남" 
+							<c:if test="${area eq '전남'}">selected</c:if>>전남 
+						</option>
+						<option value="/studypat/category?category=${category}&sort=${sort}&area=경북" 
+							<c:if test="${area eq '경남'}">selected</c:if>>경남
+						</option>
+						<option value="/studypat/category?category=${category}&sort=${sort}&area=강원" 
+							<c:if test="${area eq '강원'}">selected</c:if>>강원
+						</option>
+						<option value="/studypat/category?category=${category}&sort=${sort}&area=제주" 
+							<c:if test="${area eq '제주'}">selected</c:if>>제주
 						</option>
 					</select>
 				</div>
@@ -107,7 +149,7 @@
 	</c:forEach>
 	<div style="display: block; text-align: center;">		
 		<c:if test="${paging.startPage != 1 }">
-			<a href="/studypat/postList/category?category=${category}&sort=${sort}&area=${area}&nowPage=${paging.startPage-1}">&lt;</a>
+			<a href="/studypat/category?category=${category}&sort=${sort}&area=${area}&nowPage=${paging.startPage-1}">&lt;</a>
 		</c:if>
 		
 		<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="p">
@@ -116,13 +158,13 @@
 					<b>${p}</b>
 				</c:when>
 				<c:when test="${p != paging.nowPage }">
-					<a href="/studypat/postList/category?category=${category}&sort=${sort}&area=${area}&nowPage=${p}">${p}</a>
+					<a href="/studypat/category?category=${category}&sort=${sort}&area=${area}&nowPage=${p}">${p}</a>
 				</c:when>
 			</c:choose>
 		</c:forEach>
 		
 		<c:if test="${paging.endPage != paging.lastPage}">
-			<a href="/studypat/postList/category?category=${category}&sort=${sort}&area=${area}&nowPage=${paging.endPage+1}">&gt;</a>
+			<a href="/studypat/category?category=${category}&sort=${sort}&area=${area}&nowPage=${paging.endPage+1}">&gt;</a>
 		</c:if>
 		
 	</div>

@@ -45,7 +45,7 @@
 			<div class="col-md-12" style="padding: 20px;">
 				<div class="col-md-12 padding-0">
 					<div class="col-md-8 padding-0">
-						<div class="col-md-12">
+						<div class="col-md-12" style="width:900px">
 							<div class="panel box-v4">
 								<div class="panel-heading bg-white border-none">
 									<h4>
@@ -54,15 +54,20 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-12 col-sm-12 profile-v1-wrapper">
-							<div class="panel box-v7">
+						<c:forEach var="post" items="${postListLatest}">
+						<div class="col-md-12 col-sm-12 profile-v1-wrapper" style="width:900px">
+							<div class="panel box-v7" >
 								<div class="panel-body">
 									<div class="col-md-12 padding-0 box-v7-header">
 										<div class="col-md-12 padding-0">
 											<div class="col-md-10 padding-0">
-												<h4>제목</h4>
-												<p>작성자</p>
-												<div>작성일</div>
+												<h4>${post.title}</h4>
+												<span>${post.userNickName}</span>
+												<span>조회수:${post.viewCount}</span>
+												<span>지역:${post.area}</span>
+												<span>작성일:${post.createDate}</span>
+												<span>댓글수:${post.commentCount}</span>
+												<span>스크랩수:${post.scrapCount}</span>
 											</div>
 											<div class="col-md-2 padding-0">
 												<div class="btn-group right-option-v1">
@@ -80,7 +85,8 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</c:forEach> 
+				</div>
 					<div class="col-md-4">
 						 <div class="col-md-12 padding-0">
                               <div class="panel bg-light-blue">
@@ -117,47 +123,46 @@
 											<button id="logoutBtn" type="button"><a href="logout">로그아웃</a></button>
 											</div>
 										</c:if>
-										
-									</form>
-									
+										</form>
 									</div>
 								</div>
 							</div>
 						</div>
-
 						<div class="col-md-12 padding-0">
 							<div class="panel box-v3">
 								<div class="panel-heading bg-white border-none">
 									<h4>내 스크랩 글</h4>
 								</div>
-								<div class="panel-body">
-
-									<div class="media">
-										<div class="media-left">
-											<span class="icon-folder icons" style="font-size: 2em;"></span>
-										</div>
-										<div class="media-body">
-											<h5 class="media-heading">Document Handling</h5>
-											<div class="progress progress-mini">
-												<div class="progress-bar" role="progressbar"
-													aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"
-													style="width: 10%;">
-													<span class="sr-only">60% Complete</span>
+								<c:forEach var="post" items="${postListUserScrap}">
+									<div class="panel-body">
+										<div class="media">
+											<div class="media-left">
+												<span class="icon-folder icons" style="font-size: 2em;"></span>
+											</div>
+											<div class="media-body">
+												<h5 class="media-heading">${post.title}</h5>
+												<span>조회수:${post.viewCount}</span>
+												<span>작성일:${post.createDate}</span>
+												<span>스크랩수:${post.scrapCount}</span>
+												<div class="progress progress-mini">
+													<div class="progress-bar" role="progressbar"
+														aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"
+														style="width: 10%;">
+														<span class="sr-only">60% Complete</span>
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>
+								</c:forEach>
 							</div>
 						</div>
-
 						<div class="col-md-12 padding-0"></div>
 					</div>
 				</div>
-			</div>
 		</div>
       </div>
-
+	</div>
     <!-- start: Javascript -->
     <script src="asset/js/jquery.min.js"></script>
     <script src="asset/js/jquery.ui.min.js"></script>
@@ -451,5 +456,10 @@
       })(jQuery);
      </script>
   <!-- end: Javascript -->
+
   </body>
+<style>
+ 
+ 
+</style>
 </html>
