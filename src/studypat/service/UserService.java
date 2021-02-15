@@ -38,11 +38,7 @@ public class UserService {
 	public int updateUser(User user) {
 		return userMapper.updateUser(user);
 	}
-	
-	public int deleteUser(String user_no) {
-		return userMapper.deleteUser(user_no);
-	}
-	
+		
 	public String findId(String email) {
 		return userMapper.findId(email);
 	}
@@ -125,5 +121,23 @@ public class UserService {
 		}
 		return result;
 	}
+   	
+	public List<User> getUserList() {
+		return userMapper.getUserList();
+	}
+
+	public void deleteUser(int userNo) {
+		userMapper.deleteUser(userNo);
+	}
+
+	public List<Post> getPostList() {
+		return userMapper.getPostList();
+	}
+
+	public void deletePost(int postNo) {
+		userMapper.deletePost(postNo);
+	}
 
 }
+
+
