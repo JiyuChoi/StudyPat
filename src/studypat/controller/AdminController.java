@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import studypat.service.PostService;
 import studypat.service.UserService;
 
 @Controller
@@ -13,6 +14,8 @@ public class AdminController {
 	
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private PostService postService;
 
 	@GetMapping("/adminuser")
 	public String adminUserList(Model model) {
@@ -28,13 +31,13 @@ public class AdminController {
 
 	@GetMapping("/adminpost")
 	public String adminPostList(Model model) {
-		model.addAttribute("postList", userService.getPostList());
+		model.addAttribute("postList", postService.getPostList());
 		return "admin/post";
 	}
 
 	@GetMapping("/adminpost/delete/{postNo}")
 	public String deletePost(@PathVariable("postNo") int postNo) {
-		userService.deletePost(postNo);
+		postService.deletePost(postNo);
 		return "redirect:/adminpost";
 	}
 	

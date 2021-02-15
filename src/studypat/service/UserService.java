@@ -1,5 +1,6 @@
 package studypat.service;
 
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -128,14 +129,6 @@ public class UserService {
 
 	public void deleteUser(int userNo) {
 		userMapper.deleteUser(userNo);
-	}
-
-	public List<Post> getPostList() {
-		return userMapper.getPostList();
-	}
-
-	public void deletePost(int postNo) {
-		userMapper.deletePost(postNo);
 	}
 
 }

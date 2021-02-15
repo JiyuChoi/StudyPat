@@ -51,7 +51,11 @@ public class PostService {
 		return postMapper.countPost(category, area);
 	}
 	
-	
-	
+	public List<Post> getPostList() {
+		return postMapper.getPostList();
+	}
 
+	public void deletePost(int postNo) {
+		postMapper.deletePost(postNo);
+	}
 }

@@ -39,29 +39,12 @@
 		<result column="user_no" property="userNo" />
 	</resultMap>
 
-	<resultMap type="post" id="postResultMap">
-		<result column="post_no" property="postNo" />
-		<result column="user_no" property="userNo" />
-		<result column="post_text" property="postText" jdbcType="CLOB" javaType="java.lang.String"/>
-		<result column="recruit_no" property="recruitNo" />
-		<result column="create_date" property="createDate" />
-		<result column="view_count" property="viewCount" />
-	</resultMap>
-
 	<select id="getUserList" resultMap="userResultMap">
 		select * from sp_user
 	</select>
 	
 	<delete id="deleteUser">
 		delete sp_user where user_no = #{userNo}
-	</delete>
-
-	<select id="getPostList" resultMap="postResultMap">
-		select * from sp_post
-	</select>
-	
-	<delete id="deletePost">
-		delete sp_post where post_no = #{postNo}
 	</delete>
 
 </mapper>

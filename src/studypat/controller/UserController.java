@@ -115,8 +115,8 @@ public class UserController {
 	
 		
 	@GetMapping("/delete")
-	public String deleteUser(@SessionAttribute("user_no") String user_no, HttpSession session) {
-		userService.deleteUser(user_no);
+	public String deleteUser(@SessionAttribute("user_no") int userNo, HttpSession session) {
+		userService.deleteUser(userNo);
 		session.invalidate();
 		return "redirect:/";
 	}

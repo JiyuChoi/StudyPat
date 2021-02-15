@@ -3,7 +3,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="studypat.dao.PostMapper">
-
 	<resultMap type="studypat.dto.Post" id="Post">
 		<result column="post_no" property="postNo"/>
 		<result column="user_no" property="userNo"/>
@@ -88,5 +87,13 @@
 		where category=#{category}
 		<if test="area != 'all'"> and area = #{area}</if>
 	</select>
+	
+	<select id="getPostList" resultMap="Post">
+		select * from sp_post
+	</select>
+	
+	<delete id="deletePost">
+		delete sp_post where post_no = #{postNo}
+	</delete>
 </mapper>
 
