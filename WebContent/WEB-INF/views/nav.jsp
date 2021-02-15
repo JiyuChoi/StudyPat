@@ -34,7 +34,7 @@
 					<span class="top"></span> <span class="middle"></span> <span
 						class="bottom"></span>
 				</div>
-				<a href="/studypat" class="navbar-brand"> <b>StudyPat</b>
+				<a href="index.html" class="navbar-brand"> <b>MIMIN</b>
 				</a>
 
 				<ul class="nav navbar-nav search-nav">
@@ -59,7 +59,7 @@
 			<ul class="nav nav-list">
 
 				<li class="ripple">
-					<a class="tree-toggle nav-header" onclick="location.href='/studypat/postList/category?category=어학'"> 
+					<a class="tree-toggle nav-header" onclick="location.href='/studypat/category?category=어학'"> 
 						<span class="fa-diamond fa"></span> 
 						어학 
 						<span class="fa-angle-right fa right-arrow text-right"></span>
@@ -112,7 +112,6 @@
 				      <li><a href="/studypat/admin/user">회원 관리</a></li>
 				      <li><a href="/studypat/admin/post">게시글 관리</a></li>
 				  </ul>
-
 				</li>
 			</ul>
 		</div>
