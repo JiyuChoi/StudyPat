@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="studypat.dao.PostMapper">
+
+	<resultMap type="studypat.dto.Post" id="Post">
+		<result column="post_no" property="postNo"/>
+		<result column="user_no" property="userNo"/>
+		<result column="title" property="title"/>
+		<result column="post_text" property="postText"/>
+		<result column="category" property="category"/>
+		<result column="recruit_no" property="recruitNo"/>
+		<result column="area" property="area"/>
+		<result column="create_date" property="createDate"/>
+		<result column="view_count" property="viewCount"/>
+		<result column="report" property="report"/>
+		<result column="comment_count" property="commentCount"/>
+		<result column="scrap_count" property="scrapCount"/>
+		<result column="user_nickname" property="userNickName"/>
+			
+		
+		<association javaType="studypat.dto.User" property="user"> <!-- user 테이블 조인때 사용하기 위해서-->
+			<result column="userNo" property="user_no"/>
+			<result column="id" property="id"/>
+			<result column="password" property="password"/>
+			<result column="email" property="email"/>
+			<result column="nickName" property="nickName"/>
+			<result column="admin" property="admin"/>
+		</association>
+		
+		<association javaType="studypat.dto.Scrap" property="scrap">  
+			<result column="scrap_no" property="scrapNo"/>
+			<result column="user_no" property="userNo"/>
+			<result column="post_no" property="postNo"/>
+		</association>
+		
+		<association javaType="studypat.dto.Comment" property="comment">  
+			<result column="comment_no" property="commentNo"/>
+			<result column="post_no" property="postNo"/>
+			<result column="user_no" property="userNo"/>
+			<result column="comment_text" property="commentText"/>
+			<result column="create_date" property="createDate"/>
+			<result column="secret" property="secret"/>
+		</association>
+		
+	</resultMap>
+
+	<select id="getCategoryPost" resultType="studypat.dto.Post" resultMap="Post" parameterType="String"> 
+			SELECT * 
+			FROM (
+			SELECT ROWNUM RN, A.*
+				FROM (
+						SELECT p.*, (
+                            select count(*) 
+                            from sp_comment 
+                            where post_no = p.post_no
+                        )comment_count,
+                        (
+                            select count(*)
+                            from sp_scrap
+                            where post_no = p.post_no
+                        )scrap_count,
+                        (
+                            select nickname
+                            from sp_user
+                            where user_no = p.user_no
+                        )user_nickname
+						FROM sp_post p
+                        where category=#{category}
+                        
+                        <if test="area != 'all'"> and area = #{area}</if>
+                        
+						<trim prefix="ORDER BY">
+							<if test="sort == 'create_date'">  create_date DESC </if>   
+					        <if test="sort == 'comment_count'">  comment_count DESC </if>
+			                <if test="sort == 'view_count'">  view_count DESC </if>     
+			                <if test="sort == 'scrap_count'">  scrap_count DESC </if>     
+		                </trim>
+						) A
+				) where RN BETWEEN #{start} AND #{end}
+	</select>
+	
+	
+	<select id="countPost" resultType="int" parameterType="String">
+		SELECT COUNT(*) 
+		FROM sp_post 
+		where category=#{category}
+		<if test="area != 'all'"> and area = #{area}</if>
+	</select>
+</mapper>
+

@@ -1,0 +1,18 @@
+package studypat.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import studypat.dto.Post;
+import studypat.utils.Paging;
+
+@Mapper
+public interface PostMapper {
+//	public List<Post> getCategoryPost(String category);
+	public List<Post> getCategoryPost(@Param("start") String start, @Param("end") String end, @Param("category") String category, @Param("sort") String sort, @Param("area") String area);
+	
+	public int countPost(@Param("category") String category, @Param("area") String area);
+
+}
