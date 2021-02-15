@@ -55,7 +55,12 @@ public class PostService {
 		return postMapper.getPostList();
 	}
 
+	public List<Post> getPostList(int userNo) {
+		return postMapper.getUserPostList(userNo);
+	}
+
 	public void deletePost(int postNo) {
 		postMapper.deletePost(postNo);
 	}
+
 }

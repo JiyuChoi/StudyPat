@@ -34,7 +34,7 @@
 					<span class="top"></span> <span class="middle"></span> <span
 						class="bottom"></span>
 				</div>
-				<a href="index.html" class="navbar-brand"> <b>MIMIN</b>
+				<a href="/studypat" class="navbar-brand"> <b>StudyPat</b>
 				</a>
 
 				<ul class="nav navbar-nav search-nav">
@@ -109,8 +109,8 @@
 				    <span class="fa-angle-right fa right-arrow text-right"></span>
 				  </a>
 				  <ul class="nav nav-list tree">
-				      <li><a href="/studypat/adminuser">회원 관리</a></li>
-				      <li><a href="/studypat/adminpost">게시글 관리</a></li>
+				      <li><a href="/studypat/admin/user">회원 관리</a></li>
+				      <li><a href="/studypat/admin/post">게시글 관리</a></li>
 				  </ul>
 
 				</li>

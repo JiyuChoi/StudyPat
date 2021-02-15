@@ -91,6 +91,10 @@
 	<select id="getPostList" resultMap="Post">
 		select * from sp_post
 	</select>
+
+	<select id="getUserPostList" resultMap="Post">
+		select * from sp_post where user_no = #{userNo}
+	</select>
 	
 	<delete id="deletePost">
 		delete sp_post where post_no = #{postNo}

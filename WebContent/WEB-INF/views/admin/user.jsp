@@ -15,16 +15,16 @@
   <title>StudyPat</title>
 
   <!-- start: Css -->
-  <link rel="stylesheet" type="text/css" href="asset/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/studypat/asset/css/bootstrap.min.css">
 
   <!-- plugins -->
-  <link rel="stylesheet" type="text/css" href="asset/css/plugins/font-awesome.min.css"/>
-  <link rel="stylesheet" type="text/css" href="asset/css/plugins/datatables.bootstrap.min.css"/>
-  <link rel="stylesheet" type="text/css" href="asset/css/plugins/animate.min.css"/>
-  <link href="asset/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/studypat/asset/css/plugins/font-awesome.min.css"/>
+  <link rel="stylesheet" type="text/css" href="/studypat/asset/css/plugins/datatables.bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="/studypat/asset/css/plugins/animate.min.css"/>
+  <link href="/studypat/asset/css/style.css" rel="stylesheet">
   <!-- end: Css -->
 
-  <link rel="shortcut icon" href="asset/img/logomi.png">
+  <link rel="shortcut icon" href="/studypat/asset/img/logomi.png">
 </head>
 
 
@@ -70,7 +70,7 @@
 									<tbody>
 										<c:forEach var="user" items="${userList}">
 											<tr>
-												<td>${user.userNo}</td>
+												<td><a href="/studypat/admin/post/${user.userNo}">${user.userNo}</a></td>
 												<td>${user.id}</td>
 												<td>${user.email}</td>
 												<td>${user.nickName}</td>
@@ -81,7 +81,7 @@
 													<td>일반 회원</td>
 												</c:if>
 												<td>
-													<a href="/studypat/adminuser/delete/${user.userNo}">회원 삭제</a>
+													<a href="/studypat/admin/user/delete/${user.userNo}">회원 삭제</a>
 												</td>
 											</tr>
 										</c:forEach>
@@ -99,26 +99,29 @@
 
 
 	<!-- start: Javascript -->
-	<script src="asset/js/jquery.min.js"></script>
-	<script src="asset/js/jquery.ui.min.js"></script>
-	<script src="asset/js/bootstrap.min.js"></script>
+	<script src="/studypat/asset/js/jquery.min.js"></script>
+	<script src="/studypat/asset/js/jquery.ui.min.js"></script>
+	<script src="/studypat/asset/js/bootstrap.min.js"></script>
 
 
 
 	<!-- plugins -->
-	<script src="asset/js/plugins/moment.min.js"></script>
-	<script src="asset/js/plugins/jquery.datatables.min.js"></script>
-	<script src="asset/js/plugins/datatables.bootstrap.min.js"></script>
-	<script src="asset/js/plugins/jquery.nicescroll.js"></script>
+	<script src="/studypat/asset/js/plugins/moment.min.js"></script>
+	<script src="/studypat/asset/js/plugins/jquery.datatables.min.js"></script>
+	<script src="/studypat/asset/js/plugins/datatables.bootstrap.min.js"></script>
+	<script src="/studypat/asset/js/plugins/jquery.nicescroll.js"></script>
 
 
 	<!-- custom -->
-	<script src="asset/js/main.js"></script>
+	<script src="/studypat/asset/js/main.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#datatables').DataTable({
 				"order" : [[ 0, "desc"]],
-				"stateSave" : true
+				"stateSave" : true,
+				"columnDefs": [
+				    { "orderable": false, "targets": 5}
+				  ]
 			});
 		});
 	</script>

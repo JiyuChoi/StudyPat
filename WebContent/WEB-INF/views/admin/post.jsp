@@ -16,19 +16,19 @@
 
 <!-- start: Css -->
 <link rel="stylesheet" type="text/css"
-	href="asset/css/bootstrap.min.css">
+	href="/studypat/asset/css/bootstrap.min.css">
 
 <!-- plugins -->
 <link rel="stylesheet" type="text/css"
-	href="asset/css/plugins/font-awesome.min.css" />
+	href="/studypat/asset/css/plugins/font-awesome.min.css" />
 <link rel="stylesheet" type="text/css"
-	href="asset/css/plugins/datatables.bootstrap.min.css" />
+	href="/studypat/asset/css/plugins/datatables.bootstrap.min.css" />
 <link rel="stylesheet" type="text/css"
-	href="asset/css/plugins/animate.min.css" />
-<link href="asset/css/style.css" rel="stylesheet">
+	href="/studypat/asset/css/plugins/animate.min.css" />
+<link href="/studypat/asset/css/style.css" rel="stylesheet">
 <!-- end: Css -->
 
-<link rel="shortcut icon" href="asset/img/logomi.png">
+<link rel="shortcut icon" href="/studypat/asset/img/logomi.png">
 </head>
 
 
@@ -84,15 +84,14 @@
 												<td>${post.createDate}</td>
 												<td>${post.viewCount}</td>
 												<td>${post.report}</td>
-												<td><a href="/studypat/adminpost/delete/${post.postNo}">게시글
+												<td><a href="/studypat/admin/post/delete/${post.postNo}">게시글
 														삭제</a></td>
 											</tr>
-											<div class="td2" id="${post.postNo}">
+													<div class="td2" id="${post.postNo}">
 													제목 : ${post.title} <br>
 													카테고리 : ${post.category} <br>
 													게시글 : ${post.postText} <br>
-													
-											</div>
+													</div>	
 										</c:forEach>
 									</tbody>
 								</table>
@@ -108,27 +107,30 @@
 
 
 	<!-- start: Javascript -->
-	<script src="asset/js/jquery.min.js"></script>
-	<script src="asset/js/jquery.ui.min.js"></script>
-	<script src="asset/js/bootstrap.min.js"></script>
+	<script src="/studypat/asset/js/jquery.min.js"></script>
+	<script src="/studypat/asset/js/jquery.ui.min.js"></script>
+	<script src="/studypat/asset/js/bootstrap.min.js"></script>
 
 
 
 	<!-- plugins -->
-	<script src="asset/js/plugins/moment.min.js"></script>
-	<script src="asset/js/plugins/jquery.datatables.min.js"></script>
-	<script src="asset/js/plugins/datatables.bootstrap.min.js"></script>
-	<script src="asset/js/plugins/jquery.nicescroll.js"></script>
+	<script src="/studypat/asset/js/plugins/moment.min.js"></script>
+	<script src="/studypat/asset/js/plugins/jquery.datatables.min.js"></script>
+	<script src="/studypat/asset/js/plugins/datatables.bootstrap.min.js"></script>
+	<script src="/studypat/asset/js/plugins/jquery.nicescroll.js"></script>
 
 
 	<!-- custom -->
-	<script src="asset/js/main.js"></script>
+	<script src="/studypat/asset/js/main.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$(".td2").hide();
 			$('#datatables').DataTable({
 				"order" : [[ 0, "desc"]],
-				"stateSave" : true
+				"stateSave" : true,
+				"columnDefs": [
+				    { "orderable": false, "targets": 7}
+				  ]
 			});
 		});
 		
