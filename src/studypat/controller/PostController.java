@@ -14,15 +14,19 @@ import studypat.service.PostService;
 import studypat.utils.Paging;
 
 @Controller
-@RequestMapping(path = "/postList")
 public class PostController {
 	
 	@Autowired
 	private PostService postService;
 
 	@GetMapping
-	public String getPosts() { // post 전부 가져오기
-		return "postList";
+	public String getPosts(Model model) { // post 전부 가져오기
+		int userNo = 4; // 임시로
+		List<Post> postListLatest = postService.getPostListLatest();//최신 게시물 가져오기
+		List<Post> postListUserScrap = postService.getUserScrapPost(userNo);
+		model.addAttribute("postListLatest", postListLatest);
+		model.addAttribute("postListUserScrap", postListUserScrap);
+		return "main";
 	}
 	
 	@GetMapping("/category")
