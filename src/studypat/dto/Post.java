@@ -12,7 +12,14 @@ public class Post {
 	private String createDate;	// Date -> String
 	private int viewCount;
 	private int report;
+	private User user;
+	private Scrap scrap;
+	private Comment comment;
+	private int commentCount;
+	private int scrapCount;
+	private String userNickName;
 
+	
 	public int getPostNo() {
 		return postNo;
 	}
@@ -92,4 +99,55 @@ public class Post {
 	public void setReport(int report) {
 		this.report = report;
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Scrap getScrap() {
+		return scrap;
+	}
+
+	public void setScrap(Scrap scrap) {
+		this.scrap = scrap;
+	}
+
+	public Comment getComment() {
+		return comment;
+	}
+
+	public void setComment(Comment comment) {
+		this.comment = comment;
+	}
+
+	public int getCommentCount() {
+		return commentCount;
+	}
+
+	public void setCommentCount(int commentCount) {
+		this.commentCount = commentCount;
+	}
+
+	public int getScrapCount() {
+		return scrapCount;
+	}
+
+	public void setScrapCount(int scrapCount) {
+		this.scrapCount = scrapCount;
+	}
+
+	public String getUserNickName() {
+		return userNickName;
+	}
+
+	public void setUserNickName(String userNickName) {
+		this.userNickName = userNickName;
+	}
+	
+	
+	
 }

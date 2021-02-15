@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="studypat.dao.*"%>
+<%@ page import="studypat.dto.*"%>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,18 +16,18 @@
   <title>Miminium</title>
 
   <!-- start: Css -->
-  <link rel="stylesheet" type="text/css" href="asset/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/studypat/asset/css/bootstrap.min.css">
 
   <!-- plugins -->
-  <link rel="stylesheet" type="text/css" href="asset/css/plugins/font-awesome.min.css"/>
-  <link rel="stylesheet" type="text/css" href="asset/css/plugins/simple-line-icons.css"/>
-  <link rel="stylesheet" type="text/css" href="asset/css/plugins/mediaelementplayer.css"/>
-  <link rel="stylesheet" type="text/css" href="asset/css/plugins/animate.min.css"/>
-  <link rel="stylesheet" type="text/css" href="asset/css/plugins/icheck/skins/flat/red.css"/>
-  <link href="asset/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/studypat/asset/css/plugins/font-awesome.min.css"/>
+  <link rel="stylesheet" type="text/css" href="/studypat/asset/css/plugins/simple-line-icons.css"/>
+  <link rel="stylesheet" type="text/css" href="/studypat/asset/css/plugins/mediaelementplayer.css"/>
+  <link rel="stylesheet" type="text/css" href="/studypat/asset/css/plugins/animate.min.css"/>
+  <link rel="stylesheet" type="text/css" href="/studypat/asset/css/plugins/icheck/skins/flat/red.css"/>
+  <link href="/studypat/asset/css/style.css" rel="stylesheet">
   <!-- end: Css -->
 
-  <link rel="shortcut icon" href="asset/img/logomi.png">
+  <link rel="shortcut icon" href="/studypat/asset/img/logomi.png">
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -38,7 +42,7 @@
 		<div class="panel box-shadow-none content-header">
 			<div class="panel-body">
 				<div class="col-md-12">
-					<h3 class="animated fadeInLeft">카테고리</h3>
+					<h3 class="animated fadeInLeft">${category}</h3>
 				</div>
 			</div>
 		</div>
@@ -46,15 +50,19 @@
 		<div class="col-md-12 padding-0" style="padding-bottom: 20px;">
 			<div class="col-md-6" style="padding-left: 10px;">
 				<div>
-					<span>최신순</span>
-					<span>댓글순</span>
-					<span>조회순</span>
-					<span>스크랩순</span>
+					<a onclick="location.href='/studypat/postList/category?category=${category}&sort=createDate&area=${area}'"><span>최신순</span></a>
+					<a onclick="location.href='/studypat/postList/category?category=${category}&sort=comment&area=${area}'"><span>댓글순</span></a>
+					<a onclick="location.href='/studypat/postList/category?category=${category}&sort=view&area=${area}'"><span>조회순</span></a>
+					<a onclick="location.href='/studypat/postList/category?category=${category}&sort=scrap&area=${area}'"><span>스크랩순</span></a>
 				
-					<select>
-						<option>지역..</option>
-						<option>Ignore</option>
-						<option>Cancel</option>
+					<select onchange="if(this.value) location.href=(this.value);">
+						<option value="/studypat/postList/category?category=${category}&sort=${sort}&area=all">전체</option>
+						<option value="/studypat/postList/category?category=${category}&sort=${sort}&area=seoul" 
+							<c:if test="${area eq 'seoul'}">selected</c:if>>서울
+						</option>
+						<option value="/studypat/postList/category?category=${category}&sort=${sort}&area=gyeonggi" 
+							<c:if test="${area eq 'gyeonggi'}">selected</c:if>>경기
+						</option>
 					</select>
 				</div>
 			</div>
@@ -64,33 +72,60 @@
 				</button>
 			</div>
 		</div>
-
-<div class="col-md-12 col-sm-12 profile-v1-wrapper">
-	<div class="panel box-v7">
-		<div class="panel-body">
-			<div class="col-md-12 padding-0 box-v7-header">
-				<div class="col-md-12 padding-0">
-					<div class="col-md-10 padding-0">
-						<h4>제목</h4>
-						<p>작성자</p>
-						<div>작성일</div>
-					</div>
-					<div class="col-md-2 padding-0">
-						<div class="btn-group right-option-v1">
-							<i class="icon-options-vertical icons box-v7-menu"
-								data-toggle="dropdown"></i>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">수정</a></li>
-								<li><a href="#">삭제</a></li>
-								<li><a href="#">신고하기</a></li>
-							</ul>
+	
+	<c:forEach var="post" items="${postList}">
+		<div class="col-md-12 col-sm-12 profile-v1-wrapper" id="postNo${post.postNo}">
+			<div class="panel box-v7">
+				<div class="panel-body">
+					<div class="col-md-12 padding-0 box-v7-header">
+						<div class="col-md-12 padding-0">
+							<div class="col-md-10 padding-0">
+								<h4>${post.title}</h4>
+								<span>${post.userNickName}</span>
+								<span>조회수:${post.viewCount}</span>
+								<span>지역:${post.area}</span>
+								<span>작성일:${post.createDate}</span>
+								<span>댓글수:${post.commentCount}</span>
+								<span>스크랩수:${post.scrapCount}</span>
+							</div>
+							<div class="col-md-2 padding-0">
+								<div class="btn-group right-option-v1">
+									<i class="icon-options-vertical icons box-v7-menu"
+										data-toggle="dropdown"></i>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="#">수정</a></li>
+										<li><a href="#">삭제</a></li>
+										<li><a href="#">신고하기</a></li>
+									</ul>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</c:forEach>
+	<div style="display: block; text-align: center;">		
+		<c:if test="${paging.startPage != 1 }">
+			<a href="/studypat/postList/category?category=${category}&sort=${sort}&area=${area}&nowPage=${paging.startPage-1}">&lt;</a>
+		</c:if>
+		
+		<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="p">
+			<c:choose>
+				<c:when test="${p == paging.nowPage }">
+					<b>${p}</b>
+				</c:when>
+				<c:when test="${p != paging.nowPage }">
+					<a href="/studypat/postList/category?category=${category}&sort=${sort}&area=${area}&nowPage=${p}">${p}</a>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+		
+		<c:if test="${paging.endPage != paging.lastPage}">
+			<a href="/studypat/postList/category?category=${category}&sort=${sort}&area=${area}&nowPage=${paging.endPage+1}">&gt;</a>
+		</c:if>
+		
 	</div>
-</div>
 </div>
 
 
@@ -102,20 +137,20 @@
 
 
 	<!-- start: Javascript -->
-<script src="asset/js/jquery.min.js"></script>
-<script src="asset/js/jquery.ui.min.js"></script>
-<script src="asset/js/bootstrap.min.js"></script>
+<script src="/studypat/asset/js/jquery.min.js"></script>
+<script src="/studypat/asset/js/jquery.ui.min.js"></script>
+<script src="/studypat/asset/js/bootstrap.min.js"></script>
 
 
 <!-- plugins -->
-<script src="asset/js/plugins/icheck.min.js"></script>
-<script src="asset/js/plugins/moment.min.js"></script>
-<script src="asset/js/plugins/mediaelement-and-player.min.js"></script>
-<script src="asset/js/plugins/jquery.nicescroll.js"></script>
+<script src="/studypat/asset/js/plugins/icheck.min.js"></script>
+<script src="/studypat/asset/js/plugins/moment.min.js"></script>
+<script src="/studypat/asset/js/plugins/mediaelement-and-player.min.js"></script>
+<script src="/studypat/asset/js/plugins/jquery.nicescroll.js"></script>
 
 
 <!-- custom -->
-<script src="asset/js/main.js"></script>
+<script src="/studypat/asset/js/main.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
    $('input').iCheck({
