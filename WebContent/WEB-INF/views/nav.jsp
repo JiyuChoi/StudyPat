@@ -34,7 +34,7 @@
 					<span class="top"></span> <span class="middle"></span> <span
 						class="bottom"></span>
 				</div>
-				<a href="index.html" class="navbar-brand"> <b>MIMIN</b>
+				<a href="/studypat" class="navbar-brand"> <b>StudyPat</b>
 				</a>
 
 				<ul class="nav navbar-nav search-nav">
