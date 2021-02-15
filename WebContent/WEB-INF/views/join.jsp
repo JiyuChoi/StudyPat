@@ -45,29 +45,32 @@
 					<p class="atomic-mass">스터디를 구하고 있다면</p>
 					<p class="element-name">지금, 바로!</p>
 					<h1 class="atomic-symbol">STUDYPAT</h1>
-
-					<div class="form-group form-animate-text" style="margin-top: 40px !important;">
-						<input type="text" class="form-text" required> 
-						<span class="bar"></span> <label>아이디</label>
-					</div>
-					<div class="form-group form-animate-text" style="margin-top: 40px !important;">
-						<input type="text" class="form-text" required> 
-						<span class="bar"></span> <label>이메일</label>
-					</div>
-					<div class="form-group form-animate-text" style="margin-top: 40px !important;">
-						<input type="password" class="form-text" required> 
-						<span class="bar"></span> <label>비밀번호</label>
-					</div>
-					<div class="form-group form-animate-text" style="margin-top: 40px !important;">
-						<input type="nickname" class="form-text" required> 
-						<span class="bar"></span> <label>닉네임</label>
-					</div>
-					<label class="pull-left"> <input type="checkbox" class="icheck pull-left" name="checkbox1" /> 
-					&nbsp Agree the terms and policy
-					</label> 
-					<input type="submit" class="btn col-md-12" value="회원가입"/>
-					<input type="button" class="btn col-md-12" value="네이버계정으로 가입"/>
+					
+					<form action="join" method="post">
+						<div class="form-group form-animate-text" style="margin-top: 40px !important;">
+							<input type="text" class="form-text" name="id" required> 
+							<span class="bar"></span> <label>아이디</label>
+						</div>
+						<div class="form-group form-animate-text" style="margin-top: 40px !important;">
+							<input type="text" class="form-text" name="email"required> 
+							<span class="bar"></span> <label>이메일</label>
+						</div>
+						<div class="form-group form-animate-text" style="margin-top: 40px !important;">
+							<input type="password" class="form-text" name="password" required> 
+							<span class="bar"></span> <label>비밀번호</label>
+						</div>
+						<div class="form-group form-animate-text" style="margin-top: 40px !important;">
+							<input type="nickname" class="form-text" name="nickname" required> 
+							<span class="bar"></span> <label>닉네임</label>
+						</div>
+						<label class="pull-left"> <input type="checkbox" class="icheck pull-left" name="checkbox1" required/> 
+						&nbsp Agree the terms and policy
+						</label> 
+						<input type="submit" class="btn col-md-12" value="회원가입"/>
+						<input type="button" class="btn col-md-12" value="네이버계정으로 가입"/>
+					</form>
 				</div>
+				
 				<div class="text-center" style="padding: 5px;">
 					<a href="login.html">이미 계정이 있으신가요?</a>
 				</div>

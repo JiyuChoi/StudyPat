@@ -3,6 +3,38 @@
 
 <mapper namespace="studypat.dao.UserMapper">
 
+	<insert id = "join" parameterType = "studypat.dto.User">
+		insert into sp_user values (#{id}, #{password}, #{email}, #{nickname})
+	</insert>
+
+	<select id="getUser" resultType="studypat.dto.User">
+		select * from sp_user where id = #{id}
+	</select>
+	
+	<select id="login" resultType="studypat.dto.User">
+		select id, password from sp_user where id=#{id} and password=#{password}
+	</select>
+	
+	<update id="updateUser" parameterType="studypat.dto.User">
+		update sp_user
+		set nickname = #{nickname} password = #{password}
+		where user_no=#{user_no}
+	</update>
+
+	<select id ="findId" parameterType="String" resultType="java.lang.String">
+		select * from sp_user where email = #{email}
+	</select>
+	
+	<select id ="findPw" resultType="studypat.dto.User">
+		select * from sp_user where id = #{id} and email = #{email}
+	</select>
+	
+	<update id="getTempPw" parameterType="studypat.dto.User">
+		update sp_user
+		set password = #{password}
+		where id=#{id} and email=#{email}
+	</update>
+
 	<resultMap type="user" id="userResultMap">
 		<result column="user_no" property="userNo" />
 	</resultMap>
@@ -31,5 +63,5 @@
 	<delete id="deletePost">
 		delete sp_post where post_no = #{postNo}
 	</delete>
-	
+
 </mapper>
