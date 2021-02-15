@@ -3,6 +3,9 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 	
 <configuration>
-
+	<typeAliases>
+		<typeAlias alias="user" type="studypat.dto.User"/>
+		<typeAlias alias="post" type="studypat.dto.Post"/>
+	</typeAliases>
 </configuration>
 
