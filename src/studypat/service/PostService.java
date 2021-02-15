@@ -65,4 +65,8 @@ public class PostService {
 		postMapper.deletePost(postNo);
 	}
 
+	public Post getPost(int postNo) {
+		return postMapper.getPost(postNo);
+	}
+
 }

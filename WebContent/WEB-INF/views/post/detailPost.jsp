@@ -12,18 +12,18 @@
   <title>Miminium</title>
 
   <!-- start: Css -->
-  <link rel="stylesheet" type="text/css" href="asset/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../asset/css/bootstrap.min.css">
 
   <!-- plugins -->
-  <link rel="stylesheet" type="text/css" href="asset/css/plugins/font-awesome.min.css"/>
-  <link rel="stylesheet" type="text/css" href="asset/css/plugins/simple-line-icons.css"/>
-  <link rel="stylesheet" type="text/css" href="asset/css/plugins/mediaelementplayer.css"/>
-  <link rel="stylesheet" type="text/css" href="asset/css/plugins/animate.min.css"/>
-  <link rel="stylesheet" type="text/css" href="asset/css/plugins/icheck/skins/flat/red.css"/>
-  <link href="asset/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../asset/css/plugins/font-awesome.min.css"/>
+  <link rel="stylesheet" type="text/css" href="../asset/css/plugins/simple-line-icons.css"/>
+  <link rel="stylesheet" type="text/css" href="../asset/css/plugins/mediaelementplayer.css"/>
+  <link rel="stylesheet" type="text/css" href="../asset/css/plugins/animate.min.css"/>
+  <link rel="stylesheet" type="text/css" href="../asset/css/plugins/icheck/skins/flat/red.css"/>
+  <link href="../asset/css/style.css" rel="stylesheet">
   <!-- end: Css -->
 
-  <link rel="shortcut icon" href="asset/img/logomi.png">
+  <link rel="shortcut icon" href="../asset/img/logomi.png">
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -40,13 +40,13 @@
 			<div class="col-md-12 padding-0 box-v7-header">
 				<div class="col-md-12 padding-0">
 					<div class="col-md-10 padding-0">
-						<img src="asset/img/avatar.jpg" class="box-v7-avatar pull-left" />
-						<h4>제목</h4>
-						<p>작성자</p>
-						<div>작성일</div>
-						<div>카테고리</div>
-						<div>지역</div>
-						<div>인원</div>
+						<img src="/studypat/img/avatar.jpg" class="box-v7-avatar pull-left" />
+						<h4>${post.title}</h4>
+						<p>${post.user.nickName}</p>
+						<div>${post.createDate}</div>
+						<div>${post.category}</div>
+						<div>${post.area}</div>
+						<div>${post.recruitNo}</div>
 					</div>
 					<div class="col-md-2 padding-0">
 						<div class="btn-group right-option-v1">
@@ -75,7 +75,7 @@
 			<div class="col-md-12 padding-0 box-v7-comment">
 				<div class="media">
 					<div class="media-left">
-						<a href="#"> <img src="asset/img/avatar2.png"
+						<a href="#"> <img src="/studypat/img/avatar2.png"
 							class="media-object box-v7-avatar" />
 						</a>
 					</div>
@@ -89,7 +89,7 @@
 
 				<div class="media">
 					<div class="media-left">
-						<a href="#"> <img src="asset/img/avatar.jpg"
+						<a href="#"> <img src="/studypat/img/avatar.jpg"
 							class="media-object box-v7-avatar" />
 						</a>
 					</div>
@@ -123,20 +123,20 @@
 
 
 	<!-- start: Javascript -->
-<script src="asset/js/jquery.min.js"></script>
-<script src="asset/js/jquery.ui.min.js"></script>
-<script src="asset/js/bootstrap.min.js"></script>
+<script src="../asset/js/jquery.min.js"></script>
+<script src="../asset/js/jquery.ui.min.js"></script>
+<script src="../asset/js/bootstrap.min.js"></script>
 
 
 <!-- plugins -->
-<script src="asset/js/plugins/icheck.min.js"></script>
-<script src="asset/js/plugins/moment.min.js"></script>
-<script src="asset/js/plugins/mediaelement-and-player.min.js"></script>
-<script src="asset/js/plugins/jquery.nicescroll.js"></script>
+<script src="../asset/js/plugins/icheck.min.js"></script>
+<script src="../asset/js/plugins/moment.min.js"></script>
+<script src="../asset/js/plugins/mediaelement-and-player.min.js"></script>
+<script src="../asset/js/plugins/jquery.nicescroll.js"></script>
 
 
 <!-- custom -->
-<script src="asset/js/main.js"></script>
+<script src="../asset/js/main.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
    $('input').iCheck({

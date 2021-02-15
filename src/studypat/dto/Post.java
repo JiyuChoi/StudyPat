@@ -12,13 +12,12 @@ public class Post {
 	private String createDate;	// Date -> String
 	private int viewCount;
 	private int report;
-	private User user;
+	private User user;			// join시 같이 담아오기
 	private Scrap scrap;
 	private Comment comment;
 	private int commentCount;
 	private int scrapCount;
 	private String userNickName;
-
 	
 	public int getPostNo() {
 		return postNo;
