@@ -30,13 +30,7 @@ public class PostService {
 		else if(("scrap").equals(sort)) { //조회순으로 정렬
 			sort = "scrap_count";
 		}
-	
-		if(("seoul").equals(area)) {
-			area = "서울";
-		}
-		else if(("gyeonggi").equals(area)) {
-			area = "경기";
-		}
+	 
 		return postMapper.getCategoryPost(Integer.toString(paging.getStart()), Integer.toString(paging.getEnd()), category, sort, area);
 	}
 	
@@ -50,12 +44,25 @@ public class PostService {
 		
 		return postMapper.countPost(category, area);
 	}
+	public List<Post> getPostListLatest(){
+		
+		return postMapper.getPostListLatest();
+	}
+	public List<Post> getUserScrapPost(int userNo){
+		
+		return postMapper.getUserScrapPost(userNo);
+	}
 	
 	public List<Post> getPostList() {
 		return postMapper.getPostList();
 	}
 
+	public List<Post> getPostList(int userNo) {
+		return postMapper.getUserPostList(userNo);
+	}
+
 	public void deletePost(int postNo) {
 		postMapper.deletePost(postNo);
 	}
+
 }

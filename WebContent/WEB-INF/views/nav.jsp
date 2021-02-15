@@ -34,7 +34,7 @@
 					<span class="top"></span> <span class="middle"></span> <span
 						class="bottom"></span>
 				</div>
-				<a href="index.html" class="navbar-brand"> <b>MIMIN</b>
+				<a href="/studypat" class="navbar-brand"> <b>StudyPat</b>
 				</a>
 
 				<ul class="nav navbar-nav search-nav">
@@ -59,28 +59,28 @@
 			<ul class="nav nav-list">
 
 				<li class="ripple">
-					<a class="tree-toggle nav-header" onclick="location.href='/studypat/postList/category?category=language'"> 
+					<a class="tree-toggle nav-header" onclick="location.href='/studypat/postList/category?category=어학'"> 
 						<span class="fa-diamond fa"></span> 
 						어학 
 						<span class="fa-angle-right fa right-arrow text-right"></span>
 					</a>
 				</li>
 				<li class="ripple">
-					<a class="tree-toggle nav-header" onclick="location.href='/studypat/postList/category?category=job'"> 
+					<a class="tree-toggle nav-header" onclick="location.href='/studypat/category?category=취업'"> 
 						<span class="fa-diamond fa"></span> 
 						취업
 						<span class="fa-angle-right fa right-arrow text-right"></span>
 					</a>
 				</li>
 				<li class="ripple">
-					<a class="tree-toggle nav-header" onclick="location.href='/studypat/postList/category?category=civilServant'"> 
+					<a class="tree-toggle nav-header" onclick="location.href='/studypat/category?category=공시/공무원'"> 
 						<span class="fa-diamond fa"></span> 
 						공시/공무원
 						<span class="fa-angle-right fa right-arrow text-right"></span>
 					</a>
 				</li>
 				<li class="ripple">
-					<a class="tree-toggle nav-header" onclick="location.href='/studypat/postList/category?category=programming'"> 
+					<a class="tree-toggle nav-header" onclick="location.href='/studypat/category?category=프로그래밍'"> 
 						<span class="fa-diamond fa"></span> 
 						프로그래밍
 						<span class="fa-angle-right fa right-arrow text-right"></span>
@@ -88,7 +88,7 @@
 				</li>
  
 				<li class="ripple">
-					<a class="tree-toggle nav-header" onclick="location.href='/studypat/postList/category?category=autonomy'"> 
+					<a class="tree-toggle nav-header" onclick="location.href='/studypat/category?category=자율'"> 
 						<span class="fa-diamond fa"></span> 
 						자율
 						<span class="fa-angle-right fa right-arrow text-right"></span>
@@ -96,7 +96,7 @@
 				</li>
   
 				<li class="ripple">
-					<a class="tree-toggle nav-header" onclick="location.href='/studypat/postList/category?category=etc'"> 
+					<a class="tree-toggle nav-header" onclick="location.href='/studypat/category?category=기타'"> 
 						<span class="fa-diamond fa"></span> 
 						기타
 						<span class="fa-angle-right fa right-arrow text-right"></span>
@@ -109,8 +109,8 @@
 				    <span class="fa-angle-right fa right-arrow text-right"></span>
 				  </a>
 				  <ul class="nav nav-list tree">
-				      <li><a href="/studypat/adminuser">회원 관리</a></li>
-				      <li><a href="/studypat/adminpost">게시글 관리</a></li>
+				      <li><a href="/studypat/admin/user">회원 관리</a></li>
+				      <li><a href="/studypat/admin/post">게시글 관리</a></li>
 				  </ul>
 
 				</li>

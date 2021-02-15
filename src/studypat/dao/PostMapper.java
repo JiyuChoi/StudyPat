@@ -16,6 +16,12 @@ public interface PostMapper {
 	public int countPost(@Param("category") String category, @Param("area") String area);
 	
 	public List<Post> getPostList();
+	public List<Post> getUserPostList(int userNo);
 	public void deletePost(int postNo);
+	
+	public List<Post> getPostListLatest();
+	public List<Post> getUserScrapPost(int userNo);
+	
+
 
 }
