@@ -58,36 +58,50 @@
 		<div class="sub-left-menu scroll">
 			<ul class="nav nav-list">
 
-				<li class="ripple"><a class="tree-toggle nav-header"> <span
-						class="fa-diamond fa"></span> 어학 <span
-						class="fa-angle-right fa right-arrow text-right"></span>
-				</a></li>
+				<li class="ripple">
+					<a class="tree-toggle nav-header" onclick="location.href='/studypat/postList/category?category=language'"> 
+						<span class="fa-diamond fa"></span> 
+						어학 
+						<span class="fa-angle-right fa right-arrow text-right"></span>
+					</a>
+				</li>
+				<li class="ripple">
+					<a class="tree-toggle nav-header" onclick="location.href='/studypat/postList/category?category=job'"> 
+						<span class="fa-diamond fa"></span> 
+						취업
+						<span class="fa-angle-right fa right-arrow text-right"></span>
+					</a>
+				</li>
+				<li class="ripple">
+					<a class="tree-toggle nav-header" onclick="location.href='/studypat/postList/category?category=civilServant'"> 
+						<span class="fa-diamond fa"></span> 
+						공시/공무원
+						<span class="fa-angle-right fa right-arrow text-right"></span>
+					</a>
+				</li>
+				<li class="ripple">
+					<a class="tree-toggle nav-header" onclick="location.href='/studypat/postList/category?category=programming'"> 
+						<span class="fa-diamond fa"></span> 
+						프로그래밍
+						<span class="fa-angle-right fa right-arrow text-right"></span>
+					</a>
+				</li>
+ 
+				<li class="ripple">
+					<a class="tree-toggle nav-header" onclick="location.href='/studypat/postList/category?category=autonomy'"> 
+						<span class="fa-diamond fa"></span> 
+						자율
+						<span class="fa-angle-right fa right-arrow text-right"></span>
+					</a>
+				</li>
+  
+				<li class="ripple">
+					<a class="tree-toggle nav-header" onclick="location.href='/studypat/postList/category?category=etc'"> 
+						<span class="fa-diamond fa"></span> 
+						기타
+						<span class="fa-angle-right fa right-arrow text-right"></span>
+					</a>
 
-				<li class="ripple"><a class="tree-toggle nav-header"> <span
-						class="fa-diamond fa"></span> 취업 <span
-						class="fa-angle-right fa right-arrow text-right"></span>
-				</a></li>
-
-				<li class="ripple"><a class="tree-toggle nav-header"> <span
-						class="fa-diamond fa"></span> 공시/공무원 <span
-						class="fa-angle-right fa right-arrow text-right"></span>
-				</a></li>
-
-				<li class="ripple"><a class="tree-toggle nav-header"> <span
-						class="fa-diamond fa"></span> 프로그래밍 <span
-						class="fa-angle-right fa right-arrow text-right"></span>
-				</a></li>
-
-				<li class="ripple"><a class="tree-toggle nav-header"> <span
-						class="fa-diamond fa"></span> 자율 <span
-						class="fa-angle-right fa right-arrow text-right"></span>
-				</a></li>
-
-				<li class="ripple"><a class="tree-toggle nav-header"> <span
-						class="fa-diamond fa"></span> 기타 <span
-						class="fa-angle-right fa right-arrow text-right"></span>
-				</a></li>
-				
 				<!-- 권한 설정 -->
 				<li class="active ripple">
 				  <a class="tree-toggle nav-header">
@@ -98,6 +112,7 @@
 				      <li><a href="/studypat/adminuser">회원 관리</a></li>
 				      <li><a href="/studypat/adminpost">게시글 관리</a></li>
 				  </ul>
+
 				</li>
 			</ul>
 		</div>
