@@ -13,8 +13,8 @@
 <title>Miminium</title>
 
 <!-- start: Css -->
-<link rel="stylesheet" type="text/css"
-	href="asset/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="asset/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="asset/css/bootstrap-tagsinput.css">
 
 <!-- plugins -->
 <link rel="stylesheet" type="text/css"
@@ -121,7 +121,7 @@
 								<div class="form-group">
 									<label class="col-sm-2 control-label text-right">모집인원</label>
 									<div class="col-sm-10">
-										<input type="number" class="form-control" name="recruitNo">
+										<input type="number" class="form-control" name="recruitNo" required >
 									</div>
 								</div>
 								
@@ -132,18 +132,27 @@
 									</div>
 								</div>
 								
+								
+								<div class="form-group">
+									<label class="col-sm-2 control-label text-right">태그</label>
+									<div class="col-sm-10">
+								     	<input type="text" class="form-control col-sm-12" value="" data-role="tagsinput" placeholder="태그를 추가해주세요" id="tags">
+								    </div>
+								</div>
+								
 								<div class="form-group">
 									<label class="col-sm-2 control-label text-right">제목</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" name="title">
+										<input type="text" class="form-control" name="title" required>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-2 control-label text-right">내용</label>
 									<div class="col-sm-10">
-										<textarea class="form-control" cols=20 rows=10 name="postText"></textarea>
+										<textarea class="form-control" cols=20 rows=10 name="postText" required></textarea>
 									</div>
 								</div>
+								<input type="hidden" name="xxxx" id="xxxx" value="xxxx" required/>
 								<input type="submit" value="글쓰기" id="submit_btn">
 							</div>
 							</form>
@@ -160,7 +169,9 @@
 				<script src="asset/js/jquery.min.js"></script>
 				<script src="asset/js/jquery.ui.min.js"></script>
 				<script src="asset/js/bootstrap.min.js"></script>
-
+				<script src="asset/js/bootstrap-tagsinput.js"></script>
+				
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 				<!-- plugins -->
 				<script src="asset/js/plugins/moment.min.js"></script>
@@ -504,7 +515,32 @@
 											"fgColor" : "#27C24C",
 										});
 									});
-				</script>
+					
+													
+									$('#tags').tagsinput({
+										maxTags : 10,
+										maxChars : 30,
+										confirmKeys: [188, 32],
+										cancelConfirmKeysOnEmpty: false,
+										splitOn : ','
+									
+				
+									});
+									
+								 
+									
+								</script>
 				<!-- end: Javascript -->
 </body>
+
+<style>
+.bootstrap-tagsinput {
+  width: 100% !important;
+}
+
+.bootstrap-tagsinput input[type='text'] {
+	width: 150px;
+	border: none;
+}
+</style>
 </html>

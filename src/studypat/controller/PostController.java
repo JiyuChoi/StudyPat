@@ -46,7 +46,7 @@ public class PostController {
 		if(area == null) { //처음에는 전체
 			area = "all";
 		}
-		
+
 		int total = postService.countPost(category, area);
 		
 		paging = new Paging(total, Integer.parseInt(nowPage));
