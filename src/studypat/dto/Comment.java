@@ -56,4 +56,11 @@ public class Comment {
 	public void setSecret(char secret) {
 		this.secret = secret;
 	}
+
+	@Override
+	public String toString() {
+		return "Comment [commentNo=" + commentNo + ", postNo=" + postNo + ", userNo=" + userNo + ", commentText="
+				+ commentText + ", createDate=" + createDate + ", secret=" + secret + "]";
+	}
+	
 }

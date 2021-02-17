@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import studypat.dto.Comment;
 import studypat.dto.Post;
+import studypat.service.CommentService;
 import studypat.service.PostService;
 import studypat.utils.Paging;
 
@@ -20,6 +22,9 @@ public class PostController {
 	
 	@Autowired
 	private PostService postService;
+	
+	@Autowired
+	private CommentService commentService;
 
 	@GetMapping
 	public String getPosts(Model model) { // post 전부 가져오기
@@ -80,6 +85,7 @@ public class PostController {
 	@GetMapping("/post/{postNo}")
 	public String getPost(@PathVariable("postNo") int postNo, Model model) {
 		model.addAttribute("post", postService.getPost(postNo));
+		model.addAttribute("commentList", commentService.getCommentList(postNo));
 		return "post/detailPost";
 	}
 }

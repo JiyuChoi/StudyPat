@@ -6,6 +6,7 @@
 	<typeAliases>
 		<typeAlias alias="user" type="studypat.dto.User"/>
 		<typeAlias alias="post" type="studypat.dto.Post"/>
+		<typeAlias alias="comment" type="studypat.dto.Comment"/>
 	</typeAliases>
 </configuration>
 
