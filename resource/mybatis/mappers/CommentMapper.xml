@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="studypat.dao.CommentMapper">
+	<resultMap type="comment" id="comm">
+		<result column="comment_no" property="commentNo"/>
+		<result column="post_no" property="postNo"/>
+		<result column="user_no" property="userNo"/>
+		<result column="comment_text" property="commentText"/>
+		<result column="create_date" property="createDate"/>
+	</resultMap>
+
+	<select id="getCommentList" resultMap="comm">
+		select * from sp_comment where post_no = #{postNo}
+	</select>	
+	
+	<insert id="addComment" parameterType="comment">
+		insert into 
+		sp_comment(post_no, user_no, comment_text, create_date, secret) 
+		values(#{postNo}, #{userNo}, #{commentText}, sysdate, #{secret})
+	</insert>
+	
+	
+</mapper>
+

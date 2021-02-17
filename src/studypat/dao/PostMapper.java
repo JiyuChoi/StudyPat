@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import studypat.dto.Post;
-import studypat.utils.Paging;
 
 @Mapper
 public interface PostMapper {
@@ -20,8 +19,10 @@ public interface PostMapper {
 	public void deletePost(int postNo);
 	public Post getPost(int postNo);
 	
+	
 	public List<Post> getPostListLatest();
 	public List<Post> getUserScrapPost(int userNo);
 	public void uploadPost(Post post);
-	
+
+ 
 }

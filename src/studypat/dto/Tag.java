@@ -29,4 +29,11 @@ public class Tag {
 	public void setPostNo(int postNo) {
 		this.postNo = postNo;
 	}
+
+	@Override
+	public String toString() {
+		return "Tag [tagNo=" + tagNo + ", tagName=" + tagName + ", postNo=" + postNo + "]";
+	}
+	
+	
 }
