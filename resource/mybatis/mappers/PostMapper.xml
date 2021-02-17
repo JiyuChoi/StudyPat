@@ -122,5 +122,22 @@
 	<delete id="deletePost">
 		delete sp_post where post_no = #{postNo}
 	</delete>
+	
+	<insert id="uploadPost" parameterType="Post">
+		insert into sp_post
+		values(
+		sp_post_SEQ.nextval,
+		#{userNo},
+		#{title},
+		#{postText},
+		#{category},
+		#{recruitNo},
+		#{area},
+		sysdate,
+		#{viewCount}, 
+		#{report})
+	</insert>
+	
+	
 </mapper>
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +13,8 @@
 <title>Miminium</title>
 
 <!-- start: Css -->
-<link rel="stylesheet" type="text/css"
-	href="asset/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="asset/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="asset/css/bootstrap-tagsinput.css">
 
 <!-- plugins -->
 <link rel="stylesheet" type="text/css"
@@ -62,33 +63,57 @@
 						</div>
 						<div class="panel-body" style="padding-bottom: 30px;">
 							<div class="col-md-12">
-
+							<form action="uploadPost" method="post" class="post_form">
 								<div class="form-group">
 									<label class="col-sm-2 control-label text-right">
 									카테고리
 									</label>
 									<div class="col-sm-10">
 										<div class="col-sm-12 padding-0">
-											<select class="form-control">
-												<option>option one</option>
-												<option>option two</option>
-												<option>option three</option>
-												<option>option four</option>
+											<select class="form-control" name="category">
+												<option
+													<c:if test="${category eq '어학'}">selected</c:if>>어학
+												</option>
+												<option
+													<c:if test="${category eq '취업'}">selected</c:if>>취업
+												</option>
+												<option
+													<c:if test="${category eq '공시/공무원'}">selected</c:if>>공시/공무원
+												</option>
+												<option
+													<c:if test="${category eq '프로그래밍'}">selected</c:if>>프로그래밍
+												</option>
+												<option
+													<c:if test="${category eq '자율'}">selected</c:if>>자율
+												</option>
+												<option
+													<c:if test="${category eq '기타'}">selected</c:if>>기타 
+												</option>
 											</select>
 										</div>
 									</div>
-									
-									
 									<label class="col-sm-2 control-label text-right">
 									지역
 									</label>
 									<div class="col-sm-10">
 										<div class="col-sm-12 padding-0">
-											<select class="form-control">
-												<option>option one</option>
-												<option>option two</option>
-												<option>option three</option>
-												<option>option four</option>
+											<select class="form-control" name="area">
+												<option value="서울">서울</option>
+												<option value="경기">경기</option>
+												<option value="인천">인천</option>
+												<option value="대전">대전</option>
+												<option value="대구">대구</option>
+												<option value="부산">부산</option>
+												<option value="광주">광주</option>
+												<option value="세종">세종</option>
+												<option value="울산">울산</option>
+												<option value="충북">충북</option>
+												<option value="충남">충남</option>
+												<option value="전북">전북</option>
+												<option value="전남">전남</option>
+												<option value="경북">경남</option>
+												<option value="강원">강원</option>
+												<option value="제주">제주</option>
 											</select>
 										</div>
 									</div>
@@ -96,45 +121,57 @@
 								<div class="form-group">
 									<label class="col-sm-2 control-label text-right">모집인원</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control">
+										<input type="number" class="form-control" name="recruitNo" required >
 									</div>
 								</div>
 								
 								<div class="form-group">
-									<label class="col-sm-2 control-label text-right">사용자 닉네임</label>
+									<label class="col-sm-2 control-label text-right">사용자 닉네임</label> <!-- 굳이 있어야 할까요?  -->
 									<div class="col-sm-10">
 										<input type="text" class="form-control">
 									</div>
+								</div>
+								
+								
+								<div class="form-group">
+									<label class="col-sm-2 control-label text-right">태그</label>
+									<div class="col-sm-10">
+								     	<input type="text" class="form-control col-sm-12" value="" data-role="tagsinput" placeholder="태그를 추가해주세요" id="tags">
+								    </div>
 								</div>
 								
 								<div class="form-group">
 									<label class="col-sm-2 control-label text-right">제목</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control">
+										<input type="text" class="form-control" name="title" required>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-2 control-label text-right">내용</label>
 									<div class="col-sm-10">
-										<textarea class="form-control" cols=20 rows=10 ></textarea>
+										<textarea class="form-control" cols=20 rows=10 name="postText" required></textarea>
 									</div>
 								</div>
-								
+								<input type="hidden" name="xxxx" id="xxxx" value="xxxx" required/>
+								<input type="submit" value="글쓰기" id="submit_btn">
 							</div>
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
+	</div>
 
 
 	<!-- start: Javascript -->
 				<script src="asset/js/jquery.min.js"></script>
 				<script src="asset/js/jquery.ui.min.js"></script>
 				<script src="asset/js/bootstrap.min.js"></script>
-
+				<script src="asset/js/bootstrap-tagsinput.js"></script>
+				
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 				<!-- plugins -->
 				<script src="asset/js/plugins/moment.min.js"></script>
@@ -478,7 +515,32 @@
 											"fgColor" : "#27C24C",
 										});
 									});
-				</script>
+					
+													
+									$('#tags').tagsinput({
+										maxTags : 10,
+										maxChars : 30,
+										confirmKeys: [188, 32],
+										cancelConfirmKeysOnEmpty: false,
+										splitOn : ','
+									
+				
+									});
+									
+								 
+									
+								</script>
 				<!-- end: Javascript -->
 </body>
+
+<style>
+.bootstrap-tagsinput {
+  width: 100% !important;
+}
+
+.bootstrap-tagsinput input[type='text'] {
+	width: 150px;
+	border: none;
+}
+</style>
 </html>

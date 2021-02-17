@@ -22,4 +22,6 @@ public interface PostMapper {
 	
 	public List<Post> getPostListLatest();
 	public List<Post> getUserScrapPost(int userNo);
+	public void uploadPost(Post post);
+	
 }

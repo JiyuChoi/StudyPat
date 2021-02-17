@@ -64,6 +64,13 @@ public class PostService {
 	public void deletePost(int postNo) {
 		postMapper.deletePost(postNo);
 	}
+	
+	public void uploadPost(Post post) {
+		post.setUserNo(4); //  임시로
+		post.setViewCount(0);
+		post.setReport(0);
+		postMapper.uploadPost(post);
+	}
 
 	public Post getPost(int postNo) {
 		return postMapper.getPost(postNo);
