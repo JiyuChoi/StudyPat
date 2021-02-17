@@ -78,8 +78,11 @@
 											<tr>
 												<td>${post.postNo}</td>
 												<td>${post.userNo}</td>
-												<td><a href='javascript:void(0);'
-													onclick="viewPost(${post.postNo});"> ${post.title}</a></td>
+												<td>
+													<%-- <a href='javascript:void(0);'
+													onclick="viewPost(${post.postNo});"> ${post.title}</a> --%>
+													<a href='/studypat/post/${post.postNo}'> ${post.title}</a>
+												</td>
 												<td>${post.area}</td>
 												<td>${post.createDate}</td>
 												<td>${post.viewCount}</td>

@@ -40,13 +40,13 @@
 			<div class="col-md-12 padding-0 box-v7-header">
 				<div class="col-md-12 padding-0">
 					<div class="col-md-10 padding-0">
-						<img src="/studypat/img/avatar.jpg" class="box-v7-avatar pull-left" />
+						<img src="../asset/img/avatar.jpg" class="box-v7-avatar pull-left" />
 						<h4>${post.title}</h4>
 						<p>${post.user.nickName}</p>
-						<div>${post.createDate}</div>
-						<div>${post.category}</div>
-						<div>${post.area}</div>
-						<div>${post.recruitNo}</div>
+						${post.category}  
+						${post.area}  
+						${post.recruitNo}명  
+						${post.createDate}
 					</div>
 					<div class="col-md-2 padding-0">
 						<div class="btn-group right-option-v1">
@@ -75,7 +75,7 @@
 			<div class="col-md-12 padding-0 box-v7-comment">
 				<div class="media">
 					<div class="media-left">
-						<a href="#"> <img src="/studypat/img/avatar2.png"
+						<a href="#"> <img src="../asset/img/avatar2.png"
 							class="media-object box-v7-avatar" />
 						</a>
 					</div>
@@ -89,7 +89,7 @@
 
 				<div class="media">
 					<div class="media-left">
-						<a href="#"> <img src="/studypat/img/avatar.jpg"
+						<a href="#"> <img src="../asset/img/avatar.jpg"
 							class="media-object box-v7-avatar" />
 						</a>
 					</div>
