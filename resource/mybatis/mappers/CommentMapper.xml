@@ -12,7 +12,7 @@
 	</resultMap>
 
 	<select id="getCommentList" resultMap="comm">
-		select * from sp_comment where post_no = #{postNo}
+		select * from sp_comment where post_no = #{postNo} order by 1
 	</select>	
 	
 	<insert id="addComment" parameterType="comment">

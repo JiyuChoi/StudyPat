@@ -90,7 +90,6 @@ public class PostController {
 	@GetMapping("/post/{postNo}")
 	public String getPost(@PathVariable("postNo") int postNo, Model model) {
 		model.addAttribute("post", postService.getPost(postNo));
-		model.addAttribute("commentList", commentService.getCommentList(postNo));
 		return "post/detailPost";
 	}
 }
