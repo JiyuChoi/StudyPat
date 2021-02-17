@@ -76,7 +76,6 @@ public class PostController {
 		return "redirect:/category";
 	}
 	
-}
 
 	@GetMapping("/post/{postNo}")
 	public String getPost(@PathVariable("postNo") int postNo, Model model) {
