@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -61,6 +62,7 @@ public class PostController {
 		return "postList";
 	}
 	
+
 	@GetMapping("/uploadPostForm")
 	public String uploadPostForm(@RequestParam(name="category") String category, Model model) {
 		model.addAttribute("category", category);
@@ -75,3 +77,11 @@ public class PostController {
 	}
 	
 }
+
+	@GetMapping("/post/{postNo}")
+	public String getPost(@PathVariable("postNo") int postNo, Model model) {
+		model.addAttribute("post", postService.getPost(postNo));
+		return "post/detailPost";
+	}
+}
+

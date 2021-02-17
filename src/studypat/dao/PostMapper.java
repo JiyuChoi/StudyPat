@@ -18,11 +18,10 @@ public interface PostMapper {
 	public List<Post> getPostList();
 	public List<Post> getUserPostList(int userNo);
 	public void deletePost(int postNo);
+	public Post getPost(int postNo);
 	
 	public List<Post> getPostListLatest();
 	public List<Post> getUserScrapPost(int userNo);
 	public void uploadPost(Post post);
 	
-
-
 }

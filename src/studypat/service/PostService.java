@@ -72,4 +72,8 @@ public class PostService {
 		postMapper.uploadPost(post);
 	}
 
+	public Post getPost(int postNo) {
+		return postMapper.getPost(postNo);
+	}
+
 }

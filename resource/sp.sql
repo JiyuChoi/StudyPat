@@ -242,3 +242,9 @@ END;
 /
 
 
+
+select nickname from sp_user join sp_post using(user_no) where post_no = 4;
+
+
+select * from sp_user join sp_post using(user_no) where post_no = 4;
+
