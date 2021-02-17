@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import studypat.dto.Comment;
 import studypat.dto.Post;
 import studypat.service.CommentService;
 import studypat.service.PostService;
@@ -92,6 +91,30 @@ public class PostController {
 		model.addAttribute("post", postService.getPost(postNo));
 		model.addAttribute("commentList", commentService.getCommentList(postNo));
 		return "post/detailPost";
+	}
+	
+	@GetMapping("/updatePost/{postNo}")
+	public String updatePostForm(@PathVariable("postNo") int postNo, Model model) {
+		
+	
+		Post post = postService.getPost(postNo);
+		String tagStr = postService.tagListToString(post.getTagList());
+		
+		model.addAttribute("post", post);
+		if(tagStr != null) {
+			model.addAttribute("tag", tagStr);
+		}
+		return "updatePost";
+	}
+	
+	@PostMapping("/updatePost")
+	public String updatePost(Post post, RedirectAttributes redirect, @RequestParam(name="tags") String tags) {
+		redirect.addAttribute("category", post.getCategory());
+		
+		postService.updatePost(post);
+		postService.updateTags(tags, post.getPostNo());
+		
+		return "redirect:/category";
 	}
 }
 

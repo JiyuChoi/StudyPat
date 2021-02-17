@@ -91,10 +91,24 @@ public class PostService {
 	}
 
 	public Post getPost(int postNo) {
-		return postMapper.getPost(postNo);
+		Post post = postMapper.getPost(postNo);
+		List<Tag> tagList = tagMapper.getTags(post.getPostNo());
+		post.setTagList(tagList);
+		return post;
 	}
 	
-	
+	public String tagListToString(List<Tag> tags) {
+		String str = "";
+		for(int i=0; i<tags.size(); i++) {
+			if(i==tags.size()-1) { // 마지막이라면 
+				str += tags.get(i).getTagName();
+				return str;
+			}
+			str += tags.get(i).getTagName()+",";
+		}
+		
+		return str;
+	}
 	@Transactional
 	public void uploadTags(String tags) {
 	
@@ -113,6 +127,34 @@ public class PostService {
 		
 		tagMapper.uploadTags(tagList);
 		
+	}
+	
+	public void updateTags(String tags, int postNo) {
+		
+		Post post = postMapper.getPost(postNo);
+		post.setTagList(tagMapper.getTags(postNo));
+		List<Tag> tagListStr = post.getTagList();
+		
+		String str = tagListToString(tagListStr);
+		
+		if(str.equals(tags)) { //태그가 변하지 않았다면 
+			return;
+		}
+		tagMapper.deleteTag(postNo); // 현재 게시물의 태그 다 지우고 
+		
+		String[] tagArray = tags.split(",");
+		List<Tag> tagList = new ArrayList<Tag>();
+		for(int i=0; i<tagArray.length; i++) {
+			Tag t = new Tag();
+			t.setPostNo(postNo);
+			t.setTagName(tagArray[i]);
+			tagList.add(t);
+		}
+		tagMapper.uploadTags(tagList);
+	}
+
+	public void updatePost(Post post) {
+		postMapper.updatePost(post);
 	}
 
 }

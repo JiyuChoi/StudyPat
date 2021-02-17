@@ -129,9 +129,8 @@
 	</delete>
 	
 	<insert id="uploadPost" parameterType="Post">
-		insert into sp_post
+		insert into sp_post (user_no, title, post_text, category, recruit_no, area, create_date, view_count, report)
 		values(
-		sp_post_SEQ.nextval,
 		#{userNo},
 		#{title},
 		#{postText},
@@ -143,6 +142,16 @@
 		#{report})
 	</insert>
 	
+	<update id="updatePost" parameterType="Post">
+		update sp_post set
+		title = #{title},
+		post_text = #{postText},
+		category = #{category},
+		recruit_no = #{recruitNo},
+		area = #{area}
+		
+		where post_no = #{postNo}
+	</update>
 	 
 </mapper>
 

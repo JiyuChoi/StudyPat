@@ -12,13 +12,18 @@
 	
 	<update id="uploadTags" parameterType="java.util.List"> 
 		<foreach collection="list" item="item" open="INSERT ALL" close="SELECT * FROM DUAL" separator=" "> 
-		INTO sp_tag VALUES (sp_tag_SEQ.nextval, #{item.tagName}, #{item.postNo}) 
+			INTO sp_tag (tag_name, post_no) VALUES (#{item.tagName}, #{item.postNo}) 
 		</foreach> 
 	</update>
 	
 	<select id="getTags" resultType="studypat.dto.Tag"  resultMap="Tag">
 		select * from sp_tag where post_no=#{postNo}
 	</select>
+
+	<delete id="deleteTag" parameterType="java.lang.Integer">
+		delete from sp_tag
+		where post_no = #{postNo}
+	</delete>
 
 </mapper>
 

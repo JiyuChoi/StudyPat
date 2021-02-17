@@ -13,28 +13,28 @@
 <title>Miminium</title>
 
 <!-- start: Css -->
-<link rel="stylesheet" type="text/css" href="asset/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="asset/css/bootstrap-tagsinput.css">
+<link rel="stylesheet" type="text/css" href="/studypat/asset/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/studypat/asset/css/bootstrap-tagsinput.css">
 
 <!-- plugins -->
 <link rel="stylesheet" type="text/css"
-	href="asset/css/plugins/font-awesome.min.css" />
+	href="/studypat/asset/css/plugins/font-awesome.min.css" />
 <link rel="stylesheet" type="text/css"
-	href="asset/css/plugins/animate.min.css" />
+	href="/studypat/asset/css/plugins/animate.min.css" />
 <link rel="stylesheet" type="text/css"
-	href="asset/css/plugins/nouislider.min.css" />
+	href="/studypat/asset/css/plugins/nouislider.min.css" />
 <link rel="stylesheet" type="text/css"
-	href="asset/css/plugins/select2.min.css" />
+	href="/studypat/asset/css/plugins/select2.min.css" />
 <link rel="stylesheet" type="text/css"
-	href="asset/css/plugins/ionrangeslider/ion.rangeSlider.css" />
+	href="/studypat/asset/css/plugins/ionrangeslider/ion.rangeSlider.css" />
 <link rel="stylesheet" type="text/css"
-	href="asset/css/plugins/ionrangeslider/ion.rangeSlider.skinFlat.css" />
+	href="/studypat/asset/css/plugins/ionrangeslider/ion.rangeSlider.skinFlat.css" />
 <link rel="stylesheet" type="text/css"
-	href="asset/css/plugins/bootstrap-material-datetimepicker.css" />
-<link href="asset/css/style.css" rel="stylesheet">
+	href="/studypat/asset/css/plugins/bootstrap-material-datetimepicker.css" />
+<link href="/studypat/asset/css/style.css" rel="stylesheet">
 <!-- end: Css -->
 
-<link rel="shortcut icon" href="asset/img/logomi.png">
+<link rel="shortcut icon" href="/studypat/asset/img/logomi.png">
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -63,31 +63,32 @@
 						</div>
 						<div class="panel-body" style="padding-bottom: 30px;">
 							<div class="col-md-12">
-							<form action="uploadPost" method="post" class="post_form" onsubmit="return false;" id="postForm">
+							<form action="/studypat/updatePost" method="post" class="post_form" onsubmit="return false;" id="postForm">
 								<div class="form-group">
 									<label class="col-sm-2 control-label text-right">
 									카테고리
 									</label>
+									<input type="hidden" name="postNo" value="${post.postNo}">
 									<div class="col-sm-10">
 										<div class="col-sm-12 padding-0">
 											<select class="form-control" name="category">
 												<option
-													<c:if test="${category eq '어학'}">selected</c:if>>어학
+													<c:if test="${post.category eq '어학'}">selected</c:if>>어학
 												</option>
 												<option
-													<c:if test="${category eq '취업'}">selected</c:if>>취업
+													<c:if test="${post.category eq '취업'}">selected</c:if>>취업
 												</option>
 												<option
-													<c:if test="${category eq '공시/공무원'}">selected</c:if>>공시/공무원
+													<c:if test="${post.category eq '공시/공무원'}">selected</c:if>>공시/공무원
 												</option>
 												<option
-													<c:if test="${category eq '프로그래밍'}">selected</c:if>>프로그래밍
+													<c:if test="${post.category eq '프로그래밍'}">selected</c:if>>프로그래밍
 												</option>
 												<option
-													<c:if test="${category eq '자율'}">selected</c:if>>자율
+													<c:if test="${post.category eq '자율'}">selected</c:if>>자율
 												</option>
 												<option
-													<c:if test="${category eq '기타'}">selected</c:if>>기타 
+													<c:if test="${post.category eq '기타'}">selected</c:if>>기타 
 												</option>
 											</select>
 										</div>
@@ -98,22 +99,23 @@
 									<div class="col-sm-10">
 										<div class="col-sm-12 padding-0">
 											<select class="form-control" name="area">
-												<option value="서울">서울</option>
-												<option value="경기">경기</option>
-												<option value="인천">인천</option>
-												<option value="대전">대전</option>
-												<option value="대구">대구</option>
-												<option value="부산">부산</option>
-												<option value="광주">광주</option>
-												<option value="세종">세종</option>
-												<option value="울산">울산</option>
-												<option value="충북">충북</option>
-												<option value="충남">충남</option>
-												<option value="전북">전북</option>
-												<option value="전남">전남</option>
-												<option value="경북">경남</option>
-												<option value="강원">강원</option>
-												<option value="제주">제주</option>
+												<option <c:if test="${post.area eq '서울'}">selected</c:if> value="서울">서울</option>
+												<option <c:if test="${post.area eq '경기'}">selected</c:if> value="경기">경기</option>
+												<option <c:if test="${post.area eq '인천'}">selected</c:if> value="인천">인천</option>
+												<option <c:if test="${post.area eq '대전'}">selected</c:if> value="대전">대전</option>
+												<option <c:if test="${post.area eq '대구'}">selected</c:if> value="대구">대구</option>
+												<option <c:if test="${post.area eq '부산'}">selected</c:if> value="부산">부산</option>
+												<option <c:if test="${post.area eq '광주'}">selected</c:if> value="광주">광주</option>
+												<option <c:if test="${post.area eq '세종'}">selected</c:if> value="세종">세종</option>
+												<option <c:if test="${post.area eq '울산'}">selected</c:if> value="울산">울산</option>
+												<option <c:if test="${post.area eq '충북'}">selected</c:if> value="충북">충북</option>
+												<option <c:if test="${post.area eq '충남'}">selected</c:if> value="충남">충남</option>
+												<option <c:if test="${post.area eq '전북'}">selected</c:if> value="전북">전북</option>
+												<option <c:if test="${post.area eq '전남'}">selected</c:if> value="전남">전남</option>
+												<option <c:if test="${post.area eq '경남'}">selected</c:if> value="경북">경남</option>
+												<option <c:if test="${post.area eq '경북'}">selected</c:if> value="경북">경북</option>
+												<option <c:if test="${post.area eq '강원'}">selected</c:if> value="강원">강원</option>
+												<option <c:if test="${post.area eq '제주'}">selected</c:if> value="제주">제주</option>
 											</select>
 										</div>
 									</div>
@@ -121,7 +123,7 @@
 								<div class="form-group">
 									<label class="col-sm-2 control-label text-right">모집인원</label>
 									<div class="col-sm-10">
-										<input type="number" class="form-control" name="recruitNo" id="recruitNo" required >
+										<input type="number" class="form-control" name="recruitNo" id="recruitNo" value="${post.recruitNo}" required >
 									</div>
 								</div>
 								
@@ -136,24 +138,30 @@
 								<div class="form-group">
 									<label class="col-sm-2 control-label text-right">태그</label>
 									<div class="col-sm-10">
-								     	<input type="text" id="inputTags" class="form-control col-sm-12" value="" data-role="tagsinput" placeholder="태그를 추가해주세요" name="tags">
+											<%-- <c:forEach var="tag" items="${post.tagList}"> --%>
+										<c:if test="${tag eq null}">
+											<input type="text" id="inputTags" class="form-control col-sm-12" value="" data-role="tagsinput" placeholder="태그를 추가해주세요" name="tags">
+										</c:if>	
+										<c:if test="${tag ne null }">
+								     		<input type="text" id="inputTags" class="form-control col-sm-12" value="${tag}" data-role="tagsinput" placeholder="태그를 추가해주세요" name="tags">
+								   		</c:if>
 								    </div>
 								</div>
 								
 								<div class="form-group">
 									<label class="col-sm-2 control-label text-right">제목</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" name="title" id="title" required>
+										<input type="text" class="form-control" name="title" id="title" value="${post.title}"required>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-2 control-label text-right">내용</label>
 									<div class="col-sm-10">
-										<textarea class="form-control" cols=20 rows=10 name="postText" id="postText" required></textarea>
+										<textarea class="form-control" cols=20 rows=10 name="postText" id="postText" required>${post.postText}</textarea>
 									</div>
 								</div>
-								<button id=submit_btn onclick="return postSubmit();" type=button>글쓰기</button>
-								<!-- <input type="submit" value="글쓰기" id="submit_btn"> -->
+								
+								<button id=submit_btn onclick="return postSubmit();" type=button>수정하기</button>
 							</div>
 							</form>
 						</div>
@@ -166,27 +174,28 @@
 
 
 	<!-- start: Javascript -->
-				<script src="asset/js/jquery.min.js"></script>
-				<script src="asset/js/jquery.ui.min.js"></script>
-				<script src="asset/js/bootstrap.min.js"></script>
-				<script src="asset/js/bootstrap-tagsinput.js"></script>
+				<script src="/studypat/asset/js/jquery.min.js"></script>
+				<script src="/studypat/asset/js/jquery.ui.min.js"></script>
+				<script src="/studypat/asset/js/bootstrap.min.js"></script>
+				<script src="/studypat/asset/js/bootstrap-tagsinput.js"></script>
 				
 				<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 				<!-- plugins -->
-				<script src="asset/js/plugins/moment.min.js"></script>
-				<script src="asset/js/plugins/jquery.knob.js"></script>
-				<script src="asset/js/plugins/ion.rangeSlider.min.js"></script>
-				<script src="asset/js/plugins/bootstrap-material-datetimepicker.js"></script>
-				<script src="asset/js/plugins/jquery.nicescroll.js"></script>
-				<script src="asset/js/plugins/jquery.mask.min.js"></script>
-				<script src="asset/js/plugins/select2.full.min.js"></script>
-				<script src="asset/js/plugins/nouislider.min.js"></script>
-				<script src="asset/js/plugins/jquery.validate.min.js"></script>
-
-
+				<script src="/studypat/asset/js/plugins/moment.min.js"></script>
+				<script src="/studypat/asset/js/plugins/jquery.knob.js"></script>
+				<script src="/studypat/asset/js/plugins/ion.rangeSlider.min.js"></script>
+				<script src="/studypat/asset/js/plugins/bootstrap-material-datetimepicker.js"></script>
+				<script src="/studypat/asset/js/plugins/jquery.nicescroll.js"></script>
+				<script src="/studypat/asset/js/plugins/jquery.mask.min.js"></script>
+				<script src="/studypat/asset/js/plugins/select2.full.min.js"></script>
+				<script src="/studypat/asset/js/plugins/nouislider.min.js"></script>
+				<script src="/studypat/asset/js/plugins/jquery.validate.min.js"></script>
+				<!-- <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.min.js"></script>
+    -->
+    
 				<!-- custom -->
-				<script src="asset/js/main.js"></script>
+				<script src="/studypat/asset/js/main.js"></script>
 				<script type="text/javascript">
 					$(document)
 							.ready(
@@ -515,6 +524,7 @@
 											"fgColor" : "#27C24C",
 										});
 										
+										
 										$('#inputTags"').tagsinput({
 											maxTags : 10,
 											maxChars : 30,
@@ -524,30 +534,31 @@
 											
 										});		
 										
-				
-									});
-									 
-									function postSubmit() {
-									
-										var recruitNo = $('#recruitNo').val();
-										var title = $('#title').val();
-										var postText = $('#postText').val();
 										
-										if(recruitNo == ""){
-											alert("모집인원을 입력하세요");
-										}
-										else if(title == ""){
-											alert("제목을 입력하세요");
-										}
-										else if(postText == ""){
-											alert("글 내용을 입력하세요");
-										}
-										else {
-											document.getElementById('postForm').submit();
-										}
-									} 
-									 
-													
+									});
+					
+					 
+										function postSubmit() {
+										
+											var recruitNo = $('#recruitNo').val();
+											var title = $('#title').val();
+											var postText = $('#postText').val();
+											
+											if(recruitNo == ""){
+												alert("모집인원을 입력하세요");
+											}
+											else if(title == ""){
+												alert("제목을 입력하세요");
+											}
+											else if(postText == ""){
+												alert("글 내용을 입력하세요");
+											}
+											else {
+												document.getElementById('postForm').submit();
+											}
+										} 
+														
+									
 								</script>
 				<!-- end: Javascript -->
 </body>
