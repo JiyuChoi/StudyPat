@@ -17,14 +17,13 @@
 		<result column="comment_count" property="commentCount"/>
 		<result column="scrap_count" property="scrapCount"/>
 		<result column="user_nickname" property="userNickName"/>
-			
 		
 		<association javaType="studypat.dto.User" property="user"> <!-- user 테이블 조인때 사용하기 위해서-->
-			<result column="userNo" property="user_no"/>
+			<result column="user_no" property="userNo"/>
 			<result column="id" property="id"/>
 			<result column="password" property="password"/>
 			<result column="email" property="email"/>
-			<result column="nickName" property="nickName"/>
+			<result column="nickname" property="nickName"/>
 			<result column="admin" property="admin"/>
 		</association>
 		
@@ -43,6 +42,8 @@
 			<result column="secret" property="secret"/>
 		</association>
 		
+		<!-- join시 같이 담아오기 -->
+		<collection property="user" javaType="user"/>
 	</resultMap>
 
 	<select id="getCategoryPost" resultType="studypat.dto.Post" resultMap="Post" parameterType="String"> 
@@ -106,6 +107,10 @@
 			)order by create_date DESC
 	</select>
 	
+	<select id="getPost" resultMap="Post">
+		select * from sp_post join sp_user using(user_no) where post_no = #{postNo}
+	</select>
+
 	<select id="getPostList" resultMap="Post">
 		select * from sp_post
 	</select>
@@ -117,5 +122,22 @@
 	<delete id="deletePost">
 		delete sp_post where post_no = #{postNo}
 	</delete>
+	
+	<insert id="uploadPost" parameterType="Post">
+		insert into sp_post
+		values(
+		sp_post_SEQ.nextval,
+		#{userNo},
+		#{title},
+		#{postText},
+		#{category},
+		#{recruitNo},
+		#{area},
+		sysdate,
+		#{viewCount}, 
+		#{report})
+	</insert>
+	
+	
 </mapper>
 

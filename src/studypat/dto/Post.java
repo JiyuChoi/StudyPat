@@ -12,13 +12,12 @@ public class Post {
 	private String createDate;	// Date -> String
 	private int viewCount;
 	private int report;
-	private User user;
+	private User user;			// join시 같이 담아오기
 	private Scrap scrap;
 	private Comment comment;
 	private int commentCount;
 	private int scrapCount;
 	private String userNickName;
-
 	
 	public int getPostNo() {
 		return postNo;
@@ -147,6 +146,17 @@ public class Post {
 	public void setUserNickName(String userNickName) {
 		this.userNickName = userNickName;
 	}
+
+	@Override
+	public String toString() {
+		return "Post [postNo=" + postNo + ", userNo=" + userNo + ", title=" + title + ", postText=" + postText
+				+ ", category=" + category + ", recruitNo=" + recruitNo + ", area=" + area + ", createDate="
+				+ createDate + ", viewCount=" + viewCount + ", report=" + report + ", user=" + user + ", scrap=" + scrap
+				+ ", comment=" + comment + ", commentCount=" + commentCount + ", scrapCount=" + scrapCount
+				+ ", userNickName=" + userNickName + "]";
+	}
+	
+	
 	
 	
 	

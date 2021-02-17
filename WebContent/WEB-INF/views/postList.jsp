@@ -109,7 +109,7 @@
 				</div>
 			</div>
 			<div class="col-md-6">
-				<button type="button" class="btn btn-default">
+				<button type="button" class="btn btn-default" onclick="location.href='/studypat/uploadPostForm?category=${category}'">
 					글쓰기 
 				</button>
 			</div>

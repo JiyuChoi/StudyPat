@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import studypat.dto.Post;
 import studypat.service.PostService;
@@ -45,7 +47,7 @@ public class PostController {
 		if(area == null) { //처음에는 전체
 			area = "all";
 		}
-		
+
 		int total = postService.countPost(category, area);
 		
 		paging = new Paging(total, Integer.parseInt(nowPage));
@@ -60,4 +62,26 @@ public class PostController {
 		return "postList";
 	}
 	
+
+	@GetMapping("/uploadPostForm")
+	public String uploadPostForm(@RequestParam(name="category") String category, Model model) {
+		model.addAttribute("category", category);
+		return "uploadPost";
+	}
+	
+	@PostMapping("uploadPost")
+	public String uploadPost(Post post, RedirectAttributes redirect) {
+		postService.uploadPost(post);
+		redirect.addAttribute("category", post.getCategory()); // 작성한 카테고리로 넘어가기 위해서
+		return "redirect:/category";
+	}
+	
 }
+
+	@GetMapping("/post/{postNo}")
+	public String getPost(@PathVariable("postNo") int postNo, Model model) {
+		model.addAttribute("post", postService.getPost(postNo));
+		return "post/detailPost";
+	}
+}
+

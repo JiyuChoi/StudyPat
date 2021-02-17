@@ -2,8 +2,8 @@ package studypat.utils;
 
 public class Paging {
 	private int nowPage, startPage, endPage, total,lastPage, start, end;
-	private int cntPage = 5;
-	private int cntPerPage = 5;
+	private int cntPage = 5; // 한페이지에서 이동할 수 있는 page수
+	private int cntPerPage = 5; //한페이지당 몇개씩?
 
 	public Paging() {
 	}
