@@ -46,6 +46,11 @@
 		<collection property="user" javaType="user"/>
 	</resultMap>
 
+	<resultMap type="studypat.dto.Tag" id="Tag">
+		<result column="tag_no" property="tagNo"/>
+		<result column="tag_name" property="tagName"/>
+		<result column="post_no" property="postNo"/>
+	</resultMap>
 	<select id="getCategoryPost" resultType="studypat.dto.Post" resultMap="Post" parameterType="String"> 
 			SELECT * 
 			FROM (
@@ -138,6 +143,6 @@
 		#{report})
 	</insert>
 	
-	
+	 
 </mapper>
 

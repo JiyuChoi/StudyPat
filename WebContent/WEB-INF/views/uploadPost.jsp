@@ -136,7 +136,7 @@
 								<div class="form-group">
 									<label class="col-sm-2 control-label text-right">태그</label>
 									<div class="col-sm-10">
-								     	<input type="text" class="form-control col-sm-12" value="" data-role="tagsinput" placeholder="태그를 추가해주세요" id="tags">
+								     	<input type="text" class="form-control col-sm-12" value="" data-role="tagsinput" placeholder="태그를 추가해주세요" name="tags">
 								    </div>
 								</div>
 								
@@ -520,7 +520,7 @@
 									$('#tags').tagsinput({
 										maxTags : 10,
 										maxChars : 30,
-										confirmKeys: [188, 32],
+										confirmKeys: [13,188],
 										cancelConfirmKeysOnEmpty: false,
 										splitOn : ','
 									
