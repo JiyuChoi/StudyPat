@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="studypat.dao.TagMapper">
+
+	<resultMap type="studypat.dto.Tag" id="Tag">
+		<result column="tag_no" property="tagNo"/>
+		<result column="tag_name" property="tagName"/>
+		<result column="post_no" property="postNo"/>
+	</resultMap>
+	
+	<update id="uploadTags" parameterType="java.util.List"> 
+		<foreach collection="list" item="item" open="INSERT ALL" close="SELECT * FROM DUAL" separator=" "> 
+		INTO sp_tag VALUES (sp_tag_SEQ.nextval, #{item.tagName}, #{item.postNo}) 
+		</foreach> 
+	</update>
+	
+	<select id="getTags" resultType="studypat.dto.Tag"  resultMap="Tag">
+		select * from sp_tag where post_no=#{postNo}
+	</select>
+
+</mapper>
+

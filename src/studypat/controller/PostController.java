@@ -70,8 +70,13 @@ public class PostController {
 	}
 	
 	@PostMapping("uploadPost")
-	public String uploadPost(Post post, RedirectAttributes redirect) {
+	public String uploadPost(Post post, RedirectAttributes redirect, @RequestParam(name="tags") String tags) {
 		postService.uploadPost(post);
+		
+		if(tags != null) {
+			postService.uploadTags(tags);
+			
+		}
 		redirect.addAttribute("category", post.getCategory()); // 작성한 카테고리로 넘어가기 위해서
 		return "redirect:/category";
 	}

@@ -1,5 +1,7 @@
 package studypat.dto;
 
+import java.util.List;
+
 public class Post {
 
 	private int postNo;
@@ -18,6 +20,7 @@ public class Post {
 	private int commentCount;
 	private int scrapCount;
 	private String userNickName;
+	private List<Tag> tagList;
 	
 	public int getPostNo() {
 		return postNo;
@@ -145,6 +148,14 @@ public class Post {
 
 	public void setUserNickName(String userNickName) {
 		this.userNickName = userNickName;
+	}
+	
+	public List<Tag> getTagList() {
+		return tagList;
+	}
+
+	public void setTagList(List<Tag> tagList) {
+		this.tagList = tagList;
 	}
 
 	@Override

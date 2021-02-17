@@ -122,6 +122,9 @@
 					<div class="col-md-12 padding-0 box-v7-header">
 						<div class="col-md-12 padding-0">
 							<div class="col-md-10 padding-0">
+								<c:forEach var="tag" items="${post.tagList}">
+									<span class="badge-info">${tag.tagName}</span>
+								</c:forEach>
 								<h4>${post.title}</h4>
 								<span>${post.userNickName}</span>
 								<span>조회수:${post.viewCount}</span>
