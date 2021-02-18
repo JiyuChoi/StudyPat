@@ -27,8 +27,8 @@
 			<result column="admin" property="admin"/>
 		</association>
 		
-		<association javaType="studypat.dto.Scrap" property="scrap">  
-			<result column="scrap_no" property="scrapNo"/>
+		<association javaType="studypat.dto.Scrap" property="scrap">
+			<result column="scrap_no" property="scrapNo"/>  
 			<result column="user_no" property="userNo"/>
 			<result column="post_no" property="postNo"/>
 		</association>

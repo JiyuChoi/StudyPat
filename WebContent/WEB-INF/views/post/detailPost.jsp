@@ -66,13 +66,8 @@
 			</div>
 			<div class="col-md-12 padding-0 box-v7-body">
 				<p>${post.postText}</p>
-				<div class="col-md-12 top-20">
-					<button class="btn">
-						<i class="icon-bubble icons"></i> 2
-					</button>
-					<button class="btn">
-						<i class="icon-loop icons"></i> 스크랩하기
-					</button>
+				<div class="col-md-12 top-20" id="scrap">
+					<!-- 스크랩 버튼 출력 -->
 				</div>
 			</div>
 			<div class="col-md-12 padding-0 box-v7-comment">
@@ -110,6 +105,59 @@
 <!-- custom -->
 <script src="../asset/js/main.js"></script>
 <script type="text/javascript">
+	function addScrap(postNo) {
+		var userNo = 2;		// login session 값 갖고올 예정
+		$.ajax({
+			type : "post",
+			url : "/studypat/scrap/add",
+			data : {
+				userNo,
+				postNo
+			}, success : function(data) {
+				isScrap();
+			}
+		})
+	}
+	
+	function deleteScrap(postNo) {
+		var userNo = 2;		// login session 값 갖고올 예정
+		$.ajax({
+			type : "post",
+			url : "/studypat/scrap/delete",
+			data : {
+				userNo,
+				postNo
+			}, success : function(data) {
+				isScrap();
+			}
+		})
+	}
+	
+	function isScrap() {
+		var postNo = ${post.postNo};
+		var userNo = 2;		// login session 값 갖고올 예정
+		$.ajax({
+			type : "post",
+			url : "/studypat/scrap",
+			data : {
+				userNo,
+				postNo
+			}, success : function(data) {
+				console.log("1111111111111111");
+				console.log(data);
+				var str = "<button class='btn' onclick='";
+				if(data == 1) {
+					str += "deleteScrap(" + postNo + ")' style='color : #FFB400'>"
+						+ "<i class='icon-star icons'></i> 스크랩 삭제 </button>"
+				}else {
+					str += "addScrap(" + postNo + ")'>"
+						+ "<i class='icon-star icons'></i> 스크랩하기 </button>"
+				}
+				$("#scrap").html(str);
+			}
+		})
+	}
+	
 	function getCommentList() {
 		$.ajax({
 			type : "get",
@@ -131,7 +179,7 @@
 	                + "</div> </div>"; */
 		        $("#commList").html(str);
 			}
-	    });
+	    })
 	}
 	
 	$(function() {
@@ -153,12 +201,10 @@
 					userNo,
 					commentText,
 					secret
-				},
-				complete : function() {
+				}, complete : function() {
 					$('textarea[name=commentText]').val('');
  					$("input[type=checkbox]").prop("checked", false);
-				},
-				success : function(data) {
+				}, success : function(data) {
 					if(data == 1) getCommentList();
 					else console.log("comment 입력 실패");
 				}
@@ -168,6 +214,7 @@
 
 	$(document).ready(function() {
 		getCommentList();		// 댓글 목록
+		isScrap();				// 스크랩 확인
 	});
 </script>
 <!-- end: Javascript -->

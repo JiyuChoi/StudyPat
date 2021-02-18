@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="studypat.dao.ScrapMapper">
+	<resultMap type="scrap" id="scrap">
+		<result column="scrap_no" property="scrapNo"/>
+		<result column="user_no" property="userNo"/>
+		<result column="post_no" property="postNo"/>
+	</resultMap>
+
+	<select id="isScrap" parameterType="scrap" resultType="Integer">
+		select count(*) from sp_scrap where user_no = #{userNo} and post_no = #{postNo}
+	</select>
+
+	<insert id="addScrap" parameterType="scrap">
+		insert into sp_scrap(user_no, post_no) 
+		values(#{userNo}, #{postNo})
+	</insert>
+	
+	<delete id="deleteScrap" parameterType="scrap">
+		delete sp_scrap where user_no = #{userNo} and post_no = #{postNo}
+	</delete>
+	
+</mapper>
+
