@@ -140,6 +140,7 @@
 									<div class="col-sm-10">
 											<%-- <c:forEach var="tag" items="${post.tagList}"> --%>
 										<c:if test="${tag eq null}">
+										
 											<input type="text" id="inputTags" class="form-control col-sm-12" value="" data-role="tagsinput" placeholder="태그를 추가해주세요" name="tags">
 										</c:if>	
 										<c:if test="${tag ne null }">
