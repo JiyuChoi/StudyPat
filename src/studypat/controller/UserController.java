@@ -56,10 +56,10 @@ public class UserController {
 	public String login(User user, HttpSession session, RedirectAttributes rttr) {
 		User loginUser = userService.login(user);
 		if (loginUser == null) {
-			session.setAttribute("session_id", null);
 			rttr.addAttribute("msg", false);
+		} else {
+			session.setAttribute("session_id", loginUser);
 		}
-		session.setAttribute("session_id", loginUser.getId());
 		return "redirect:/";
 	}
 	
