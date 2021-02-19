@@ -17,7 +17,7 @@
 	
 	<update id="updateUser" parameterType="studypat.dto.User">
 		update sp_user
-		set nickname = #{nickname} password = #{password}
+		set nickName = #{nickName} password = #{password}
 		where user_no=#{user_no}
 	</update>
 
