@@ -71,11 +71,17 @@
                             from sp_user
                             where user_no = p.user_no
                         )user_nickname
+                        <if test="!tag.equals('')">
+						, t.tag_name
+						</if>
 						FROM sp_post p
+						<if test="!tag.equals('')">
+						, sp_tag t
+						</if>
                         where category=#{category}
                         
                         <if test="area != 'all'"> and area = #{area}</if>
-                        
+                        <if test="!tag.equals('')">  and t.post_no = p.post_no and t.tag_name = #{tag}</if>
 						<trim prefix="ORDER BY">
 							<if test="sort == 'create_date'">  create_date DESC </if>   
 					        <if test="sort == 'comment_count'">  comment_count DESC </if>
@@ -153,5 +159,11 @@
 		where post_no = #{postNo}
 	</update>
 	 
+	 <select id="countPostTag" resultType="int" parameterType="String">
+	 	select count(*)
+		from sp_post p, sp_tag t
+		where p.post_no = t.post_no and t.tag_name = #{tag} and category= #{category}
+		<if test="area != 'all'"> and area = #{area}</if>
+	 </select>
 </mapper>
 

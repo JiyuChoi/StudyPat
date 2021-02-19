@@ -61,7 +61,8 @@ public class PostController {
 	public String getCategoryPosts(@RequestParam(name="category") String category, Model model, Paging paging,
 			@RequestParam(value="nowPage", required=false)String nowPage, 
 			@RequestParam(value="sort", required=false) String sort,
-			@RequestParam(value="area", required=false) String area) { // category별 post
+			@RequestParam(value="area", required=false) String area,
+			@RequestParam(value="tag", required=false) String tag) { // category별 post
 		
 		if (nowPage == null) { // 페이지 정보가 없으면 첫페이지로 설정
 			nowPage = "1";
@@ -74,16 +75,28 @@ public class PostController {
 			area = "all";
 		}
 
-		int total = postService.countPost(category, area);
+		if(tag == null) { // 처음에는 태그 검색 X
+			tag = "";
+		}
+		
+		int total = 0;
+		
+		if(("").equals(tag)){ //태그 검색을 안했을 경우 
+			 total = postService.countPost(category, area); // 카테고리, 지역으로 검색한 게시물 갯수 
+		}
+		else {
+			total = postService.countPostTag(category, area, tag); //카테고리, 지역, 태그로 검색한 게시물 갯수
+		}
 		
 		paging = new Paging(total, Integer.parseInt(nowPage));
-		List<Post> postList = postService.getCategoryPost(paging, category, sort, area);
+		List<Post> postList = postService.getCategoryPost(paging, category, sort, area, tag);
 		
 		model.addAttribute("postList", postList);
 		model.addAttribute("paging", paging);
 		model.addAttribute("category", category);
 		model.addAttribute("sort", sort);
 		model.addAttribute("area", area);
+		model.addAttribute("tag",tag);
 		
 		return "postList";
 	}
