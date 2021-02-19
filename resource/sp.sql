@@ -131,8 +131,8 @@ CREATE TABLE sp_scrap
 (
     scrap_no    INT    NOT NULL, 
     user_no     INT    NOT NULL, 
-    post_no     INT    NOT NULL, 
-    CONSTRAINT SP_SCRAP_PK PRIMARY KEY (scrap_no)
+    post_no     INT    NOT NULL,
+    CONSTRAINT SP_SCRAP_PK PRIMARY KEY (user_no, post_no)
 )
 /
 

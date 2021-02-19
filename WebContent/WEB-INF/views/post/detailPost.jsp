@@ -66,57 +66,27 @@
 			</div>
 			<div class="col-md-12 padding-0 box-v7-body">
 				<p>${post.postText}</p>
-				<div class="col-md-12 top-20">
-					<button class="btn">
-						<i class="icon-bubble icons"></i> 2
-					</button>
-					<button class="btn">
-						<i class="icon-loop icons"></i> 스크랩하기
-					</button>
+				<div class="col-md-12 top-20" id="scrap">
+					<!-- 스크랩 버튼 출력 -->
 				</div>
 			</div>
 			<div class="col-md-12 padding-0 box-v7-comment">
-				<c:forEach var="comm" items="${commentList}">
-					<div class="media">
-						<div class="media-left">
-							<a href="#"> <img src="../asset/img/avatar2.png"
-								class="media-object box-v7-avatar" />
-							</a>
-						</div>
-						<div class="media-body">
-							<h4 class="media-heading">${comm.userNo}</h4>
-							<p>${comm.commentText}</p>
-							<!-- <a href=""> <i class="icon-like icons"></i> 2819
-							</a> <a href=""> | Comment</a> -->
-						</div>
+				<div id="commList">
+					<!-- 댓글 List 들어옴 -->
+				</div>
+				<div class="media">
+					<div class="media-body">
+						<textarea class="box-v7-commenttextbox" name="commentText"
+							placeholder="write comments..."></textarea>
+						<input class="icheckbox_flat-red" type="checkbox" name="secret"> 비밀글
+						<button class="btn" id="commentBtn">작성</button>
 					</div>
-				</c:forEach>
-
-					<div class="media">
-						<div class="media-left">
-							<a href="#"> <img src="../asset/img/avatar.jpg"
-								class="media-object box-v7-avatar" />
-							</a>
-						</div>
-						<div class="media-body">
-							<textarea class="box-v7-commenttextbox" name="commentText"
-								placeholder="write comments..."></textarea>
-							<input type="checkbox" name="secret" value="1"> 비밀글
-							<button class="btn" id="commentBtn">작성</button>
-						</div>
-					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
 </div>
-
-
-
-
-
-
-
 
 
 	<!-- start: Javascript -->
@@ -135,6 +105,83 @@
 <!-- custom -->
 <script src="../asset/js/main.js"></script>
 <script type="text/javascript">
+	function addScrap(postNo) {
+		var userNo = 2;		// login session 값 갖고올 예정
+		$.ajax({
+			type : "post",
+			url : "/studypat/scrap/add",
+			data : {
+				userNo,
+				postNo
+			}, success : function(data) {
+				isScrap();
+			}
+		})
+	}
+	
+	function deleteScrap(postNo) {
+		var userNo = 2;		// login session 값 갖고올 예정
+		$.ajax({
+			type : "post",
+			url : "/studypat/scrap/delete",
+			data : {
+				userNo,
+				postNo
+			}, success : function(data) {
+				isScrap();
+			}
+		})
+	}
+	
+	function isScrap() {
+		var postNo = ${post.postNo};
+		var userNo = 2;		// login session 값 갖고올 예정
+		$.ajax({
+			type : "post",
+			url : "/studypat/scrap",
+			data : {
+				userNo,
+				postNo
+			}, success : function(data) {
+				console.log("1111111111111111");
+				console.log(data);
+				var str = "<button class='btn' onclick='";
+				if(data == 1) {
+					str += "deleteScrap(" + postNo + ")' style='color : #FFB400'>"
+						+ "<i class='icon-star icons'></i> 스크랩 삭제 </button>"
+				}else {
+					str += "addScrap(" + postNo + ")'>"
+						+ "<i class='icon-star icons'></i> 스크랩하기 </button>"
+				}
+				$("#scrap").html(str);
+			}
+		})
+	}
+	
+	function getCommentList() {
+		$.ajax({
+			type : "get",
+			url : "/studypat/comment/" + ${post.postNo} ,
+			success : function(data) {
+		        var str = "";
+		        $(data).each(function () {
+		            str +="<div class='media'>"
+		            	+ "<div class='media-body'>"
+		            	+ "<h4 class='media-heading'>" + this.userNo + "</h4>"
+		                + "<p>" + this.commentText + "</p>"
+		                + "</div> </div>";
+		        });
+		       /*  str += "<div class='media'>"
+					+ "<textarea class='box-v7-commenttextbox' name='commentText"
+					+ " placeholder='write comments...'></textarea>"
+					+ "<input type='checkbox' name='secret'> 비밀글"
+					+ "<button class='btn' id='commentBtn'>작성</button>"
+	                + "</div> </div>"; */
+		        $("#commList").html(str);
+			}
+	    })
+	}
+	
 	$(function() {
 		$('#commentBtn').on('click', function() {
 			var postNo = ${post.postNo};
@@ -154,13 +201,11 @@
 					userNo,
 					commentText,
 					secret
-				},
-				complete : function() {
+				}, complete : function() {
 					$('textarea[name=commentText]').val('');
-					$("input[name=secret]").prop("checked", false);
-				},
-				success : function(data) {
-					if(data == 1) console.log("comment가 정상적으로 입력되었습니다.");
+ 					$("input[type=checkbox]").prop("checked", false);
+				}, success : function(data) {
+					if(data == 1) getCommentList();
 					else console.log("comment 입력 실패");
 				}
 			})
@@ -168,15 +213,8 @@
 	});
 
 	$(document).ready(function() {
-		$('input').iCheck({
-			checkboxClass : 'icheckbox_flat-red',
-			radioClass : 'iradio_flat-red'
-		});
-		$('video,audio').mediaelementplayer({
-			alwaysShowControls : true,
-			videoVolume : 'vertical',
-			features : [ 'playpause', 'progress', 'volume', 'fullscreen' ]
-		});
+		getCommentList();		// 댓글 목록
+		isScrap();				// 스크랩 확인
 	});
 </script>
 <!-- end: Javascript -->

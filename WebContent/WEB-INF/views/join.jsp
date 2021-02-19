@@ -38,15 +38,14 @@
 	
 	<div class="container">
 		<jsp:include page="/WEB-INF/views/nav.jsp" />
-		<form class="form-signin">
+		
+		<form class="form-signin" action="join" method="post">
 			<div class="panel periodic-login">
 				<span class="atomic-number">28</span>
 				<div class="panel-body text-center">
 					<p class="atomic-mass">스터디를 구하고 있다면</p>
 					<p class="element-name">지금, 바로!</p>
 					<h1 class="atomic-symbol">STUDYPAT</h1>
-					
-					<form action="join" method="post">
 						<div class="form-group form-animate-text" style="margin-top: 40px !important;">
 							<input type="text" class="form-text" name="id" required> 
 							<span class="bar"></span> <label>아이디</label>
@@ -60,15 +59,11 @@
 							<span class="bar"></span> <label>비밀번호</label>
 						</div>
 						<div class="form-group form-animate-text" style="margin-top: 40px !important;">
-							<input type="nickname" class="form-text" name="nickname" required> 
+							<input type="text" class="form-text" name="nickName" required> 
 							<span class="bar"></span> <label>닉네임</label>
-						</div>
-						<label class="pull-left"> <input type="checkbox" class="icheck pull-left" name="checkbox1" required/> 
-						&nbsp Agree the terms and policy
-						</label> 
+						</div> 
 						<input type="submit" class="btn col-md-12" value="회원가입"/>
 						<input type="button" class="btn col-md-12" value="네이버계정으로 가입"/>
-					</form>
 				</div>
 				
 				<div class="text-center" style="padding: 5px;">
@@ -76,8 +71,8 @@
 				</div>
 			</div>
 		</form>
-
 	</div>
+	
 
 	<!-- end: Content -->
 	<!-- start: Javascript -->

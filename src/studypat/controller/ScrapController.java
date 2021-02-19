@@ -1,36 +1,40 @@
 package studypat.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import studypat.dto.Comment;
-import studypat.service.CommentService;
+import studypat.dto.Scrap;
+import studypat.service.ScrapService;
+
 
 @Controller
-@RequestMapping("/comment")
-public class CommentController {
+@RequestMapping("/scrap")
+public class ScrapController {
 	
 	@Autowired
-	private CommentService commentService;
+	private ScrapService scrapService;
 	
-	@GetMapping("/{postNo}")
+	@PostMapping("")
 	@ResponseBody
-	public List<Comment> getCommentList(@PathVariable("postNo") int postNo) {
-		return commentService.getCommentList(postNo);
+	public int isScrap(@ModelAttribute Scrap scrap) {
+		return scrapService.isScrap(scrap);
 	}
 
 	@PostMapping("/add")
 	@ResponseBody
-	public int addComment(@ModelAttribute Comment comment) {
-		return commentService.addComment(comment);
+	public int addScrap(@ModelAttribute Scrap scrap) {
+		return scrapService.addScrap(scrap);
+	}
+
+	@PostMapping("/delete")
+	@ResponseBody
+	public int deleteScrap(@ModelAttribute Scrap scrap) {
+		return scrapService.deleteScrap(scrap);
 	}
 }
 

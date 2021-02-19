@@ -33,13 +33,13 @@
 
       <div class="container" style="margin-top: 150px;">
 
-        <form class="form-signin">
+        <form class="form-signin" action="findId" method="post">
           <div class="panel periodic-login">
               <div class="panel-body text-center">
                   <p class="atomic-mass">Study Pat</p>
 
                   <div class="form-group form-animate-text" style="margin-top:40px !important;">
-                    <input type="text" class="form-text" required>
+                    <input type="text" class="form-text" name="email" required>
                     <span class="bar"></span>
                     <label>Email</label>
                     <p>Input your email to find your ID</p>

@@ -83,36 +83,75 @@ public class PostService {
 		postMapper.deletePost(postNo);
 	}
 	
-	public void uploadPost(Post post) {
+	@Transactional
+	public void uploadPost(Post post, String tags) { //게시물, 태그 업로드 
 		post.setUserNo(4); //  임시로
 		post.setViewCount(0);
 		post.setReport(0);
 		postMapper.uploadPost(post);
+		
+		if(tags != null) {
+			List<Tag> tagList = new ArrayList<Tag>(); // 쿼리에서 사용할 tag list 생성 
+			int postNo = getPostListLatest().get(0).getPostNo(); // 현재 postNo 찾기 위해서 최근에 업로드된 포스트 가져오기
+			String[] tagArray = tags.split(",");
+			
+			for(int i=0; i<tagArray.length; i++) {
+				Tag t = new Tag();
+				t.setPostNo(postNo);
+				t.setTagName(tagArray[i]);
+				tagList.add(t);
+			}
+			tagMapper.uploadTags(tagList);
+		}
 	}
 
 	public Post getPost(int postNo) {
-		return postMapper.getPost(postNo);
+		Post post = postMapper.getPost(postNo);
+		List<Tag> tagList = tagMapper.getTags(post.getPostNo());
+		post.setTagList(tagList);
+		return post;
 	}
-	
-	
-	@Transactional
-	public void uploadTags(String tags) {
-	
-		List<Tag> tagList = new ArrayList<Tag>();
-		
-		int postNo = getPostListLatest().get(0).getPostNo();
 
-		String[] tagArray = tags.split(",");
+	public String tagListToString(List<Tag> tags) {  // 태그 리스트를 스트링으로 변환
 		
-		for(int i=0; i<tagArray.length; i++) {
+		if(tags.size() == 0) {
+			return "";
+		}
+		String str = "";
+		for(int i=0; i<tags.size(); i++) {
+			if(i==tags.size()-1) { // 마지막이라면 
+				str += tags.get(i).getTagName();
+				return str;
+			}
+			str += tags.get(i).getTagName()+",";
+		}
+		return str;
+	}
+ 
+	public void updatePost(Post post, String tags) { //게시물, 태그 업데이트
+		
+		postMapper.updatePost(post); // 게시물 업데이트 
+	
+		List<Tag> tagListStr = tagMapper.getTags(post.getPostNo()); // 현재 태그 리스트 가져오기 
+		String str = tagListToString(tagListStr); // 태그 리스트를 스트링으로 변환
+		
+		if(str.equals(tags)) { //만약 게시물 수정하면서 태그를 수정하지 않았다면 
+			return; // 리턴
+		}
+		
+		tagMapper.deleteTag(post.getPostNo()); // 수정했다면 현재 게시물의 태그 다 지우고 
+		
+		if(tags.equals("")) { // 게시물을 수정하면서 태그를 다 지웠다면?
+			return; // 태그 저장 할 필요 없으므로 리턴
+		}
+		String[] tagArray = tags.split(","); //태그를 배열로 
+		List<Tag> tagList = new ArrayList<Tag>(); 
+		for(int i=0; i<tagArray.length; i++) { // 배열을 List로 변환 
 			Tag t = new Tag();
-			t.setPostNo(postNo);
+			t.setPostNo(post.getPostNo());
 			t.setTagName(tagArray[i]);
 			tagList.add(t);
 		}
-		
-		tagMapper.uploadTags(tagList);
-		
+		tagMapper.uploadTags(tagList); // 다시 태그 저장
 	}
-
 }
