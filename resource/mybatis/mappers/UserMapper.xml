@@ -18,7 +18,7 @@
 	<update id="updateUser" parameterType="studypat.dto.User">
 		update sp_user
 		set nickName = #{nickName} password = #{password}
-		where user_no=#{user_no}
+		where user_no=#{userNo}
 	</update>
 
 	<select id ="findId" parameterType="String" resultType="java.lang.String">
