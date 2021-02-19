@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="studypat.dao.*"%>
+<%@ page import="studypat.dto.*"%>
+<%@ page import="java.util.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Find password</title>
 <!-- start: Css -->
   <link rel="stylesheet" type="text/css" href="asset/css/bootstrap.min.css">
 
@@ -21,13 +25,18 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
+<%
+	String errMsg = (String) session.getAttribute("errMsg");
+	if(errMsg==null) errMsg = "";
+	session.invalidate();
+%>
     </head>
 
     <body id="mimin" class="form-signin-wrapper">
 
       <div class="container">
 
-        <form class="form-signin">
+        <form class="form-signin" action="findPW" method="post">
           <div class="panel periodic-login">
               <span class="atomic-number">28</span>
               <div class="panel-body text-center">
@@ -38,22 +47,23 @@
 
                   <i class="icons icon-arrow-down"></i>
                   <div class="form-group form-animate-text" style="margin-top:40px !important;">
-                    <input type="text" class="form-text" required>
+                    <input type="text" class="form-text" name="id" required>
                     <span class="bar"></span>
                     <label>아이디</label>
 <!--                     <p>가입시 사용한 아이디를 입력해주세요.</p> -->
                   </div>
                   <div class="form-group form-animate-text" style="margin-top:40px !important;">
-                    <input type="email" class="form-text" required>
+                    <input type="email" class="form-text" name="email" required>
                     <span class="bar"></span>
                     <label>Email</label>
                   </div>
  					<p>해당 이메일로 임시비밀번호가 발송됩니다.</p> 
-                  <input type="submit" class="btn col-md-12" value="Reset"/>
+ 					<div id="errMsg" style="color:red;"><%=errMsg %></div>
+                  <input type="submit" class="btn col-md-12" value="submit"/>
               </div>
                 <div class="text-center" style="padding:5px;">
-                    <a href="login.html">SignIn</a> | 
-                    <a href="reg.html">Signup</a>
+                    <a href="main">로그인</a> | 
+                    <a href="joinForm">회원가입</a>
                 </div>
           </div>
         </form>

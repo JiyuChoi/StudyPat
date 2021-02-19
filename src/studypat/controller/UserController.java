@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -38,7 +39,7 @@ public class UserController {
 	public String join(@ModelAttribute User user, HttpSession session) {
 		try {
 			userService.join(user);
-			return "redirect:/main";
+			return "redirect:/";
 		}catch(DuplicateKeyException e) {
 			session.setAttribute("errMsg", "이미 존재하는 아이디 입니다.");
 			return "redirect:/joinForm";
@@ -50,27 +51,41 @@ public class UserController {
 		return "main";
 	}
 	
+	
 	@PostMapping("/login")
-	public String login(@RequestParam(name="id", required=true) String id, @RequestParam(name="password", required=true) String password, HttpSession session, RedirectAttributes redirectAttributes) {
-		try {
-			if(userService.getUser(id).getPassword().equals(password)) {
-				session.setAttribute("session_id", id);
-				session.setAttribute("session_pw", password);
-				return "redirect:/main";
-			}else {
-				session.setAttribute("errMsg", "비밀번호가 틀렸습니다.");
-				return "redirect:/main";
-			}
-		} catch(NullPointerException e) {
-			session.setAttribute("errMsg", "존재하지 않는 아이디 입니다.");
-			return "redirect:/main";
+	public String login(User user, HttpSession session, RedirectAttributes rttr) {
+		User loginUser = userService.login(user);
+		if (loginUser == null) {
+			session.setAttribute("session_id", null);
+			rttr.addAttribute("msg", false);
 		}
+		session.setAttribute("session_id", loginUser.getId());
+		return "redirect:/";
 	}
+	
+//	@PostMapping("/login")
+//	public String login(@RequestParam(name="id", required=true) String id,
+//						@RequestParam(name="password", required=true) String password,
+//						HttpSession session, RedirectAttributes redirectAttributes) {
+//		try {
+//			if(userService.getUser(id).getPassword().equals(password)) {
+//				session.setAttribute("session_id", id);
+//				session.setAttribute("session_pw", password);
+//				return "redirect:/";
+//			}else {
+//				session.setAttribute("errMsg", "비밀번호가 틀렸습니다.");
+//				return "redirect:/";
+//			}
+//		} catch(NullPointerException e) {
+//			session.setAttribute("errMsg", "존재하지 않는 아이디 입니다.");
+//			return "redirect:/";
+//		}
+//	}
 	
 	@GetMapping("/logout")
 	public String logout(User user, Model model, HttpSession session) {
 		session.invalidate();
-		return "redirect:/main";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/{id}")
@@ -134,7 +149,7 @@ public class UserController {
 			return userService.findId(email);
 		} catch(NullPointerException e) {
 		session.setAttribute("errMsg", "존재하지 않는 이메일 입니다.");
-		return "redirect:/forgotpass";
+		return "redirect:/forgotId";
 		}
 	}
 	
@@ -146,7 +161,9 @@ public class UserController {
 	}
 	
 	@PostMapping("/findPW")
-	public String findPW(@ModelAttribute User user, @RequestParam(name="id")String id, @RequestParam(name="email") String email, 
+	public String findPW(@ModelAttribute User user,
+			@RequestParam(name="id")String id,
+			@RequestParam(name="email") String email, 
 			HttpSession session, HttpServletResponse response) {
 		try {
 			if(userService.getUser(id).getEmail().equals(email)) {

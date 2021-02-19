@@ -16,7 +16,6 @@ public interface UserMapper {
 	public void findPW(User user);
 	public void sendEmail(User user);
 	public int getTempPW(User user);
-	
 	public List<User> getUserList();
 	public void deleteUser(int userNo);
 }
