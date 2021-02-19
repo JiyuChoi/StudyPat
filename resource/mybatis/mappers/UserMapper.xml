@@ -4,7 +4,7 @@
 <mapper namespace="studypat.dao.UserMapper">
 
 	<insert id = "join" parameterType = "studypat.dto.User">
-		insert into sp_user values (sp_user_SEQ.nextval, #{id}, #{password}, #{email}, #{nickname}, 0)
+		insert into sp_user values (sp_user_SEQ.nextval, #{id}, #{password}, #{email}, #{nickName}, 0)
 	</insert>
 
 	<select id="getUser" resultType="studypat.dto.User">
