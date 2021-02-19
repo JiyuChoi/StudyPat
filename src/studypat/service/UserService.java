@@ -23,8 +23,13 @@ public class UserService {
 	private UserMapper userMapper;
 	
 	@Transactional(readOnly = false)
-	public void join(User user) {
+	public int join(User user) {
 		int result = userMapper.join(user);
+		return result;
+	}
+	
+	public User login(User user) {
+		return userMapper.login(user);
 	}
 	
 	public void logout(HttpSession session ) {
@@ -113,12 +118,12 @@ public class UserService {
 			sendEmail(user); //이메일로 보내기 
 			
 			getTempPW(user); //임시 비밀번호로 업데이트
-			
-			return "redirect:/user/loginForm"; 
+			System.out.println("임시 비밀번호 발급됨!!!!!!!!!!!");
+			return "redirect:/main"; 
 			
 		}  else {
 			
-			result = "commentFail";
+			result = "findPW";
 		}
 		return result;
 	}
@@ -130,6 +135,8 @@ public class UserService {
 	public void deleteUser(int userNo) {
 		userMapper.deleteUser(userNo);
 	}
+
+
 
 }
 

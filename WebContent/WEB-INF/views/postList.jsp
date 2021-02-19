@@ -138,7 +138,7 @@
 									<i class="icon-options-vertical icons box-v7-menu"
 										data-toggle="dropdown"></i>
 									<ul class="dropdown-menu" role="menu">
-										<li><a href="#">수정</a></li>
+										<li><a href="/studypat/updatePost/${post.postNo}">수정</a></li>
 										<li><a href="#">삭제</a></li>
 										<li><a href="#">신고하기</a></li>
 									</ul>

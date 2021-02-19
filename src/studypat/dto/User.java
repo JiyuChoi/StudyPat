@@ -6,7 +6,7 @@ public class User {
 	private String id;
 	private String password;
 	private String email;
-	private String nickName;
+	private String nickname;
 	private char admin;
 
 	public int getUserNo() {
@@ -41,12 +41,12 @@ public class User {
 		this.email = email;
 	}
 
-	public String getNickName() {
-		return nickName;
+	public String getNickname() {
+		return nickname;
 	}
 
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
+	public void setNickName(String nickname) {
+		this.nickname = nickname;
 	}
 
 	public char getAdmin() {
@@ -56,4 +56,11 @@ public class User {
 	public void setAdmin(char admin) {
 		this.admin = admin;
 	}
+
+	@Override
+	public String toString() {
+		return "User [userNo=" + userNo + ", id=" + id + ", password=" + password + ", email=" + email + ", nickname="
+				+ nickname + ", admin=" + admin + "]";
+	}
+	
 }
