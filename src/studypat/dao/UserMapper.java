@@ -10,7 +10,7 @@ public interface UserMapper {
 	public int join(User user);
 	public User login(User user);
 	public String logout();
-	public User getUser(String user_no);
+	public User getUser(String id);
 	public int updateUser(User user);
 	public String findId(String email);
 	public void findPW(User user);
@@ -18,4 +18,6 @@ public interface UserMapper {
 	public int getTempPW(User user);
 	public List<User> getUserList();
 	public void deleteUser(int userNo);
+	
+	public int getUserNo(String id);
 }

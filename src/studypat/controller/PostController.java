@@ -2,6 +2,8 @@ package studypat.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -75,8 +77,9 @@ public class PostController {
 	}
 	
 	@PostMapping("uploadPost") // post 업로드
-	public String uploadPost(Post post, RedirectAttributes redirect, @RequestParam(name="tags") String tags) {
-		postService.uploadPost(post, tags); // 포스트 업로드
+	public String uploadPost(Post post, RedirectAttributes redirect, @RequestParam(name="tags") String tags, HttpSession session) {
+		String id = (String) session.getAttribute("session_id");
+		postService.uploadPost(post, tags, id); // 포스트 업로드
 		redirect.addAttribute("category", post.getCategory()); // 작성한 카테고리로 넘어가기 위해서
 		return "redirect:/category";
 	}

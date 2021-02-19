@@ -125,7 +125,7 @@
 								<c:forEach var="tag" items="${post.tagList}">
 									<span class="badge-info">${tag.tagName}</span>
 								</c:forEach>
-								<h4>${post.title}</h4>
+								<h4><a href='/studypat/post/${post.postNo}'>${post.title}</a></h4>
 								<span>${post.userNickName}</span>
 								<span>조회수:${post.viewCount}</span>
 								<span>지역:${post.area}</span>
@@ -133,17 +133,7 @@
 								<span>댓글수:${post.commentCount}</span>
 								<span>스크랩수:${post.scrapCount}</span>
 							</div>
-							<div class="col-md-2 padding-0">
-								<div class="btn-group right-option-v1">
-									<i class="icon-options-vertical icons box-v7-menu"
-										data-toggle="dropdown"></i>
-									<ul class="dropdown-menu" role="menu">
-										<li><a href="/studypat/updatePost/${post.postNo}">수정</a></li>
-										<li><a href="#">삭제</a></li>
-										<li><a href="#">신고하기</a></li>
-									</ul>
-								</div>
-							</div>
+							 
 						</div>
 					</div>
 				</div>
