@@ -103,11 +103,10 @@
 										 */
 									%>
 									<form action="login" method="post">
-											<c:if test="${session_id.id eq null}">
+											<c:if test="${session_id eq null}">
 											<div class="login">
 											     <div class="col-sm-10">
 											     	<input type="text" id="id" class="form-control border-bottom" name="id" placeholder="아이디" required>
-											     	<div id="errMsg" style="color:red;"><%=errMsg %></div>
 											     </div>
 											     <div class="col-sm-10">
 											     	<input type="password" id="password" class="form-control border-bottom" name="password" placeholder="비밀번호" required style="margin-top:10px !important;"/>
@@ -122,9 +121,9 @@
 											<input type="submit" class="btn col-md-12" value="네이버 아이디로 로그인" style="margin-top:10px !important;"/>
 											</c:if>
 											
-											<c:if test="${session_id.id ne null}">
+											<c:if test="${session_id ne null}">
 												<div>
-												<p>${session_id.id}님 환영합니다.</p>
+												<p>${session_id}님 환영합니다.</p>
 												<button id="logoutBtn" type="button"><a href="logout">로그아웃</a></button>
 												</div>
 											</c:if>
