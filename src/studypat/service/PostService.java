@@ -10,8 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import studypat.dao.PostMapper;
 import studypat.dao.TagMapper;
+import studypat.dao.UserMapper;
 import studypat.dto.Post;
 import studypat.dto.Tag;
+import studypat.dto.User;
 import studypat.utils.Paging;
 
 
@@ -24,6 +26,9 @@ public class PostService {
 	@Autowired
 	private TagMapper tagMapper;
 
+	@Autowired
+	private UserMapper userMapper;
+	
 	public List<Post> getCategoryPost(Paging paging, String category, String sort, String area){
 		
 		if(("createDate").equals(sort)) { //최신순으로 정렬
@@ -84,8 +89,9 @@ public class PostService {
 	}
 	
 	@Transactional
-	public void uploadPost(Post post, String tags) { //게시물, 태그 업로드 
-		post.setUserNo(4); //  임시로
+	public void uploadPost(Post post, String tags, String id) { //게시물, 태그 업로드 
+		int userNo = userMapper.getUserNo(id);
+		post.setUserNo(userNo);
 		post.setViewCount(0);
 		post.setReport(0);
 		postMapper.uploadPost(post);

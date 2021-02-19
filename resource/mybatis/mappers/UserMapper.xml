@@ -47,4 +47,7 @@
 		delete sp_user where user_no = #{userNo}
 	</delete>
 
+	<select id="getUserNo" parameterType="String" resultType="Integer">
+		select user_no from sp_user where id=#{id}
+	</select>
 </mapper>

@@ -17,7 +17,7 @@ a:hover {
   -ms-text-decoration: none;
   -o-text-decoration: none;
   text-decoration: none;
-  color: #2196F3;
+  /* color: #2196F3; */
   font-weight: bold;
 }
 
