@@ -10,4 +10,5 @@ public interface TagMapper {
 
 	public void uploadTags(List<Tag> tagList);
 	public List<Tag> getTags(int postNo);
+	public void deleteTag(int postNo);
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import studypat.dto.Comment;
 import studypat.dto.Post;
 import studypat.service.CommentService;
 import studypat.service.PostService;
@@ -74,14 +74,9 @@ public class PostController {
 		return "uploadPost";
 	}
 	
-	@PostMapping("uploadPost")
+	@PostMapping("uploadPost") // post 업로드
 	public String uploadPost(Post post, RedirectAttributes redirect, @RequestParam(name="tags") String tags) {
-		postService.uploadPost(post);
-		
-		if(tags != null) {
-			postService.uploadTags(tags);
-			
-		}
+		postService.uploadPost(post, tags); // 포스트 업로드
 		redirect.addAttribute("category", post.getCategory()); // 작성한 카테고리로 넘어가기 위해서
 		return "redirect:/category";
 	}
@@ -92,6 +87,25 @@ public class PostController {
 		model.addAttribute("post", postService.getPost(postNo));
 		model.addAttribute("commentList", commentService.getCommentList(postNo));
 		return "post/detailPost";
+	}
+	
+	@GetMapping("/updatePost/{postNo}")
+	public String updatePostForm(@PathVariable("postNo") int postNo, Model model) {
+		
+		Post post = postService.getPost(postNo);
+		String tagStr = postService.tagListToString(post.getTagList());
+		 
+		model.addAttribute("post", post);
+		model.addAttribute("tag", tagStr);
+		
+		return "updatePost";
+	}
+	
+	@PostMapping("/updatePost")
+	public String updatePost(Post post, RedirectAttributes redirect, @RequestParam(name="tags") String tags) {
+		redirect.addAttribute("category", post.getCategory());
+		postService.updatePost(post, tags);
+		return "redirect:/category";
 	}
 }
 
