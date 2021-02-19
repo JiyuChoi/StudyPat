@@ -28,7 +28,7 @@ public class AdminController {
 	@GetMapping("/user/delete/{userNo}")
 	public String deleteUser(@PathVariable("userNo") int userNo) {
 		userService.deleteUser(userNo);
-		return "redirect:/adminuser";
+		return "redirect:/admin/user";
 	}
 
 	@GetMapping("/post")
@@ -46,7 +46,7 @@ public class AdminController {
 	@GetMapping("/post/delete/{postNo}")
 	public String deletePost(@PathVariable("postNo") int postNo) {
 		postService.deletePost(postNo);
-		return "redirect:/adminpost";
+		return "redirect:/admin/post";
 	}
 	
 }

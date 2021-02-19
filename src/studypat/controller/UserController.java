@@ -52,35 +52,35 @@ public class UserController {
 	}
 	
 	
-	@PostMapping("/login")
-	public String login(User user, HttpSession session, RedirectAttributes rttr) {
-		User loginUser = userService.login(user);
-		if (loginUser == null) {
-			rttr.addAttribute("msg", false);
-		} else {
-			session.setAttribute("session_id", loginUser);
-		}
-		return "redirect:/";
-	}
-	
 //	@PostMapping("/login")
-//	public String login(@RequestParam(name="id", required=true) String id,
-//						@RequestParam(name="password", required=true) String password,
-//						HttpSession session, RedirectAttributes redirectAttributes) {
-//		try {
-//			if(userService.getUser(id).getPassword().equals(password)) {
-//				session.setAttribute("session_id", id);
-//				session.setAttribute("session_pw", password);
-//				return "redirect:/";
-//			}else {
-//				session.setAttribute("errMsg", "비밀번호가 틀렸습니다.");
-//				return "redirect:/";
-//			}
-//		} catch(NullPointerException e) {
-//			session.setAttribute("errMsg", "존재하지 않는 아이디 입니다.");
-//			return "redirect:/";
+//	public String login(User user, HttpSession session, RedirectAttributes rttr) {
+//		User loginUser = userService.login(user);
+//		if (loginUser == null) {
+//			rttr.addAttribute("msg", false);
+//		} else {
+//			session.setAttribute("session_user", loginUser);
 //		}
+//		return "redirect:/";
 //	}
+	
+	@PostMapping("/login")
+	public String login(@RequestParam(name="id", required=true) String id,
+						@RequestParam(name="password", required=true) String password,
+						HttpSession session, RedirectAttributes redirectAttributes) {
+		try {
+			if(userService.getUser(id).getPassword().equals(password)) {
+				session.setAttribute("session_id", id);
+				session.setAttribute("session_pw", password);
+				return "redirect:/";
+			}else {
+				session.setAttribute("errMsg", "비밀번호가 틀렸습니다.");
+				return "redirect:/";
+			}
+		} catch(NullPointerException e) {
+			session.setAttribute("errMsg", "존재하지 않는 아이디 입니다.");
+			return "redirect:/";
+		}
+	}
 	
 	@GetMapping("/logout")
 	public String logout(User user, Model model, HttpSession session) {
