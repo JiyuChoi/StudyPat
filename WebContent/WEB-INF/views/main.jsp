@@ -137,28 +137,41 @@
 								<div class="panel-heading bg-white border-none">
 									<h4>내 스크랩 글</h4>
 								</div>
-								<c:forEach var="post" items="${postListUserScrap}">
-									<div class="panel-body">
-										<div class="media">
-											<div class="media-left">
-												<span class="icon-folder icons" style="font-size: 2em;"></span>
-											</div>
-											<div class="media-body">
-												<h5 class="media-heading">${post.title}</h5>
-												<span>조회수:${post.viewCount}</span>
-												<span>작성일:${post.createDate}</span>
-												<span>스크랩수:${post.scrapCount}</span>
-												<div class="progress progress-mini">
-													<div class="progress-bar" role="progressbar"
-														aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"
-														style="width: 10%;">
-														<span class="sr-only">60% Complete</span>
+								<%
+										String scrapLoginErrMsg = (String) session.getAttribute("scrapLoginErrMsg");
+										String scrapNullMsg = (String) session.getAttribute("scrapNullMsg");
+								%>
+								<c:if test="${scrapLoginErrMsg ne null}">
+									${scrapLoginErrMsg}
+									<% session.invalidate();%>
+								</c:if>
+								<c:if test="${scrapNullMsg ne null}">
+									${scrapNullMsg}
+								</c:if>
+								<c:if test="${scrapLoginErrMsg eq null && scrapNullMsg eq null }">
+									<c:forEach var="post" items="${postListUserScrap}">
+										<div class="panel-body">
+											<div class="media">
+												<div class="media-left">
+													<span class="icon-folder icons" style="font-size: 2em;"></span>
+												</div>
+												<div class="media-body">
+													<h5 class="media-heading">${post.title}</h5>
+													<span>조회수:${post.viewCount}</span>
+													<span>작성일:${post.createDate}</span>
+													<span>스크랩수:${post.scrapCount}</span>
+													<div class="progress progress-mini">
+														<div class="progress-bar" role="progressbar"
+															aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"
+															style="width: 10%;">
+															<span class="sr-only">60% Complete</span>
+														</div>
 													</div>
 												</div>
 											</div>
 										</div>
-									</div>
-								</c:forEach>
+									</c:forEach>
+								</c:if>
 							</div>
 						</div>
 						<div class="col-md-12 padding-0"></div>

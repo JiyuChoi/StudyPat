@@ -1,12 +1,12 @@
 package studypat.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import studypat.dto.Post;
 import studypat.service.CommentService;
 import studypat.service.PostService;
+import studypat.service.UserService;
 import studypat.utils.Paging;
 
 @Controller
@@ -27,12 +28,30 @@ public class PostController {
 	
 	@Autowired
 	private CommentService commentService;
+	
+	@Autowired
+	private UserService userService;
 
 	@GetMapping
-	public String getPosts(Model model) { // post 전부 가져오기
-		int userNo = 4; // 임시로
+	public String getPosts(Model model, HttpSession session) { // post 전부 가져오기
+		
 		List<Post> postListLatest = postService.getPostListLatest();//최신 게시물 가져오기
-		List<Post> postListUserScrap = postService.getUserScrapPost(userNo);
+		List<Post> postListUserScrap = new ArrayList<Post>();
+		
+		String userId = (String) session.getAttribute("session_id");
+		
+		if(userId == null) { // 로그인이 되어있지 않은 경우 
+			session.setAttribute("scrapLoginErrMsg", "로그인을 해주세요");
+			
+		} 
+		else { // 로그인이 되어있는 경우
+			int userNo = userService.getUserNo(userId);
+			postListUserScrap = postService.getUserScrapPost(userNo);
+			if(postListUserScrap.size() == 0) {
+				session.setAttribute("scrapNullMsg", "스크랩한 게시물이 없습니다");
+			}
+		}
+		
 		model.addAttribute("postListLatest", postListLatest);
 		model.addAttribute("postListUserScrap", postListUserScrap);
 		return "main";

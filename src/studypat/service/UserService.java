@@ -135,7 +135,10 @@ public class UserService {
 	public void deleteUser(int userNo) {
 		userMapper.deleteUser(userNo);
 	}
-
+	public int getUserNo(String id) {
+		
+		return userMapper.getUserNo(id);
+	}
 
 
 }

@@ -50,10 +50,10 @@
 		<div class="col-md-12 padding-0" style="padding-bottom: 20px;">
 			<div class="col-md-6" style="padding-left: 10px;">
 				<div>
-					<a onclick="location.href='/studypat/category?category=${category}&sort=createDate&area=${area}'"><span>최신순</span></a>
-					<a onclick="location.href='/studypat/category?category=${category}&sort=comment&area=${area}'"><span>댓글순</span></a>
-					<a onclick="location.href='/studypat/category?category=${category}&sort=view&area=${area}'"><span>조회순</span></a>
-					<a onclick="location.href='/studypat/category?category=${category}&sort=scrap&area=${area}'"><span>스크랩순</span></a>
+					<a onclick="location.href='/studypat/category?category=${category}&sort=createDate&area=${area}'" <c:if test="${sort eq 'createDate'}">style=color:#2196F3;</c:if>><span>최신순</span></a>
+					<a onclick="location.href='/studypat/category?category=${category}&sort=comment&area=${area}'" <c:if test="${sort eq 'comment'}">style=color:#2196F3;</c:if>><span>댓글순</span></a>
+					<a onclick="location.href='/studypat/category?category=${category}&sort=view&area=${area}'" <c:if test="${sort eq 'view'}">style=color:#2196F3;</c:if>><span>조회순</span></a>
+					<a onclick="location.href='/studypat/category?category=${category}&sort=scrap&area=${area}'" <c:if test="${sort eq 'scrap'}">style=color:#2196F3;</c:if>><span>스크랩순</span></a>
 				
 					<select onchange="if(this.value) location.href=(this.value);">
 						<option value="/studypat/category?category=${category}&sort=${sort}&area=all">전체</option>
@@ -201,4 +201,10 @@
 </script>
 <!-- end: Javascript -->
 </body>
+<style>
+
+a { 
+ color : #58666e;
+}
+</style>
 </html>
