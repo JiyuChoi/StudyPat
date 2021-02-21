@@ -1,5 +1,7 @@
 package studypat.service;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import studypat.dao.UserMapper;
 import studypat.dto.User;
@@ -45,8 +48,24 @@ public class UserService {
 		return userMapper.getUserNo(id);
 	}
 	
-	public int updateUser(User user) {
-		return userMapper.updateUser(user);
+	public void updateUser(User user, String password, String updatePassword, HttpServletResponse response, RedirectAttributes rttr) throws IOException {
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		User currentUser = getUser(user.getId());
+		
+		if(!password.equals(currentUser.getPassword())) { //비밀번호가 다르면 
+			//rttr.addFlashAttribute("updateSuccess", true);
+			out.println("<script>");
+			out.println("alert('현재 비밀번호가 다릅니다.');");
+			out.println("history.go(-1);");
+			out.println("</script>");
+			out.close();
+
+		} else {
+			currentUser.setPassword(updatePassword);;
+			rttr.addFlashAttribute("updateSuccess", false);
+			userMapper.updateUser(currentUser);
+		}
 	}
 		
 	public String forgotid(String email) {

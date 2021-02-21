@@ -43,32 +43,41 @@
 			</div>
 		</div>
  
-		<div class="col-md-12 col-sm-12 profile-v1-wrapper">
-	<div class="panel box-v7">
-		<div class="panel-body">
-			<div class="col-md-12 padding-0 box-v7-header">
-				<div class="col-md-12 padding-0">
-					<div class="col-md-10 padding-0">
-						<h4>제목</h4>
-						<p>작성자</p>
-						<div>작성일</div>
-					</div>
-					<div class="col-md-2 padding-0">
-						<div class="btn-group right-option-v1">
-							<i class="icon-options-vertical icons box-v7-menu"
-								data-toggle="dropdown"></i>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">수정</a></li>
-								<li><a href="#">삭제</a></li>
-								<li><a href="#">신고하기</a></li>
-							</ul>
+		<c:forEach var="post" items="${postListLatest}">
+			<div class="col-md-12 col-sm-12 profile-v1-wrapper" style="width:900px">
+				<div class="panel box-v7" >
+					<div class="panel-body">
+						<div class="col-md-12 padding-0 box-v7-header">
+							<div class="col-md-12 padding-0">
+								<div class="col-md-10 padding-0">
+									<c:forEach var="tag" items="${post.tagList}">
+										<span class="badge-info">${tag.tagName}</span>
+									</c:forEach>
+									<h4>${post.title}</h4>
+									<span>${post.userNickName}</span>
+									<span>조회수:${post.viewCount}</span>
+									<span>지역:${post.area}</span>
+									<span>작성일:${post.createDate}</span>
+									<span>댓글수:${post.commentCount}</span>
+									<span>스크랩수:${post.scrapCount}</span>
+								</div>
+								<div class="col-md-2 padding-0">
+									<div class="btn-group right-option-v1">
+										<i class="icon-options-vertical icons box-v7-menu"
+											data-toggle="dropdown"></i>
+										<ul class="dropdown-menu" role="menu">
+											<li><a href="/studypat/updatePost/${post.postNo}">수정</a></li>
+											<li><a href="#">삭제</a></li>
+											<li><a href="#">신고하기</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-</div>
+		</c:forEach> 
 </div>
 
 

@@ -29,14 +29,6 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    	<%
-	String updateErrMsg = (String) session.getAttribute("updateErrMsg");
-	String passwordErrMsg = (String) session.getAttribute("passwordErrMsg");
-	%>
-	<%	
-	session.removeAttribute("updateErrMsg");
-	session.removeAttribute("passwordErrMsg");
-	%>
   
   </head>
 
@@ -67,39 +59,28 @@
 								<div class="form-group">
 									<label class="col-sm-2 control-label text-right">닉네임</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" name="nickName" value="${user.nickName}">
+										<div name="nickName">${user.nickName}</div>
 									</div>
 								</div>
 								
-<!-- 								<div class="form-group">
+								<div class="form-group">
 									<label class="col-sm-2 control-label text-right">현재 비밀번호</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control"  name="password">
+										<input type="text" class="form-control"  name="password" id="password">
 									</div>
-								</div> -->
+								</div>
 								
 								<div class="form-group">
 									<label class="col-sm-2 control-label text-right">변경할 비밀번호</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control"  name="password">
+										<input type="password" class="form-control" name="updatePassword" id="updatePassword" required>
 									</div>
 								</div>
 								<input type="hidden" name="id" value="${user.id}" readonly="readonly">
-							<% if (passwordErrMsg != null) { %>
-							<p style="color: red;">
-							<%=passwordErrMsg%>
-							</p>
-						<%}else if(updateErrMsg != null){%>
-							<p style="color: red;">
-							<%=updateErrMsg%>
-							</p>
-						<%}else {%>
-							<p id="textErrMsg"></p>
-						<%} %>
 								<input type="submit" class="btn" value="변경">
 							</form>
 							</div>
-							<span>회원탈퇴</span>
+							<a href="delete/${user.userNo}">회원 탈퇴</a>
 						</div>
 					</div>
 				</div>
@@ -163,7 +144,7 @@
 				<script src="asset/js/jquery.ui.min.js"></script>
 				<script src="asset/js/bootstrap.min.js"></script>
 
-
+				
 				<!-- plugins -->
 				<script src="asset/js/plugins/moment.min.js"></script>
 				<script src="asset/js/plugins/jquery.knob.js"></script>
@@ -177,6 +158,11 @@
 
 
 				<!-- custom -->
+				<script>
+		         <c:if test="${updateSuccess == false}">
+		            alert("비밀번호가 수정되었습니다.");	
+         		</c:if>
+     			</script>
 				<script src="asset/js/main.js"></script>
 				<script type="text/javascript">
 					$(document)

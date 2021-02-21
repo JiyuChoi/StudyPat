@@ -59,11 +59,10 @@ public class UserController {
 	@PostMapping("/login")
 	public String login(@RequestParam(name="id", required=true) String id,
 						@RequestParam(name="password", required=true) String password,
-						HttpSession session, RedirectAttributes redirectAttributes) {
+						Model model, HttpSession session) {
 		try {
 			if(userService.getUser(id).getPassword().equals(password)) {
 				session.setAttribute("session_id", id);
-				session.setAttribute("session_pw", password);
 				return "redirect:/";
 			}else {
 				session.setAttribute("errMsg", "비밀번호가 틀렸습니다.");
@@ -89,22 +88,25 @@ public class UserController {
 //		return "user/userPage";
 //	}
 	
-	// 유저정보 수정
+	// 유저정보 (마이페이지)
 	@GetMapping("/{id}")
 	public String updateUserForm(@PathVariable(name="id") String id, Model model) {
 		model.addAttribute("user", userService.getUser(id));
 		return "user/userPage";
 	}
 	
+	// 유저정보 수정
 	@PostMapping("/updateUser")
-	public String updateUser(@ModelAttribute User user, HttpSession session) {
-		userService.updateUser(user);
-		return "redirect:/"+user.getId();
+	public String updateUser(@ModelAttribute User user, @RequestParam("password") String password,@RequestParam("updatePassword") String updatePassword,
+			HttpSession session, HttpServletResponse response, RedirectAttributes rttr) throws IOException {
+		userService.updateUser(user, password, updatePassword, response, rttr);
+	return "redirect:/" + user.getId();
 	}
 	
 		
-	@GetMapping("/delete")
-	public String deleteUser(@SessionAttribute("user_no") int userNo, HttpSession session) {
+	@GetMapping("/delete/{userNo}")
+	public String deleteUser(@PathVariable("userNo") int userNo, User user, HttpSession session) {
+		System.out.println(user);
 		userService.deleteUser(userNo);
 		session.invalidate();
 		return "redirect:/";
