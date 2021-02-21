@@ -27,29 +27,38 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
-    </head>
+</head>
 
-    <body id="mimin" class="form-signin-wrapper">
-
+	
+<body id="mimin" class="form-signin-wrapper">
+<%
+String userid = (String) session.getAttribute("findID");
+if (userid == null) userid = "";
+String errMsg = (String) session.getAttribute("errMsg");
+if(errMsg==null) errMsg = "";
+session.invalidate();
+%>
       <div class="container" style="margin-top: 150px;">
 
-        <form class="form-signin" action="findId" method="post">
+        <form class="form-signin" action="forgotid" method="post">
           <div class="panel periodic-login">
               <div class="panel-body text-center">
-                  <p class="atomic-mass">Study Pat</p>
-
+                  <h1 class="atomic-symbol">StudyPat</h1>
+ 					<p class="element-name">아이디 찾기</p>
                   <div class="form-group form-animate-text" style="margin-top:40px !important;">
                     <input type="text" class="form-text" name="email" required>
                     <span class="bar"></span>
                     <label>Email</label>
                     <p>Input your email to find your ID</p>
                   </div>
-
+				<div id="errMsg" style="color:red;"><%=errMsg %></div>
                   <input type="submit" class="btn col-md-12" value="Find ID"/>
+			
               </div>
+             
                 <div class="text-center" style="padding:5px;">
-                    <a href="login.html">SignIn</a> | 
-                    <a href="reg.html">Signup</a>
+                    <a href="/studypat/">로그인</a> | 
+                    <a href="joinForm">회원가입</a>
                 </div>
           </div>
         </form>
@@ -68,6 +77,16 @@
          
        });
      </script>
+
+	<script type="text/javascript">
+	
+		var userid = '<%=userid%>';
+		if (userid != "") {
+			alert("아이디는 " + userid + "입니다.")
+		}
+
+	</script>
+	
      <!-- end: Javascript -->
    </body>
    </html>

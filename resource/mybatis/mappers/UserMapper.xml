@@ -17,19 +17,19 @@
 	
 	<update id="updateUser" parameterType="studypat.dto.User">
 		update sp_user
-		set nickName = #{nickName} password = #{password}
-		where user_no=#{userNo}
+		set nickname = #{nickName}, password = #{password}
+		where id=#{id}
 	</update>
 
-	<select id ="findId" parameterType="String" resultType="java.lang.String">
-		select * from sp_user where email = #{email}
+	<select id ="forgotid" parameterType="String" resultType="java.lang.String">
+		select id from sp_user where email = #{email}
 	</select>
 	
-	<select id ="findPw" resultType="studypat.dto.User">
+	<select id ="forgotpass" resultType="studypat.dto.User">
 		select * from sp_user where id = #{id} and email = #{email}
 	</select>
 	
-	<update id="getTempPw" parameterType="studypat.dto.User">
+	<update id="getTempPW" parameterType="studypat.dto.User">
 		update sp_user
 		set password = #{password}
 		where id=#{id} and email=#{email}
@@ -50,4 +50,5 @@
 	<select id="getUserNo" parameterType="String" resultType="Integer">
 		select user_no from sp_user where id=#{id}
 	</select>
+	
 </mapper>

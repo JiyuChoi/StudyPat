@@ -36,12 +36,10 @@
 
       <div class="container">
 
-        <form class="form-signin" action="findPW" method="post">
+        <form class="form-signin" action="forgotpass" method="post">
           <div class="panel periodic-login">
-              <span class="atomic-number">28</span>
               <div class="panel-body text-center">
-                  <h1 class="atomic-symbol">Spot</h1>
-                  <p class="atomic-mass">14.072110</p>
+                  <h1 class="atomic-symbol">StudyPat</h1>
                   <p class="element-name">비밀번호 찾기</p>
                   <p class="element-name">가입시 사용한 아이디와 이메일을 입력하세요</p>
 
@@ -60,9 +58,10 @@
  					<p>해당 이메일로 임시비밀번호가 발송됩니다.</p> 
  					<div id="errMsg" style="color:red;"><%=errMsg %></div>
                   <input type="submit" class="btn col-md-12" value="submit"/>
+
               </div>
                 <div class="text-center" style="padding:5px;">
-                    <a href="main">로그인</a> | 
+                    <a href="/studypat/">로그인</a> | 
                     <a href="joinForm">회원가입</a>
                 </div>
           </div>
@@ -82,6 +81,11 @@
          
        });
      </script>
-     <!-- end: Javascript -->
-   </body>
+
+     <script>
+         <c:if test="${success == true}">
+            alert("입력한 이메일로 임시비밀번호가 발송되었습니다.");	
+         </c:if>
+     </script>
+     </body>
    </html>
