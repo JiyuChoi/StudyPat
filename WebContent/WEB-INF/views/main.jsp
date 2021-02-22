@@ -138,10 +138,10 @@
 								<div class="panel-heading bg-white border-none">
 									<h4>내 스크랩 글</h4>
 								</div>
-								<%
+							<%-- 	<%
 										String scrapLoginErrMsg = (String) session.getAttribute("scrapLoginErrMsg");
 										String scrapNullMsg = (String) session.getAttribute("scrapNullMsg");
-								%>
+								%> --%>
 								<c:if test="${scrapLoginErrMsg ne null}">
 									${scrapLoginErrMsg}
 									<% session.invalidate();%>
