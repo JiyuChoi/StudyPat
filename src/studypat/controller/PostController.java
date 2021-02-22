@@ -39,7 +39,7 @@ public class PostController {
 		List<Post> postListUserScrap = new ArrayList<Post>();
 		
 		String userId = (String) session.getAttribute("session_id");
-		
+		int postSize=0;
 		if(userId == null) { // 로그인이 되어있지 않은 경우 
 			model.addAttribute("scrapLoginErrMsg", "로그인을 해주세요");
 			
@@ -47,13 +47,19 @@ public class PostController {
 		else { // 로그인이 되어있는 경우
 			int userNo = userService.getUser(userId).getUserNo();
 			postListUserScrap = postService.getUserScrapPost(userNo);
+			postSize = postListUserScrap.size();
+			
+			if(postSize >= 5) {
+				postSize = 5;
+			}
+			
 			if(postListUserScrap.size() == 0) {
 				model.addAttribute("scrapNullMsg", "스크랩한 게시물이 없습니다");
 			}
 		}
 		
 		model.addAttribute("postListLatest", postListLatest);
-		model.addAttribute("postListUserScrap", postListUserScrap);
+		model.addAttribute("postListUserScrap", postListUserScrap.subList(0, postSize));
 		return "main";
 	}
 	

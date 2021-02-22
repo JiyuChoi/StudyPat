@@ -111,7 +111,7 @@
 	<select id="getUserScrapPost" resultMap="Post">
 		select *
 			from sp_post
-			where ROWNUM between 0 and 5 and post_no in (
+			where post_no in (
 			    select post_no
 			    from sp_scrap
 			    where user_no = #{userNo}
