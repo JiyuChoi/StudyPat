@@ -46,10 +46,6 @@ public class UserService {
 		return userMapper.getUser(id);
 	}
 	
-	public int getUserNo(String id) {
-		return userMapper.getUserNo(id);
-	}
-	
 	public void updateUser(User user, String password, String updatePassword, HttpServletResponse response, RedirectAttributes rttr) throws IOException {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
@@ -154,11 +150,6 @@ public class UserService {
 	public void deleteUser(int userNo) {
 		userMapper.deleteUser(userNo);
 	}
-	public int getUserNo(String id) {
-		
-		return userMapper.getUserNo(id);
-	}
-
 
 }
 
