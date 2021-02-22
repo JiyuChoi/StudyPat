@@ -2,44 +2,46 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="studypat.dao.UserMapper">
+	<resultMap type="user" id="user">
+		<result column="user_no" property="userNo"/>
+	</resultMap>
+
 
 	<insert id = "join" parameterType = "studypat.dto.User">
-		insert into sp_user values (sp_user_SEQ.nextval, #{id}, #{password}, #{email}, #{nickName}, 0)
+		insert into 
+		sp_user(id, password, email, nickname, admin) 
+		values (#{id}, #{password}, #{email}, #{nickName}, 0)
 	</insert>
 
-	<select id="getUser" resultType="studypat.dto.User">
+	<select id="getUser" resultMap="user">
 		select * from sp_user where id = #{id}
 	</select>
 	
-	<select id="login" resultType="studypat.dto.User">
+	<select id="login" resultMap="user">
 		select * from sp_user where id=#{id} and password=#{password}
 	</select>
 	
 	<update id="updateUser" parameterType="studypat.dto.User">
 		update sp_user
-		set nickName = #{nickName} password = #{password}
-		where user_no=#{userNo}
+		set nickname = #{nickName}, password = #{password}
+		where id=#{id}
 	</update>
 
-	<select id ="findId" parameterType="String" resultType="java.lang.String">
-		select * from sp_user where email = #{email}
+	<select id ="forgotid" parameterType="String" resultType="java.lang.String">
+		select id from sp_user where email = #{email}
 	</select>
 	
-	<select id ="findPw" resultType="studypat.dto.User">
+	<select id ="forgotpass" resultType="studypat.dto.User">
 		select * from sp_user where id = #{id} and email = #{email}
 	</select>
 	
-	<update id="getTempPw" parameterType="studypat.dto.User">
+	<update id="getTempPW" parameterType="studypat.dto.User">
 		update sp_user
 		set password = #{password}
 		where id=#{id} and email=#{email}
 	</update>
 
-	<resultMap type="user" id="userResultMap">
-		<result column="user_no" property="userNo" />
-	</resultMap>
-
-	<select id="getUserList" resultMap="userResultMap">
+	<select id="getUserList" resultMap="user">
 		select * from sp_user
 	</select>
 	
@@ -47,7 +49,5 @@
 		delete sp_user where user_no = #{userNo}
 	</delete>
 
-	<select id="getUserNo" parameterType="String" resultType="Integer">
-		select user_no from sp_user where id=#{id}
-	</select>
+
 </mapper>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +32,15 @@ public class CommentController {
 	@ResponseBody
 	public int addComment(@ModelAttribute Comment comment) {
 		return commentService.addComment(comment);
+	}
+	
+	// user Comment 가져오기
+	@GetMapping("/myComment/{userNo}")
+	public String getUserCommentList(@PathVariable(name="userNo") int userNo, Model model) {
+		List<Comment> commentListUser = commentService.getUserCommentList(userNo);
+		System.out.println(commentListUser);
+		model.addAttribute("commentListUser", commentListUser);
+		return "user/userComment";
 	}
 }
 

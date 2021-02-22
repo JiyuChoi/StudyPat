@@ -127,7 +127,7 @@
 	</select>
 
 	<select id="getUserPostList" resultMap="Post">
-		select * from sp_post where user_no = #{userNo}
+		select * from sp_post join sp_user using(user_no) where user_no = #{userNo} order by post_no desc
 	</select>
 	
 	<delete id="deletePost">

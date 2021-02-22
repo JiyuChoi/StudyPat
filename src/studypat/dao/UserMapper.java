@@ -12,12 +12,11 @@ public interface UserMapper {
 	public String logout();
 	public User getUser(String id);
 	public int updateUser(User user);
-	public String findId(String email);
-	public void findPW(User user);
+	public String forgotid(String email);
+	public void forgotpass(User user);
 	public void sendEmail(User user);
 	public int getTempPW(User user);
 	public List<User> getUserList();
 	public void deleteUser(int userNo);
-	
-	public int getUserNo(String id);
+
 }
