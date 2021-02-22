@@ -8,6 +8,7 @@ public class Comment {
 	private String commentText;	// CLOB -> String mapping
 	private String createDate;	// Date -> String
 	private char secret;
+	private User user;			// join시 같이 담아오기
 
 	public int getCommentNo() {
 		return commentNo;
@@ -55,5 +56,13 @@ public class Comment {
 
 	public void setSecret(char secret) {
 		this.secret = secret;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 }

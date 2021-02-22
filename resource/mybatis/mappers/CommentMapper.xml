@@ -9,10 +9,22 @@
 		<result column="user_no" property="userNo"/>
 		<result column="comment_text" property="commentText"/>
 		<result column="create_date" property="createDate"/>
+		<result column="secret" property="secret"/>
+		
+		<association javaType="studypat.dto.User" property="user"> <!-- user 테이블 조인때 사용하기 위해서-->
+			<result column="user_no" property="userNo"/>
+			<result column="id" property="id"/>
+			<result column="password" property="password"/>
+			<result column="email" property="email"/>
+			<result column="nickname" property="nickName"/>
+			<result column="admin" property="admin"/>
+		</association>
+		
+		<collection property="user" javaType="user"/>
 	</resultMap>
 
 	<select id="getCommentList" resultMap="comm">
-		select * from sp_comment where post_no = #{postNo} order by 1
+		select * from sp_comment join sp_user using(user_no) where post_no = #{postNo} order by 1
 	</select>
 	
 	<select id="getUserCommentList" resultMap="comm">
@@ -25,6 +37,9 @@
 		values(#{postNo}, #{userNo}, #{commentText}, sysdate, #{secret})
 	</insert>
 	
+	<delete id="deleteComment">
+		delete sp_comment where comment_no = #{commentNo}
+	</delete>
 	
 </mapper>
 

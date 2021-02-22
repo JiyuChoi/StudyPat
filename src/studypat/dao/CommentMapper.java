@@ -11,4 +11,5 @@ public interface CommentMapper {
 	public int addComment(Comment comment);
 	public List<Comment> getCommentList(int postNo);
 	public List<Comment> getUserCommentList(int userNo);
+	public int deleteComment(int commentNo);
 }
