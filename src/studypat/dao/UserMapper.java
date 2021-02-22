@@ -18,5 +18,5 @@ public interface UserMapper {
 	public int getTempPW(User user);
 	public List<User> getUserList();
 	public void deleteUser(int userNo);
-	public int getUserNo(String id);
+
 }

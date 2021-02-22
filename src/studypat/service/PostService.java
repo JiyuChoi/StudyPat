@@ -89,7 +89,7 @@ public class PostService {
 	
 	@Transactional
 	public void uploadPost(Post post, String tags, String id) { //게시물, 태그 업로드 
-		int userNo = userMapper.getUserNo(id);
+		int userNo = userMapper.getUser(id).getUserNo();
 		post.setUserNo(userNo);
 		post.setViewCount(0);
 		post.setReport(0);

@@ -74,6 +74,9 @@ public class UserController {
 		try {
 			if(userService.getUser(id).getPassword().equals(password)) {
 				session.setAttribute("session_id", id);
+				session.setAttribute("session_pw", password);
+				session.setAttribute("user", userService.getUser(id));
+
 				return "redirect:/";
 			}else {
 				session.setAttribute("errMsg", "비밀번호가 틀렸습니다.");

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +27,12 @@
 <link rel="shortcut icon" href="asset/img/logomi.png">
 </head>
 <body>
+	<%
+		if(session.getAttribute("user") != null){
+			studypat.dto.User user = (studypat.dto.User) session.getAttribute("user");
+			session.setAttribute("loginUser",user);
+		}
+	%>
 
 	<nav class="navbar navbar-default header navbar-fixed-top">
 		<div class="col-md-12 nav-wrapper">
@@ -103,16 +110,18 @@
 					</a>
 
 				<!-- 권한 설정 -->
-				<li class="active ripple">
-				  <a class="tree-toggle nav-header">
-				  	<span class="fa-home fa"></span> 관리자 페이지 
-				    <span class="fa-angle-right fa right-arrow text-right"></span>
-				  </a>
-				  <ul class="nav nav-list tree">
-				      <li><a href="/studypat/admin/user">회원 관리</a></li>
-				      <li><a href="/studypat/admin/post">게시글 관리</a></li>
-				  </ul>
-				</li>
+				<c:if test="${loginUser.admin eq '1'.charAt(0)}">
+					<li class="active ripple">
+					  <a class="tree-toggle nav-header">
+					  	<span class="fa-home fa"></span> 관리자 페이지 
+					    <span class="fa-angle-right fa right-arrow text-right"></span>
+					  </a>
+					  <ul class="nav nav-list tree">
+					      <li><a href="/studypat/admin/user">회원 관리</a></li>
+					      <li><a href="/studypat/admin/post">게시글 관리</a></li>
+					  </ul>
+					</li>
+				</c:if>
 			</ul>
 		</div>
 	</div>
