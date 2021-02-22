@@ -143,11 +143,9 @@ public class PostController {
 	}
 	
 	// user Post 가져오기
-	@GetMapping("/myPost/{userNo}")
+	@GetMapping("post/myPost/{userNo}")
 	public String getUserPostList(@PathVariable(name="userNo") int userNo, Model model) {
 		List<Post> postListUser = postService.getUserPostList(userNo);
-		System.out.println(postListUser);
-		// 이게 왜 안넘어갈까...
 		model.addAttribute("postListUser", postListUser);
 		return "user/userPost";
 	}

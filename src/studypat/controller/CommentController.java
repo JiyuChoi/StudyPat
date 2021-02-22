@@ -38,6 +38,7 @@ public class CommentController {
 	@GetMapping("/myComment/{userNo}")
 	public String getUserCommentList(@PathVariable(name="userNo") int userNo, Model model) {
 		List<Comment> commentListUser = commentService.getUserCommentList(userNo);
+		System.out.println(commentListUser);
 		model.addAttribute("commentListUser", commentListUser);
 		return "user/userComment";
 	}
