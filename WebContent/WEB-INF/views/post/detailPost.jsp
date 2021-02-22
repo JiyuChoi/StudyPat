@@ -73,13 +73,9 @@
 				</div>
 			</div>
 			<div class="col-md-12 padding-0 box-v7-comment">
-				<c:if test="${user.admin eq '1'.charAt(0) or post.userNo eq user.userNo}">
 					<div id="commList">
 						<!-- 댓글 List 들어옴 -->
 					</div>
-				</c:if>
-				<c:if test="${user.admin ne '1'.charAt(0) or post.userNo ne user.userNo}">
-				</c:if>
 				<div class="media">
 					<div class="media-body">
 						<textarea class="box-v7-commenttextbox" name="commentText"
@@ -117,13 +113,13 @@
 			type : "post",
 			url : "/studypat/scrap/add",
 			data : {
-				userNo,
-				postNo
+				"userNo" : userNo,
+				"postNo" : postNo
 			}, success : function(data) {
 				isScrap();
 			}
-		});
-	};
+		})
+	}
 	
 	function deleteScrap(postNo) {
 		var userNo = ${loginUser.userNo};
@@ -131,8 +127,8 @@
 			type : "post",
 			url : "/studypat/scrap/delete",
 			data : {
-				userNo,
-				postNo
+				"userNo" : userNo,
+				"postNo" : postNo
 			}, success : function(data) {
 				isScrap();
 			}
@@ -146,8 +142,8 @@
 			type : "post",
 			url : "/studypat/scrap",
 			data : {
-				userNo,
-				postNo
+				"userNo" : userNo,
+				"postNo" : postNo
 			}, success : function(data) {
 				var str = "<button class='btn' onclick='";
 				if(data == 1) {
@@ -162,28 +158,45 @@
 		});
 	};
 	
-	function getCommentList() {
-		
+	
+	function filterGenre(genre){
+		$.ajax({
+			url:"content/genre",
+			type:"get",
+			data: {"genre" : genre},
+			datatype:'json',
+			success : function(data){
+				$('#feed').empty();
+				var feed = "";
+				$.each(data, function (i, content) {
+	            });
+			},
+			error: function(e){
+				console.log(e);
+			}
+		})
+	} 
+	
+	function getCommentList(){
 		$.ajax({
 			type : "get",
 			url : "/studypat/comment/" + ${post.postNo},
-			success : function(data) {
+			success : function(data){
 		        var str = "";
-		        $(data).each(function () {
-		        	/* 	if(this.userNo == userNo || admin == '1'.charAt(0) || userNo == postUserNo){ */ 
- 		        		str +="<div class='media'>"
-			            	+ "<div class='media-body'>"
-			            	+ "<h4 class='media-heading'>" + this.userNo + "</h4>"
- 		        	if(this.userNo == ${user.getUserNo()} || ${user.getAdmin()} == 1 || ${user.getUserNo()} == ${post.userNo}){
- 		        		str += "<p>" + this.commentText + "</p>"
+		        $.each(data, function () {
+		        	str +="<div class='media'>"
+		            	+ "<div class='media-body'>"
+		            	+ "<h4 class='media-heading'>" + this.userNo + "</h4>"
+ 		        	if(this.userNo == ${user.getUserNo()} || ${user.getAdmin()} == 1 || ${user.getUserNo()} == ${post.userNo}) {
+ 		        		str += "<p>" + this.commentText + "</p>";
  		        	}else {
-		 		    	str += "<p> 비밀 댓글 입니다. </p>"
+		 		    	str += "<p> 비밀 댓글 입니다. </p>";
 		 		    }
 			            str += "</div> </div>";
-		        });
+	            });
 		        $("#commList").html(str);
-			}
-	    });
+		      }
+	    })
 	}
 	
 	$(function() {
@@ -201,10 +214,10 @@
 				type : "post",
 				url : "/studypat/comment/add",
 				data : {
-					postNo,
-					userNo,
-					commentText,
-					secret
+					"userNo" : userNo,
+					"postNo" : postNo,
+					"commentText" : commentText,
+					"secret" : secret
 				}, complete : function() {
 					$('textarea[name=commentText]').val('');
  					$("input[type=checkbox]").prop("checked", false);
