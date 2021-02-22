@@ -124,7 +124,7 @@
 											<c:if test="${session_id ne null}">
 												<div>
 												<p>${session_id}님 환영합니다.</p>
-												<input type="button" onclick="location.href='${session_id}'" value="마이페이지" class="btn col-md-12">
+												<input type="button" onclick="location.href='myPage/${session_id}'" value="마이페이지" class="btn col-md-12">
 												<input type="button" onclick="location.href='logout'" value="로그아웃" id="logoutBtn" class="btn col-md-12">
 												</div>
 											</c:if>

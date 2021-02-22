@@ -56,6 +56,17 @@ public class UserController {
 		return "main";
 	}
 	
+//	@PostMapping("/login")
+//	public String login(User user, HttpSession session, RedirectAttributes rttr) {
+//		User loginUser = userService.login(user);
+//		if (loginUser == null) {
+//			rttr.addAttribute("msg", false);
+//		} else {
+//			session.setAttribute("session_user", loginUser);
+//		}
+//		return "redirect:/";
+//	}
+	
 	@PostMapping("/login")
 	public String login(@RequestParam(name="id", required=true) String id,
 						@RequestParam(name="password", required=true) String password,
@@ -75,38 +86,29 @@ public class UserController {
 	}
 	
 	@GetMapping("/logout")
-	public String logout(User user, Model model, HttpSession session) {
+	public String logout(User user, HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
 	}
 	
-//  // 유저정보 가져오기
-//	@GetMapping("/{id}")
-//	public String getUser(@PathVariable(name="id") String id, ModelMap model) {
-//		User user = userService.getUser(id);
-//		model.addAttribute("user", user);
-//		return "user/userPage";
-//	}
-	
 	// 유저정보 (마이페이지)
-	@GetMapping("/{id}")
+	@GetMapping("/myPage/{id}")
 	public String updateUserForm(@PathVariable(name="id") String id, Model model) {
 		model.addAttribute("user", userService.getUser(id));
 		return "user/userPage";
 	}
 	
 	// 유저정보 수정
-	@PostMapping("/updateUser")
-	public String updateUser(@ModelAttribute User user, @RequestParam("password") String password,@RequestParam("updatePassword") String updatePassword,
+	@PostMapping("/myPage/updateUser")
+	public String updateUser(@ModelAttribute User user, @RequestParam("password") String password, @RequestParam("updatePassword") String updatePassword,
 			HttpSession session, HttpServletResponse response, RedirectAttributes rttr) throws IOException {
 		userService.updateUser(user, password, updatePassword, response, rttr);
-	return "redirect:/" + user.getId();
+	return "redirect:/myPage/" + user.getId();
 	}
 	
 		
-	@GetMapping("/delete/{userNo}")
+	@GetMapping("/mypage/delete/{userNo}")
 	public String deleteUser(@PathVariable("userNo") int userNo, User user, HttpSession session) {
-		System.out.println(user);
 		userService.deleteUser(userNo);
 		session.invalidate();
 		return "redirect:/";

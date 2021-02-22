@@ -80,7 +80,7 @@ public class PostService {
 		return postMapper.getPostList();
 	}
 
-	public List<Post> getPostList(int userNo) {
+	public List<Post> getUserPostList(int userNo) {
 		return postMapper.getUserPostList(userNo);
 	}
 

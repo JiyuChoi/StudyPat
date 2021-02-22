@@ -28,10 +28,12 @@ public class UserService {
 	@Transactional(readOnly = false)
 	public int join(User user) {
 		int result = userMapper.join(user);
+		System.out.println(user.toString());
 		return result;
 	}
 	
 	public User login(User user) {
+		System.out.println(user.toString());
 		return userMapper.login(user);
 	}
 	
@@ -52,7 +54,7 @@ public class UserService {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		User currentUser = getUser(user.getId());
-		
+		System.out.println(currentUser.toString());
 		if(!password.equals(currentUser.getPassword())) { //비밀번호가 다르면 
 			//rttr.addFlashAttribute("updateSuccess", true);
 			out.println("<script>");

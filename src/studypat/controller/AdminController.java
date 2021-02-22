@@ -39,7 +39,7 @@ public class AdminController {
 
 	@GetMapping("/post/{userNo}")
 	public String adminUserPostList(@PathVariable("userNo") int userNo, Model model) {
-		model.addAttribute("postList", postService.getPostList(userNo));
+		model.addAttribute("postList", postService.getUserPostList(userNo));
 		return "admin/post";
 	}
 
