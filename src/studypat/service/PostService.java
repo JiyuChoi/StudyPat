@@ -168,4 +168,12 @@ public class PostService {
 	public int countPostTag(String category, String area, String tag) {
 		return postMapper.countPostTag(category, area, tag);
 	}
+
+	public void addView(int postNo) {
+		postMapper.addView(postNo);
+	}
+
+	public void reportPost(int postNo) {
+		postMapper.reportPost(postNo);
+	}
 }

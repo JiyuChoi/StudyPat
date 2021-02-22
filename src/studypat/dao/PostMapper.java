@@ -25,6 +25,8 @@ public interface PostMapper {
 	public void uploadPost(Post post);
 	public void updatePost(Post post);
 	public int countPostTag(@Param("category") String category, @Param("area") String area, @Param("tag") String tag);
-	
+
+	public void addView(int postNo);
+	public void reportPost(int postNo);
  
 }

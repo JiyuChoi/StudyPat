@@ -60,7 +60,7 @@
 									<li><a href="#">수정</a></li>
 									<li><a href="#">삭제</a></li>
 								</c:if>
-								<li><a href="#">신고하기</a></li>
+								<li><a onclick="report(${post.postNo})">신고하기</a></li>
 							</ul>
 						</div>
 					</div>
@@ -164,6 +164,16 @@
 			url : "/studypat/comment/delete/" + commentNo,
 			success : function(data) {
 				getCommentList();
+			}
+		});
+	};
+	
+	function report(postNo) {
+		$.ajax({
+			type : "get",
+			url : "/studypat/post/report/" + postNo,
+			success : function(data) {
+				
 			}
 		});
 	};
