@@ -45,7 +45,7 @@ public class PostController {
 			
 		} 
 		else { // 로그인이 되어있는 경우
-			int userNo = userService.getUserNo(userId);
+			int userNo = userService.getUser(userId).getUserNo();
 			postListUserScrap = postService.getUserScrapPost(userNo);
 			if(postListUserScrap.size() == 0) {
 				session.setAttribute("scrapNullMsg", "스크랩한 게시물이 없습니다");
@@ -143,11 +143,9 @@ public class PostController {
 	}
 	
 	// user Post 가져오기
-	@GetMapping("/myPost/{userNo}")
+	@GetMapping("post/myPost/{userNo}")
 	public String getUserPostList(@PathVariable(name="userNo") int userNo, Model model) {
 		List<Post> postListUser = postService.getUserPostList(userNo);
-		System.out.println(postListUser);
-		// 이게 왜 안넘어갈까...
 		model.addAttribute("postListUser", postListUser);
 		return "user/userPost";
 	}

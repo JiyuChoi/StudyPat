@@ -12,7 +12,7 @@
   <meta name="author" content="Isna Nur Azis">
   <meta name="keyword" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Post</title>
+  <title>My Comment</title>
 
   <!-- start: Css -->
   <link rel="stylesheet" type="text/css" href="/studypat/asset/css/bootstrap.min.css">
@@ -41,27 +41,20 @@
 		<div class="panel box-shadow-none content-header">
 			<div class="panel-body">
 				<div class="col-md-12">
-					<h3 class="animated fadeInLeft">내 게시물</h3>
+					<h3 class="animated fadeInLeft">내 댓글</h3>
 				</div>
 			</div>
 		</div>
  
-			<c:forEach var="post" items="${postListUser}">
+			<c:forEach var="comment" items="${commentListUser}">
 				<div class="col-md-12 col-sm-12 profile-v1-wrapper" style="width:900px; postion:absolute; top:10px; left:30px;">
 					<div class="panel box-v7" >
 						<div class="panel-body">
 							<div class="col-md-12 padding-0 box-v7-header">
 								<div class="col-md-12 padding-0">
-									<div class="col-md-10 padding-0">
-										<c:forEach var="tag" items="${post.tagList}">
-											<span class="badge-info">${tag.tagName}</span>
-										</c:forEach> 
-										<h4><a href='/studypat/post/${post.postNo}'>${post.title}</a></h4>
-										<span>조회수:${post.viewCount}</span>
-										<span>지역:${post.area}</span>
-										<span>작성일:${post.createDate}</span>
-										<span>댓글수:${post.commentCount}</span>
-										<span>스크랩수:${post.scrapCount}</span>
+									<div class="col-md-10 padding-0"> 
+										<h4><a href='/studypat/post/${comment.postNo}'>${comment.commentText}</a></h4>
+										<span>작성일:${comment.createDate}</span>
 									</div>
 								</div>
 							</div>

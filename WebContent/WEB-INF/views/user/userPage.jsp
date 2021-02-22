@@ -105,7 +105,7 @@
 											<span class="icon-folder icons" style="font-size: 2em;"></span>
 										</div>
 										<div class="media-body">
-											<h5 class="media-heading"><a href="/studypat/myPost/${user.userNo}">내가 쓴 글</a></h5>
+											<h5 class="media-heading"><a href="/studypat/post/myPost/${user.userNo}">내가 쓴 글</a></h5>
 										</div>
 									</div>
 
@@ -114,7 +114,7 @@
 											<span class="icon-pie-chart icons" style="font-size: 2em;"></span>
 										</div>
 										<div class="media-body">
-											<h5 class="media-heading"><a href="/studypat/myComment/${user.userNo}">댓글 단 글</a></h5>
+											<h5 class="media-heading"><a href="/studypat/comment/myComment/${user.userNo}">댓글 단 글</a></h5>
 										</div>
 									</div>
 

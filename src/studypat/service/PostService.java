@@ -80,7 +80,12 @@ public class PostService {
 	}
 
 	public List<Post> getUserPostList(int userNo) {
-		return postMapper.getUserPostList(userNo);
+		List<Post> postList = postMapper.getUserPostList(userNo);
+		for(Post post : postList) {
+			List<Tag> tagList = tagMapper.getTags(post.getPostNo());
+			post.setTagList(tagList);
+		}
+		return postList;
 	}
 
 	public void deletePost(int postNo) {
