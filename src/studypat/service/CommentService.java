@@ -20,7 +20,7 @@ public class CommentService {
 	}
 
 	public List<Comment> getUserCommentList(int userNo) {
-		return commentMapper.getCommentList(userNo);
+		return commentMapper.getUserCommentList(userNo);
 	}
 	
 	public int addComment(Comment comment) {

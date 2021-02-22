@@ -163,6 +163,7 @@
 	};
 	
 	function getCommentList() {
+		
 		$.ajax({
 			type : "get",
 			url : "/studypat/comment/" + ${post.postNo},
