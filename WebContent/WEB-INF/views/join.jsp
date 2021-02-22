@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="studypat.dao.*"%>
+<%@ page import="studypat.dto.*"%>
+<%@ page import="java.util.*"%>
 <!DOCTYPE html>
-<html lang="en">
 <head>
 
 <meta charset="utf-8">
@@ -8,7 +10,7 @@
 <meta name="author" content="Isna Nur Azis">
 <meta name="keyword" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>STUDYPAT</title>
+<title>StuydPat Join</title>
 
 <!-- start: Css -->
 <link rel="stylesheet" type="text/css"
@@ -32,6 +34,7 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
+
 </head>
 
 <body id="mimin" class="dashboard form-signin-wrapper">
@@ -45,7 +48,7 @@
 				<div class="panel-body text-center">
 					<p class="atomic-mass">스터디를 구하고 있다면</p>
 					<p class="element-name">지금, 바로!</p>
-					<h1 class="atomic-symbol">STUDYPAT</h1>
+					<h1 class="atomic-symbol">StudyPat</h1>
 						<div class="form-group form-animate-text" style="margin-top: 40px !important;">
 							<input type="text" class="form-text" name="id" required> 
 							<span class="bar"></span> <label>아이디</label>
@@ -67,7 +70,7 @@
 				</div>
 				
 				<div class="text-center" style="padding: 5px;">
-					<a href="login.html">이미 계정이 있으신가요?</a>
+					<a href="/studypat/">이미 계정이 있으신가요?</a>
 				</div>
 			</div>
 		</form>

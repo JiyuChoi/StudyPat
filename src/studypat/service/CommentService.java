@@ -19,6 +19,10 @@ public class CommentService {
 		return commentMapper.getCommentList(postNo);
 	}
 
+	public List<Comment> getUserCommentList(int userNo) {
+		return commentMapper.getCommentList(userNo);
+	}
+	
 	public int addComment(Comment comment) {
 		return commentMapper.addComment(comment);
 	}

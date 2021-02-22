@@ -10,7 +10,7 @@
 	<meta name="author" content="Isna Nur Azis">
 	<meta name="keyword" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Miminium</title>
+    <title>StudyPat</title>
  
     <!-- start: Css -->
     <link rel="stylesheet" type="text/css" href="asset/css/bootstrap.min.css">
@@ -30,7 +30,10 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-
+<%
+	String errMsg = (String) session.getAttribute("errMsg");
+	if(errMsg==null) errMsg = "";
+%>
  <body id="mimin" class="dashboard">
       <!-- start: Header -->
         
@@ -96,12 +99,7 @@
                                 <div class="panel-body text-white">
 									<div class="col-md-12 padding-0 text-center">
 									<!-- 로그인 부분 -->
-									<%
-										String errMsg = (String) session.getAttribute("errMsg");
-										if(errMsg==null) errMsg = "";
-										/* session.invalidate();
-										 */
-									%>
+
 									<form action="login" method="post">
 											<c:if test="${session_id eq null}">
 											<div class="login">
@@ -112,19 +110,22 @@
 											     	<input type="password" id="password" class="form-control border-bottom" name="password" placeholder="비밀번호" required style="margin-top:10px !important;"/>
 											     </div>
 												<input type="submit" class="btn" value="로그인" style="margin-top:10px !important;"/>
+												<div id="errMsg" style="color:red;"><%=errMsg %></div>
 											</div>
-											<div>
-												<span><a href="findId">아이디 찾기</a></span>
-												<span><a href="findPW">비밀번호 찾기</a></span>
+											<div style="color:black;">
+												<span><a href="forgotid">아이디 찾기</a></span>
+												<span><a href="forgotpass">비밀번호 찾기</a></span>
 												<span><a href="joinForm">회원가입</a></span>
 											</div>
 											<input type="submit" class="btn col-md-12" value="네이버 아이디로 로그인" style="margin-top:10px !important;"/>
+											
 											</c:if>
 											
 											<c:if test="${session_id ne null}">
 												<div>
 												<p>${session_id}님 환영합니다.</p>
-												<button id="logoutBtn" type="button"><a href="logout">로그아웃</a></button>
+												<input type="button" onclick="location.href='myPage/${session_id}'" value="마이페이지" class="btn col-md-12">
+												<input type="button" onclick="location.href='logout'" value="로그아웃" id="logoutBtn" class="btn col-md-12">
 												</div>
 											</c:if>
 										</form>
@@ -137,28 +138,41 @@
 								<div class="panel-heading bg-white border-none">
 									<h4>내 스크랩 글</h4>
 								</div>
-								<c:forEach var="post" items="${postListUserScrap}">
-									<div class="panel-body">
-										<div class="media">
-											<div class="media-left">
-												<span class="icon-folder icons" style="font-size: 2em;"></span>
-											</div>
-											<div class="media-body">
-												<h5 class="media-heading">${post.title}</h5>
-												<span>조회수:${post.viewCount}</span>
-												<span>작성일:${post.createDate}</span>
-												<span>스크랩수:${post.scrapCount}</span>
-												<div class="progress progress-mini">
-													<div class="progress-bar" role="progressbar"
-														aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"
-														style="width: 10%;">
-														<span class="sr-only">60% Complete</span>
+								<%
+										String scrapLoginErrMsg = (String) session.getAttribute("scrapLoginErrMsg");
+										String scrapNullMsg = (String) session.getAttribute("scrapNullMsg");
+								%>
+								<c:if test="${scrapLoginErrMsg ne null}">
+									${scrapLoginErrMsg}
+									<% session.invalidate();%>
+								</c:if>
+								<c:if test="${scrapNullMsg ne null}">
+									${scrapNullMsg}
+								</c:if>
+								<c:if test="${scrapLoginErrMsg eq null && scrapNullMsg eq null }">
+									<c:forEach var="post" items="${postListUserScrap}">
+										<div class="panel-body">
+											<div class="media">
+												<div class="media-left">
+													<span class="icon-folder icons" style="font-size: 2em;"></span>
+												</div>
+												<div class="media-body">
+													<h5 class="media-heading">${post.title}</h5>
+													<span>조회수:${post.viewCount}</span>
+													<span>작성일:${post.createDate}</span>
+													<span>스크랩수:${post.scrapCount}</span>
+													<div class="progress progress-mini">
+														<div class="progress-bar" role="progressbar"
+															aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"
+															style="width: 10%;">
+															<span class="sr-only">60% Complete</span>
+														</div>
 													</div>
 												</div>
 											</div>
 										</div>
-									</div>
-								</c:forEach>
+									</c:forEach>
+								</c:if>
 							</div>
 						</div>
 						<div class="col-md-12 padding-0"></div>

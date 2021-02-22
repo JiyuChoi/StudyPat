@@ -29,7 +29,7 @@ public class PostService {
 	@Autowired
 	private UserMapper userMapper;
 	
-	public List<Post> getCategoryPost(Paging paging, String category, String sort, String area){
+	public List<Post> getCategoryPost(Paging paging, String category, String sort, String area, String tag){
 		
 		if(("createDate").equals(sort)) { //최신순으로 정렬
 			sort = "create_date";
@@ -44,12 +44,11 @@ public class PostService {
 			sort = "scrap_count";
 		}
 	 
-		List<Post> postList = postMapper.getCategoryPost(Integer.toString(paging.getStart()), Integer.toString(paging.getEnd()), category, sort, area); // 게시글 가져오고
+		List<Post> postList = postMapper.getCategoryPost(Integer.toString(paging.getStart()), Integer.toString(paging.getEnd()), category, sort, area, tag); // 게시글 가져오고
 		for(Post post : postList) {
 			List<Tag> tagList = tagMapper.getTags(post.getPostNo());
 			post.setTagList(tagList);
 		}
-		
 		return postList;
 	}
 	
@@ -80,7 +79,7 @@ public class PostService {
 		return postMapper.getPostList();
 	}
 
-	public List<Post> getPostList(int userNo) {
+	public List<Post> getUserPostList(int userNo) {
 		return postMapper.getUserPostList(userNo);
 	}
 
@@ -90,7 +89,7 @@ public class PostService {
 	
 	@Transactional
 	public void uploadPost(Post post, String tags, String id) { //게시물, 태그 업로드 
-		int userNo = userMapper.getUserNo(id);
+		int userNo = userMapper.getUser(id).getUserNo();
 		post.setUserNo(userNo);
 		post.setViewCount(0);
 		post.setReport(0);
@@ -159,5 +158,9 @@ public class PostService {
 			tagList.add(t);
 		}
 		tagMapper.uploadTags(tagList); // 다시 태그 저장
+	}
+	
+	public int countPostTag(String category, String area, String tag) {
+		return postMapper.countPostTag(category, area, tag);
 	}
 }

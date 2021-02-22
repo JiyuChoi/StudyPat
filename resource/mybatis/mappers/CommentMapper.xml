@@ -13,7 +13,11 @@
 
 	<select id="getCommentList" resultMap="comm">
 		select * from sp_comment where post_no = #{postNo} order by 1
-	</select>	
+	</select>
+	
+	<select id="getUserCommentList" resultMap="comm">
+		select * from sp_comment where user_no = #{userNo} order by comment_no desc
+	</select>
 	
 	<insert id="addComment" parameterType="comment">
 		insert into 
