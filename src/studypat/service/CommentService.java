@@ -27,4 +27,8 @@ public class CommentService {
 		return commentMapper.addComment(comment);
 	}
 
+	public int deleteComment(int commentNo) {
+		return commentMapper.deleteComment(commentNo);
+	}
+
 }

@@ -158,24 +158,15 @@
 		});
 	};
 	
-	
-	function filterGenre(genre){
+	function delComm(commentNo) {
 		$.ajax({
-			url:"content/genre",
-			type:"get",
-			data: {"genre" : genre},
-			datatype:'json',
-			success : function(data){
-				$('#feed').empty();
-				var feed = "";
-				$.each(data, function (i, content) {
-	            });
-			},
-			error: function(e){
-				console.log(e);
+			type : "get",
+			url : "/studypat/comment/delete/" + commentNo,
+			success : function(data) {
+				getCommentList();
 			}
-		})
-	} 
+		});
+	};
 	
 	function getCommentList(){
 		$.ajax({
@@ -186,13 +177,20 @@
 		        $.each(data, function () {
 		        	str +="<div class='media'>"
 		            	+ "<div class='media-body'>"
-		            	+ "<h4 class='media-heading'>" + this.userNo + "</h4>"
- 		        	if(this.userNo == ${user.getUserNo()} || ${user.getAdmin()} == 1 || ${user.getUserNo()} == ${post.userNo}) {
- 		        		str += "<p>" + this.commentText + "</p>";
- 		        	}else {
-		 		    	str += "<p> 비밀 댓글 입니다. </p>";
-		 		    }
-			            str += "</div> </div>";
+		            	+ "<h4 class='media-heading'>" + this.user.nickName;
+		        		if(this.userNo == ${user.getUserNo()} || ${user.getAdmin()} == 1 ){
+		        			str += "<button onclick='delComm(" + this.commentNo + ")'>x</button>";
+		        		}
+		            str	+= "</h4>";
+			            if(this.secret == 1){
+			 		    	str += "<p> 비밀 댓글 입니다. </p>";
+		 		        	if(this.userNo == ${user.getUserNo()} || ${user.getAdmin()} == 1 || ${user.getUserNo()} == ${post.userNo}) {
+		 		        		str += "<p>" + this.commentText + "</p>";
+				 		    }
+			            }else{
+	 			        		str += "<p>" + this.commentText + "</p>";
+		    	        }
+	        		str += "</div> </div>";
 	            });
 		        $("#commList").html(str);
 		      }
@@ -210,14 +208,15 @@
 			}else {
 				secret = '0';
 			}
+			console.log(secret);
 			$.ajax({
 				type : "post",
 				url : "/studypat/comment/add",
 				data : {
-					"userNo" : userNo,
-					"postNo" : postNo,
-					"commentText" : commentText,
-					"secret" : secret
+					userNo,
+					postNo,
+					commentText,
+					secret
 				}, complete : function() {
 					$('textarea[name=commentText]').val('');
  					$("input[type=checkbox]").prop("checked", false);

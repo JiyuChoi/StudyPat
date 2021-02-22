@@ -34,6 +34,12 @@ public class CommentController {
 		return commentService.addComment(comment);
 	}
 	
+	@GetMapping("/delete/{commentNo}")
+	@ResponseBody
+	public int deleteComment(@PathVariable("commentNo") int commentNo) {
+		return commentService.deleteComment(commentNo);
+	}
+	
 	// user Comment 가져오기
 	@GetMapping("/myComment/{userNo}")
 	public String getUserCommentList(@PathVariable(name="userNo") int userNo, Model model) {
