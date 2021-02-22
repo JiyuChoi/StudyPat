@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import studypat.dto.Post;
@@ -125,6 +126,7 @@ public class PostController {
 
 	@GetMapping("/post/{postNo}")
 	public String getPost(@PathVariable("postNo") int postNo, Model model) {
+		postService.addView(postNo);
 		model.addAttribute("post", postService.getPost(postNo));
 		return "post/detailPost";
 	}
@@ -156,5 +158,10 @@ public class PostController {
 		return "user/userPost";
 	}
 
+	@GetMapping("/post/report/{postNo}")
+	@ResponseBody
+	public void reportPost(@PathVariable("postNo") int postNo) {
+		postService.reportPost(postNo);
+	}
 }
 

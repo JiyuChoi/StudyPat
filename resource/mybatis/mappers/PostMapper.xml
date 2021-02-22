@@ -165,5 +165,17 @@
 		where p.post_no = t.post_no and t.tag_name = #{tag} and category= #{category}
 		<if test="area != 'all'"> and area = #{area}</if>
 	 </select>
+	 
+	 <update id="addView">
+	 	update sp_post set
+	 	view_count = view_count + 1
+	 	where post_no = #{postNo}
+	 </update>
+
+	 <update id="reportPost">
+	 	update sp_post set
+	 	report = report + 1
+	 	where post_no = #{postNo}
+	 </update>
 </mapper>
 
