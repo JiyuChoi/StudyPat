@@ -6,6 +6,7 @@
 		<result column="user_no" property="userNo"/>
 	</resultMap>
 
+
 	<insert id = "join" parameterType = "studypat.dto.User">
 		insert into 
 		sp_user(id, password, email, nickname, admin) 
@@ -22,19 +23,19 @@
 	
 	<update id="updateUser" parameterType="studypat.dto.User">
 		update sp_user
-		set nickName = #{nickName} password = #{password}
-		where user_no=#{userNo}
+		set nickname = #{nickName}, password = #{password}
+		where id=#{id}
 	</update>
 
-	<select id ="findId" parameterType="String" resultType="java.lang.String">
-		select * from sp_user where email = #{email}
+	<select id ="forgotid" parameterType="String" resultType="java.lang.String">
+		select id from sp_user where email = #{email}
 	</select>
 	
-	<select id ="findPw" resultType="studypat.dto.User">
+	<select id ="forgotpass" resultType="studypat.dto.User">
 		select * from sp_user where id = #{id} and email = #{email}
 	</select>
 	
-	<update id="getTempPw" parameterType="studypat.dto.User">
+	<update id="getTempPW" parameterType="studypat.dto.User">
 		update sp_user
 		set password = #{password}
 		where id=#{id} and email=#{email}
@@ -47,5 +48,6 @@
 	<delete id="deleteUser">
 		delete sp_user where user_no = #{userNo}
 	</delete>
+
 
 </mapper>

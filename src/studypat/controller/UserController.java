@@ -2,6 +2,7 @@ package studypat.controller;
 
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import studypat.dto.User;
+import studypat.service.PostService;
 import studypat.service.UserService;
 
 @Controller
@@ -28,6 +30,9 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private PostService postService;
 
 	
 	@GetMapping("/joinForm")
@@ -51,7 +56,6 @@ public class UserController {
 		return "main";
 	}
 	
-	
 //	@PostMapping("/login")
 //	public String login(User user, HttpSession session, RedirectAttributes rttr) {
 //		User loginUser = userService.login(user);
@@ -66,12 +70,13 @@ public class UserController {
 	@PostMapping("/login")
 	public String login(@RequestParam(name="id", required=true) String id,
 						@RequestParam(name="password", required=true) String password,
-						HttpSession session, RedirectAttributes redirectAttributes) {
+						Model model, HttpSession session) {
 		try {
 			if(userService.getUser(id).getPassword().equals(password)) {
 				session.setAttribute("session_id", id);
 				session.setAttribute("session_pw", password);
 				session.setAttribute("user", userService.getUser(id));
+
 				return "redirect:/";
 			}else {
 				session.setAttribute("errMsg", "비밀번호가 틀렸습니다.");
@@ -84,101 +89,79 @@ public class UserController {
 	}
 	
 	@GetMapping("/logout")
-	public String logout(User user, Model model, HttpSession session) {
+	public String logout(User user, HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
 	}
 	
-	@GetMapping("/{id}")
-	public String getUser(@PathVariable(name="id") String id, ModelMap model) {
-		User user = userService.getUser(id);
-		model.addAttribute("user", user);
-		return "userPage";
+	// 유저정보 (마이페이지)
+	@GetMapping("/myPage/{id}")
+	public String updateUserForm(@PathVariable(name="id") String id, Model model) {
+		model.addAttribute("user", userService.getUser(id));
+		return "user/userPage";
 	}
 	
-	@PostMapping("/updateProfile")
-	public String updateProfile(@SessionAttribute("id") String id,
-			@RequestParam("user_password") String user_password, @RequestParam("user_nickname") String update_user_nickname,
-			@RequestParam("update_user_password") String update_user_password,
-			HttpSession session,HttpServletResponse response) throws IOException {
-
-		User currentUser = userService.getUser(id);
-		User updateUser = currentUser;
-		
-		if(("").equals(update_user_password) && ("").equals(user_password)) { // 자기소개만 변경된 경우
-			if(update_user_nickname == null) { // Null인경우 공백 넣기..
-				update_user_nickname = "";
-			}
-			updateUser.setNickName(update_user_nickname); 
-			userService.updateUser(updateUser);
-			return "redirect:/"+id;
-		}
-		else if(!currentUser.getPassword().equals(user_password)) { //현재 비밀번호가 일치하지 않는 경우
-			session.setAttribute("passwordErrMsg", "비밀번호가 일치하지 않습니다.");
-			return "redirect:/"+id;
-		}
-		else if(("").equals(update_user_password)) { //현재 비밀번호는 일치하지만 변경할 비밀번호가 없는 경우.
-			session.setAttribute("updateErrMsg", "변경할 비밀번호를 입력해주세요.");
-			return "redirect:/"+id;
-		}
-		
-		updateUser.setPassword(update_user_password);
-		updateUser.setNickName(update_user_nickname);
-		userService.updateUser(updateUser);
-		
-		return "redirect:/"+id;
+	// 유저정보 수정
+	@PostMapping("/myPage/updateUser")
+	public String updateUser(@ModelAttribute User user, @RequestParam("password") String password, @RequestParam("updatePassword") String updatePassword,
+			HttpSession session, HttpServletResponse response, RedirectAttributes rttr) throws IOException {
+		userService.updateUser(user, password, updatePassword, response, rttr);
+	return "redirect:/myPage/" + user.getId();
 	}
 	
 		
-	@GetMapping("/delete")
-	public String deleteUser(@SessionAttribute("user_no") int userNo, HttpSession session) {
+	@GetMapping("/mypage/delete/{userNo}")
+	public String deleteUser(@PathVariable("userNo") int userNo, User user, HttpSession session) {
 		userService.deleteUser(userNo);
 		session.invalidate();
 		return "redirect:/";
 	}
 	
 	//아이디 찾기
-	@GetMapping("/findId")
-	public ModelAndView findId() {
-		return new ModelAndView("forgotid");
+	@GetMapping("/forgotid")
+	public String forgotid() {
+		return "forgotid";
 	}
 	
-	@PostMapping("/findId")
-	public String findId(@RequestParam(name="email") String email, HttpSession session) {
-		try {
-			session.setAttribute("email", email);
-			return userService.findId(email);
-		} catch(NullPointerException e) {
+	@PostMapping("/forgotid")
+	public String forgotid(@RequestParam(name="email") String email, HttpSession session) {
+		String findId = userService.forgotid(email);
+		if (findId != null) {
+			session.setAttribute("findID", findId);
+		}else {
 		session.setAttribute("errMsg", "존재하지 않는 이메일 입니다.");
-		return "redirect:/forgotId";
 		}
+		return "forgotid";
+		
 	}
 	
 		
 	// 비밀번호 찾기
-	@GetMapping("/findPW")
-	public ModelAndView findPW() {
+	@GetMapping("/forgotpass")
+	public ModelAndView forgotpass() {
 		return new ModelAndView("forgotpass");
 	}
 	
-	@PostMapping("/findPW")
-	public String findPW(@ModelAttribute User user,
+	@PostMapping("/forgotpass")
+	public String forgotpass(@ModelAttribute User user,
 			@RequestParam(name="id")String id,
 			@RequestParam(name="email") String email, 
-			HttpSession session, HttpServletResponse response) {
+			HttpSession session, HttpServletResponse response,
+			RedirectAttributes rttr) {
 		try {
 			if(userService.getUser(id).getEmail().equals(email)) {
 				session.setAttribute("session_id", id);
 				session.setAttribute("email", email);
-				return userService.findPW(response, user);
+				rttr.addFlashAttribute("success", true);
+				return userService.forgotpass(response, session, user);
 			}else {
 				session.setAttribute("errMsg", "이메일이 틀렸습니다.");
-				return "redirect:/forgotpass";
+				return "redirect:/forgotpassForm";
 			}
 		} catch(NullPointerException e) {
 			System.out.println(e);
 			session.setAttribute("errMsg", "존재하지 않는 아이디 입니다.");
-			return "redirect:/forgotpass";
+			return "redirect:/forgotpassForm";
 		}
 	}
 	
