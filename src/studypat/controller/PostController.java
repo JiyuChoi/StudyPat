@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import studypat.dto.Post;
+import studypat.dto.User;
 import studypat.service.CommentService;
 import studypat.service.PostService;
 import studypat.service.UserService;
@@ -39,7 +40,13 @@ public class PostController {
 		List<Post> postListLatest = postService.getPostListLatest();//최신 게시물 가져오기
 		List<Post> postListUserScrap = new ArrayList<Post>();
 		
-		String userId = (String) session.getAttribute("session_id");
+		String userId = null;
+		
+		if(session.getAttribute("user") != null){
+			User user = (User) session.getAttribute("user");
+			userId = user.getId();
+		}
+		
 		int postSize=0;
 		if(userId == null) { // 로그인이 되어있지 않은 경우 
 			model.addAttribute("scrapLoginErrMsg", "로그인을 해주세요");
