@@ -1,120 +1,131 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	
-	<meta charset="utf-8">
-	<meta name="description" content="Miminium Admin Template v.1">
-	<meta name="author" content="Isna Nur Azis">
-	<meta name="keyword" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>StudyPat</title>
- 
-    <!-- start: Css -->
-    <link rel="stylesheet" type="text/css" href="asset/css/bootstrap.min.css">
 
-      <!-- plugins -->
-      <link rel="stylesheet" type="text/css" href="asset/css/plugins/font-awesome.min.css"/>
-      <link rel="stylesheet" type="text/css" href="asset/css/plugins/simple-line-icons.css"/>
-      <link rel="stylesheet" type="text/css" href="asset/css/plugins/animate.min.css"/>
-      <link rel="stylesheet" type="text/css" href="asset/css/plugins/fullcalendar.min.css"/>
-	<link href="asset/css/style.css" rel="stylesheet">
-	<!-- end: Css -->
+<meta charset="utf-8">
+<meta name="description" content="Miminium Admin Template v.1">
+<meta name="author" content="Isna Nur Azis">
+<meta name="keyword" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StudyPat</title>
 
-	<link rel="shortcut icon" href="asset/img/logomi.png">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
+<!-- start: Css -->
+<link rel="stylesheet" type="text/css"
+	href="asset/css/bootstrap.min.css">
+
+<!-- plugins -->
+<link rel="stylesheet" type="text/css"
+	href="asset/css/plugins/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="asset/css/plugins/simple-line-icons.css" />
+<link rel="stylesheet" type="text/css"
+	href="asset/css/plugins/animate.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="asset/css/plugins/fullcalendar.min.css" />
+<link href="asset/css/style.css" rel="stylesheet">
+<!-- end: Css -->
+
+<link rel="shortcut icon" href="asset/img/logomi.png">
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
+</head>
 <%
 	String errMsg = (String) session.getAttribute("errMsg");
-	if(errMsg==null) errMsg = "";
+if (errMsg == null)
+	errMsg = "";
 %>
- <body id="mimin" class="dashboard">
-      <!-- start: Header -->
-        
-      <!-- end: Header -->
+<body id="mimin" class="dashboard">
+	<!-- start: Header -->
 
-      <div class="container-fluid mimin-wrapper">
-          <!-- start:Left Menu -->
- 			<jsp:include page="/WEB-INF/views/nav.jsp"/> 
-          <!-- end: Left Menu -->
-          <!-- start: content -->
-            <div id="content">
+	<!-- end: Header -->
+
+	<div class="container-fluid mimin-wrapper">
+		<!-- start:Left Menu -->
+		<jsp:include page="/WEB-INF/views/nav.jsp" />
+		<!-- end: Left Menu -->
+		<!-- start: content -->
+		<div id="content">
 			<div class="col-md-12" style="padding: 20px;">
 				<div class="col-md-12 padding-0">
 					<div class="col-md-8 padding-0">
-						<div class="col-md-12" style="width:900px">
+						<div class="col-md-12 padding-0">
 							<div class="panel box-v4">
 								<div class="panel-heading bg-white border-none">
 									<h4>
-										<span class="icon-notebook icons"></span> 스터디 모집글
+										<span class="fa-bullhorn fa"> 스터디 모집글</span> 
 									</h4>
 								</div>
 							</div>
 						</div>
-						<c:forEach var="post" items="${postListLatest}">
-						<div class="col-md-12 col-sm-12 profile-v1-wrapper" style="width:900px">
-							<div class="panel box-v7" >
-								<div class="panel-body">
-									<div class="col-md-12 padding-0 box-v7-header">
-										<div class="col-md-12 padding-0">
-											<div class="col-md-10 padding-0">
-												<c:forEach var="tag" items="${post.tagList}">
-													<span class="badge-info">${tag.tagName}</span>
-												</c:forEach>
-												<h4>${post.title}</h4>
-												<span>${post.userNickName}</span>
-												<span>조회수:${post.viewCount}</span>
-												<span>지역:${post.area}</span>
-												<span>작성일:${post.createDate}</span>
-												<span>댓글수:${post.commentCount}</span>
-												<span>스크랩수:${post.scrapCount}</span>
-											</div>
-										</div>
+						<div class="col-md-12 padding-0">
+							<c:forEach var="post" items="${postListLatest}">
+								<div class="panel box-v4">
+									<div class="panel-heading bg-white border-none">
+										<c:forEach var="tag" items="${post.tagList}">
+											<span class="badge-info">${tag.tagName}</span>
+										</c:forEach>
+										<h4>${post.title}</h4>
+										<span>${post.userNickName}</span> <span>조회수:${post.viewCount}</span>
+										<span>지역:${post.area}</span> <span>작성일:${post.createDate}</span>
+										<span>댓글수:${post.commentCount}</span> <span>스크랩수:${post.scrapCount}</span>
 									</div>
 								</div>
-							</div>
+							</c:forEach>
 						</div>
-					</c:forEach> 
-				</div>
+					</div>
 					<div class="col-md-4">
-						 <div class="col-md-12 padding-0">
-                              <div class="panel bg-light-blue">
-                                <div class="panel-body text-white">
+						<div class="col-md-12 padding-0">
+							<div class="panel box-v2">
+								<div class="panel-body loginForm">
 									<div class="col-md-12 padding-0 text-center">
-									<!-- 로그인 부분 -->
-
-									<form action="login" method="post">
+										<form action="login" method="post">
 											<c:if test="${session_id eq null}">
-											<div class="login">
-											     <div class="col-sm-10">
-											     	<input type="text" id="id" class="form-control border-bottom" name="id" placeholder="아이디" required>
-											     </div>
-											     <div class="col-sm-10">
-											     	<input type="password" id="password" class="form-control border-bottom" name="password" placeholder="비밀번호" required style="margin-top:10px !important;"/>
-											     </div>
-												<input type="submit" class="btn" value="로그인" style="margin-top:10px !important;"/>
-												<div id="errMsg" style="color:red;"><%=errMsg %></div>
-											</div>
-											<div style="color:black;">
-												<span><a href="forgotid">아이디 찾기</a></span>
-												<span><a href="forgotpass">비밀번호 찾기</a></span>
-												<span><a href="join">회원가입</a></span>
-											</div>
-											<!-- <button class="btn col-md-12" value="네이버 아이디로 로그인" style="margin-top:10px !important;"> </button> -->
-											
+												<div class="login"
+													style="overflow: hidden;">
+													<div class="col-sm-10" style="margin: 5px 0;">
+														<input type="id" id="id"
+															class="form-control border-bottom" name="id"
+															placeholder="아이디" required>
+													</div>
+													<div class="col-sm-10">
+														<input type="password" id="password"
+															class="form-control border-bottom" name="password"
+															placeholder="비밀번호" required>
+													</div>
+
+													<input type="submit" class="btn" value="로그인"
+														style="margin-top: 5px; padding: 26px 10px; position: absoulte; top: 5px; right: 0;" />
+													
+												</div>
+												<div style="padding:10px 25px; text-align: left; position: relative;">
+													<span class="icon-lock">
+														<a href="forgotid" style="color:#fff !important;">아이디 찾기 </a>
+														<a href="forgotpass" style="color:#fff !important;"> 비밀번호 찾기</a>
+													</span> 
+													<span class="icon-user" style="position: absolute; top:10px; right: 80px;">
+														<a href="join" style="color:#fff !important;">회원가입</a>
+													</span>
+												</div>
+												<div id="errMsg" style="color: black; margin-bottom:10px;"><%=errMsg%></div>
+												<!-- <button class="btn col-md-12" value="네이버 아이디로 로그인" style="margin-top:10px !important;"> </button> -->
 											</c:if>
-											
+
 											<c:if test="${session_id ne null}">
-												<div>
-												<p>${user.nickName}님 환영합니다.</p>
-												<input type="button" onclick="location.href='myPage/${user.userNo}'" value="마이페이지" class="btn col-md-12">
-												<input type="button" onclick="location.href='logout'" value="로그아웃" id="logoutBtn" class="btn col-md-12">
+												<div style="padding-bottom:15px;">
+													<button type="button" onclick="location.href='myPage/${user.userNo}'"
+														class="btn btn-default">
+														<span class=" icon-emotsmile"> 마이페이지</span>
+													</button>
+													<button  type="button" onclick="location.href='logout'"
+														id="logoutBtn" class="btn btn-default">
+														<span class="icon-logout"> 로그아웃</span>
+													</button>
 												</div>
 											</c:if>
 										</form>
@@ -122,23 +133,23 @@
 								</div>
 							</div>
 						</div>
+
 						<div class="col-md-12 padding-0">
 							<div class="panel box-v3">
 								<div class="panel-heading bg-white border-none">
 									<h4>내 스크랩 글</h4>
 								</div>
-							<%-- 	<%
-										String scrapLoginErrMsg = (String) session.getAttribute("scrapLoginErrMsg");
-										String scrapNullMsg = (String) session.getAttribute("scrapNullMsg");
-								%> --%>
 								<c:if test="${scrapLoginErrMsg ne null}">
 									${scrapLoginErrMsg}
-									<% session.invalidate();%>
+									<%
+										session.invalidate();
+									%>
 								</c:if>
 								<c:if test="${scrapNullMsg ne null}">
 									${scrapNullMsg}
 								</c:if>
-								<c:if test="${scrapLoginErrMsg eq null && scrapNullMsg eq null }">
+								<c:if
+									test="${scrapLoginErrMsg eq null && scrapNullMsg eq null }">
 									<c:forEach var="post" items="${postListUserScrap}">
 										<div class="panel-body">
 											<div class="media">
@@ -147,8 +158,7 @@
 												</div>
 												<div class="media-body">
 													<h5 class="media-heading">${post.title}</h5>
-													<span>조회수:${post.viewCount}</span>
-													<span>작성일:${post.createDate}</span>
+													<span>조회수:${post.viewCount}</span> <span>작성일:${post.createDate}</span>
 													<span>스크랩수:${post.scrapCount}</span>
 												</div>
 											</div>
@@ -157,31 +167,39 @@
 								</c:if>
 							</div>
 						</div>
-						<div class="col-md-12 padding-0"></div>
 					</div>
 				</div>
+			</div>
 		</div>
-      </div>
 	</div>
-    <!-- start: Javascript -->
-    <script src="asset/js/jquery.min.js"></script>
-    <script src="asset/js/jquery.ui.min.js"></script>
-    <script src="asset/js/bootstrap.min.js"></script>
-   
-    
-    <!-- plugins -->
-    <script src="asset/js/plugins/moment.min.js"></script>
-    <script src="asset/js/plugins/fullcalendar.min.js"></script>
-    <script src="asset/js/plugins/jquery.nicescroll.js"></script>
-    <script src="asset/js/plugins/jquery.vmap.min.js"></script>
-    <script src="asset/js/plugins/maps/jquery.vmap.world.js"></script>
-    <script src="asset/js/plugins/jquery.vmap.sampledata.js"></script>
-    <script src="asset/js/plugins/chart.min.js"></script>
+
+	<!-- start: Javascript -->
+	<script src="asset/js/jquery.min.js"></script>
+	<script src="asset/js/jquery.ui.min.js"></script>
+	<script src="asset/js/bootstrap.min.js"></script>
 
 
-    <!-- custom -->
-     <script src="asset/js/main.js"></script>
-     <script type="text/javascript">
+	<!-- plugins -->
+	<script src="asset/js/plugins/moment.min.js"></script>
+	<script src="asset/js/plugins/fullcalendar.min.js"></script>
+	<script src="asset/js/plugins/jquery.nicescroll.js"></script>
+	<script src="asset/js/plugins/jquery.vmap.min.js"></script>
+	<script src="asset/js/plugins/maps/jquery.vmap.world.js"></script>
+	<script src="asset/js/plugins/jquery.vmap.sampledata.js"></script>
+	<script src="asset/js/plugins/chart.min.js"></script>
+
+
+	<!-- custom -->
+	<script type="text/javascript">
+	function doLogin() {
+		var errMsg = '<%=errMsg%>';
+		if (errMsg !== "") {
+			alert(errMsg);
+		}
+	}
+	</script> 
+	<script src="asset/js/main.js"></script>
+	<script type="text/javascript">
       (function(jQuery){
 
         // start: Chart =============
@@ -455,11 +473,8 @@
 
       })(jQuery);
      </script>
-  <!-- end: Javascript -->
-
-  </body>
+	<!-- end: Javascript -->
+</body>
 <style>
- 
- 
 </style>
 </html>

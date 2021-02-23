@@ -47,7 +47,7 @@
 		</div>
  
 			<c:forEach var="comment" items="${commentListUser}">
-				<div class="col-md-12 col-sm-12 profile-v1-wrapper" style="width:900px; postion:absolute; top:10px; left:30px;">
+				<div class="col-md-12 col-sm-12 profile-v1-wrapper" style="width:900px; postion:absolute; top:10px; left:15px;">
 					<div class="panel box-v7" >
 						<div class="panel-body">
 							<div class="col-md-12 padding-0 box-v7-header">

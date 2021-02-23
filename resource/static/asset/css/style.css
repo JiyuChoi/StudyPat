@@ -3,8 +3,8 @@
  */
 
 body {
-  font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 13px;
+  font-family: "Nanum Barun Gothic","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
   background-color:#f0f3f4;
   line-height: 1.42857143 !important;
   color: #58666e !important;
@@ -17,7 +17,7 @@ a:hover {
   -ms-text-decoration: none;
   -o-text-decoration: none;
   text-decoration: none;
-  color: #58666e !important; 
+  color: #58666e;
   font-weight: bold;
 }
 
@@ -59,7 +59,7 @@ select{
   padding-right: 20px;
 }
 
-label{ font-weight:400; }
+label{ font-weight:700; }
 
 
 th { border-bottom: none !important; }
@@ -2742,10 +2742,10 @@ ul li a:focus {
         border: 3px solid #fff;
       }
     .box-v2 .panel-body{
-      background: #E30049;
+      background: #2196F3;
       color: #fff;
       line-height: 0;
-      padding-bottom: 30px;
+      padding-bottom: 10px;
     }
 
 /*start: box v-3*/
@@ -6488,4 +6488,12 @@ ul li a:focus {
     display: none;
   }
 
+	.col-sm-10{
+	padding: 0 2px 0 0
+	}
+}
+
+.myPagebtn {
+	float:right;
+	margin-top: 20px;
 }

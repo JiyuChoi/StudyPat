@@ -4,7 +4,7 @@
 	<%@ page import="java.util.*"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 
   <meta charset="utf-8">
@@ -12,7 +12,7 @@
   <meta name="author" content="Isna Nur Azis">
   <meta name="keyword" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Miminium</title>
+  <title>Detail Post</title>
 
   <!-- start: Css -->
   <link rel="stylesheet" type="text/css" href="../asset/css/bootstrap.min.css">
@@ -39,7 +39,7 @@
  <div id="content" class="profile-v1">
  <div class="col-md-12 col-sm-12 profile-v1-wrapper">
 	<div class="panel box-v7">
-		<div class="panel-body">
+		<div class="panel-body detailPost">
 			<div class="col-md-12 padding-0 box-v7-header">
 				<div class="col-md-12 padding-0">
 					<div class="col-md-10 padding-0">
