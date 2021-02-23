@@ -67,7 +67,7 @@
 								<div class="form-group">
 									<label class="col-sm-2 control-label text-right">현재 비밀번호</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control"  name="password" id="password">
+										<input type="text" class="form-control"  name="password" id="password" required>
 									</div>
 								</div>
 								
@@ -102,7 +102,7 @@
 
 									<div class="media">
 										<div class="media-left">
-											<span class="icon-folder icons" style="font-size: 2em;"></span>
+											<span class="icon-note icons" style="font-size: 2em;"></span>
 										</div>
 										<div class="media-body">
 											<h5 class="media-heading"><a href="/studypat/post/myPost/${user.userNo}">내가 쓴 글</a></h5>
@@ -111,7 +111,7 @@
 
 									<div class="media">
 										<div class="media-left">
-											<span class="icon-pie-chart icons" style="font-size: 2em;"></span>
+											<span class="icon-bubbles icons" style="font-size: 2em;"></span>
 										</div>
 										<div class="media-body">
 											<h5 class="media-heading"><a href="/studypat/comment/myComment/${user.userNo}">댓글 단 글</a></h5>
@@ -120,7 +120,7 @@
 
 									<div class="media">
 										<div class="media-left">
-											<span class="icon-energy icons" style="font-size: 2em;"></span>
+											<span class="icon-folder icons" style="font-size: 2em;"></span>
 										</div>
 										<div class="media-body">
 											<h5 class="media-heading"><a href="/studypat/post/myScrap/${user.userNo}">스크랩</a></h5>
