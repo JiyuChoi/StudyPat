@@ -28,7 +28,6 @@ public class UserService {
 	@Transactional(readOnly = false)
 	public int join(User user) {
 		int result = userMapper.join(user);
-		System.out.println(user.toString());
 		return result;
 	}
 	
@@ -149,6 +148,16 @@ public class UserService {
 
 	public void deleteUser(int userNo) {
 		userMapper.deleteUser(userNo);
+	}
+	
+	// 중복 아이디 체크
+	public int userIdCheck(String id) {
+		return userMapper.checkOverId(id);
+		}
+
+	// 중복 이메일 체크
+	public int userEmailCheck(String email) {
+		return userMapper.checkOverEmail(email);
 	}
 
 }

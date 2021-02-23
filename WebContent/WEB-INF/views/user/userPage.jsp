@@ -123,7 +123,7 @@
 											<span class="icon-energy icons" style="font-size: 2em;"></span>
 										</div>
 										<div class="media-body">
-											<h5 class="media-heading">스크랩</h5>
+											<h5 class="media-heading"><a href="/studypat/post/myScrap/${user.userNo}">스크랩</a></h5>
 										</div>
 									</div>
 								</div>
@@ -161,7 +161,7 @@
 				<!-- custom -->
 				<script>
 		         <c:if test="${updateSuccess == false}">
-		            alert("비밀번호가 수정되었습니다.");	
+		            alert("비밀번호가 변경되었습니다.");	
          		</c:if>
      			</script>
      			

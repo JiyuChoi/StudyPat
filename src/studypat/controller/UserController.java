@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -35,19 +36,18 @@ public class UserController {
 	private PostService postService;
 
 	
-	@GetMapping("/joinForm")
+	@GetMapping("/join")
 	public String joinForm() {
 		return "join";
 	}
 	
 	@PostMapping("/join")
-	public String join(@ModelAttribute User user, HttpSession session) {
+	public String join(@ModelAttribute User user) {
 		try {
 			userService.join(user);
 			return "redirect:/";
 		}catch(DuplicateKeyException e) {
-			session.setAttribute("errMsg", "이미 존재하는 아이디 입니다.");
-			return "redirect:/joinForm";
+			return "redirect:/join";
 		}
 	}
 	
@@ -95,8 +95,9 @@ public class UserController {
 	}
 	
 	// 유저정보 (마이페이지)
-	@GetMapping("/myPage/{id}")
-	public String updateUserForm(@PathVariable(name="id") String id, Model model) {
+	@GetMapping("/myPage/{userNo}")
+	public String updateUserForm(@PathVariable(name="userNo") String userNo, Model model, HttpSession session) {
+		String id = (String) session.getAttribute("session_id");
 		model.addAttribute("user", userService.getUser(id));
 		return "user/userPage";
 	}
@@ -165,6 +166,19 @@ public class UserController {
 		}
 	}
 	
+	// id 중복 체크 컨트롤러
+	@GetMapping("/join/idCheck")
+	@ResponseBody
+	public int idCheck(@RequestParam("id") String id) {
+		return userService.userIdCheck(id);
+	}
+	
+	// id 중복 체크 컨트롤러
+	@GetMapping("/join/emailCheck")
+	@ResponseBody
+	public int email(@RequestParam("email") String email) {
+		return userService.userEmailCheck(email);
+	}
 	
 
 }

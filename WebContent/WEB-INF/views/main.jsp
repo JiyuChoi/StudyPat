@@ -115,7 +115,7 @@
 											<div style="color:black;">
 												<span><a href="forgotid">아이디 찾기</a></span>
 												<span><a href="forgotpass">비밀번호 찾기</a></span>
-												<span><a href="joinForm">회원가입</a></span>
+												<span><a href="join">회원가입</a></span>
 											</div>
 											<input type="submit" class="btn col-md-12" value="네이버 아이디로 로그인" style="margin-top:10px !important;"/>
 											
@@ -123,8 +123,8 @@
 											
 											<c:if test="${session_id ne null}">
 												<div>
-												<p>${session_id}님 환영합니다.</p>
-												<input type="button" onclick="location.href='myPage/${session_id}'" value="마이페이지" class="btn col-md-12">
+												<p>${user.nickName}님 환영합니다.</p>
+												<input type="button" onclick="location.href='myPage/${user.userNo}'" value="마이페이지" class="btn col-md-12">
 												<input type="button" onclick="location.href='logout'" value="로그아웃" id="logoutBtn" class="btn col-md-12">
 												</div>
 											</c:if>

@@ -125,13 +125,6 @@
 									</div>
 								</div>
 								
-								<div class="form-group">
-									<label class="col-sm-2 control-label text-right">사용자 닉네임</label> <!-- 굳이 있어야 할까요?  -->
-									<div class="col-sm-10">
-										<input type="text" class="form-control">
-									</div>
-								</div>
-								
 								
 								<div class="form-group">
 									<label class="col-sm-2 control-label text-right">태그</label>

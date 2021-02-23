@@ -151,7 +151,7 @@ public class PostController {
 	}
 	
 	// user Post 가져오기
-	@GetMapping("post/myPost/{userNo}")
+	@GetMapping("/post/myPost/{userNo}")
 	public String getUserPostList(@PathVariable(name="userNo") int userNo, Model model) {
 		List<Post> postListUser = postService.getUserPostList(userNo);
 		model.addAttribute("postListUser", postListUser);
@@ -162,6 +162,14 @@ public class PostController {
 	@ResponseBody
 	public void reportPost(@PathVariable("postNo") int postNo) {
 		postService.reportPost(postNo);
+	}
+	
+	// user ScrapPost 가져오기
+	@GetMapping("/post/myScrap/{userNo}")
+	public String getUserScrapPost(@PathVariable(name="userNo") int userNo, Model model) {
+		List<Post> scrapListUser = postService.getUserScrapPost(userNo);
+		model.addAttribute("scrapListUser", scrapListUser);
+		return "user/userScrap";
 	}
 }
 
