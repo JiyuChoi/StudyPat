@@ -43,22 +43,22 @@ session.invalidate();
         <form class="form-signin" action="forgotid" method="post">
           <div class="panel periodic-login">
               <div class="panel-body text-center">
-                  <h1 class="atomic-symbol">StudyPat</h1>
+					<h1 class="atomic-symbol">StudyPat</h1>
  					<p class="element-name">아이디 찾기</p>
                   <div class="form-group form-animate-text" style="margin-top:40px !important;">
                     <input type="text" class="form-text" name="email" required>
                     <span class="bar"></span>
                     <label>Email</label>
-                    <p>Input your email to find your ID</p>
+                    <p>가입시 사용한 이메일을 입력하세요</p>
                   </div>
 				<div id="errMsg" style="color:red;"><%=errMsg %></div>
-                  <input type="submit" class="btn col-md-12" value="Find ID"/>
+                  <input type="submit" class="btn col-md-12" value="아이디 찾기"/>
 			
               </div>
              
                 <div class="text-center" style="padding:5px;">
                     <a href="/studypat/">로그인</a> | 
-                    <a href="joinForm">회원가입</a>
+                    <a href="join">회원가입</a>
                 </div>
           </div>
         </form>

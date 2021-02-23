@@ -24,7 +24,7 @@
 	</resultMap>
 
 	<select id="getCommentList" resultMap="comm">
-		select * from sp_comment join sp_user using(user_no) where post_no = #{postNo} order by 1
+		select * from sp_comment join sp_user using(user_no) where post_no = #{postNo} order by comment_no
 	</select>
 	
 	<select id="getUserCommentList" resultMap="comm">

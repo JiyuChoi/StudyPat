@@ -31,6 +31,10 @@
 		if(session.getAttribute("user") != null){
 			studypat.dto.User user = (studypat.dto.User) session.getAttribute("user");
 			session.setAttribute("loginUser",user);
+			session.setAttribute("login", true);
+		}else {
+			session.setAttribute("loginUser",null);
+			session.setAttribute("login", false);
 		}
 	%>
 
@@ -56,6 +60,17 @@
 						</div>
 					</li>
 				</ul>
+				<ul class="nav navbar-nav navbar-right user-nav">
+					<li class="user-name">
+						<span> 
+							<c:if test="${loginUser ne null}">
+									<a href="myPage/${loginUser.getNickName()}">
+										${loginUser.getNickName()}님 환영합니다. </a>
+							</c:if>
+						</span>
+					</li>
+				</ul>
+
 			</div>
 		</div>
 	</nav>
@@ -65,28 +80,28 @@
 			<ul class="nav nav-list">
 				<li class="ripple">
 					<a class="tree-toggle nav-header" onclick="location.href='/studypat/category?category=어학'"> 
-						<span class="fa-diamond fa"></span> 
+						<span class="fa-language fa"></span> 
 						어학 
 						<span class="fa-angle-right fa right-arrow text-right"></span>
 					</a>
 				</li>
 				<li class="ripple">
 					<a class="tree-toggle nav-header" onclick="location.href='/studypat/category?category=취업'"> 
-						<span class="fa-diamond fa"></span> 
+						<span class="fa-black-tie fa"></span> 
 						취업
 						<span class="fa-angle-right fa right-arrow text-right"></span>
 					</a>
 				</li>
 				<li class="ripple">
 					<a class="tree-toggle nav-header" onclick="location.href='/studypat/category?category=공시/공무원'"> 
-						<span class="fa-diamond fa"></span> 
+						<span class="fa-balance-scale fa"></span> 
 						공시/공무원
 						<span class="fa-angle-right fa right-arrow text-right"></span>
 					</a>
 				</li>
 				<li class="ripple">
 					<a class="tree-toggle nav-header" onclick="location.href='/studypat/category?category=프로그래밍'"> 
-						<span class="fa-diamond fa"></span> 
+						<span class="fa-keyboard-o fa"></span> 
 						프로그래밍
 						<span class="fa-angle-right fa right-arrow text-right"></span>
 					</a>
@@ -94,7 +109,7 @@
  
 				<li class="ripple">
 					<a class="tree-toggle nav-header" onclick="location.href='/studypat/category?category=자율'"> 
-						<span class="fa-diamond fa"></span> 
+						<span class="icon-people fa"></span> 
 						자율
 						<span class="fa-angle-right fa right-arrow text-right"></span>
 					</a>
@@ -102,7 +117,7 @@
   
 				<li class="ripple">
 					<a class="tree-toggle nav-header" onclick="location.href='/studypat/category?category=기타'"> 
-						<span class="fa-diamond fa"></span> 
+						<span class="fa-pinterest fa"></span> 
 						기타
 						<span class="fa-angle-right fa right-arrow text-right"></span>
 					</a>
