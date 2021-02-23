@@ -78,9 +78,18 @@
 						<if test="!tag.equals('')">
 						, sp_tag t
 						</if>
-                        where category=#{category}
-                        
+						where category
+						<if test="!category.equals('')">
+							=#{category} 
+						</if>
+						<if test="category.equals('')">
+							Like '%'
+						</if>
+						<if test="search != null">
+							and title Like '%' ||  #{search} || '%' 
+						</if>
                         <if test="area != 'all'"> and area = #{area}</if>
+                        
                         <if test="!tag.equals('')">  and t.post_no = p.post_no and t.tag_name = #{tag}</if>
 						<trim prefix="ORDER BY">
 							<if test="sort == 'create_date'">  create_date DESC </if>   
@@ -92,13 +101,53 @@
 				) where RN BETWEEN #{start} AND #{end}
 	</select>
 	
+	<select id="getSearchPost" resultType="studypat.dto.Post" resultMap="Post" parameterType="String"> 
+		select * 
+		from sp_post
+		where title Like '%' ||  #{search} || '%' 
+		
+		<trim prefix="ORDER BY">
+			<if test="sort == 'create_date'"> create_date DESC </if>
+			<if test="sort == 'comment_count'"> comment_count DESC </if>
+			<if test="sort == 'view_count'"> view_count DESC </if>
+			<if test="sort == 'scrap_count'"> scrap_count DESC </if>
+		</trim>
+	</select>
 	
 	<select id="countPost" resultType="int" parameterType="String">
 		SELECT COUNT(*) 
 		FROM sp_post 
-		where category=#{category}
+		where category
+		<if test="!category.equals('')">
+			=#{category} 
+		</if>
+		<if test="category.equals('')">
+			Like '%'
+		</if>
+		<if test="search != null">
+			and title Like '%' ||  #{search} || '%' 
+		</if>
 		<if test="area != 'all'"> and area = #{area}</if>
 	</select>
+	
+	 <select id="countPostTag" resultType="int" parameterType="String">
+	 	select count(*)
+		from sp_post p, sp_tag t
+		where p.post_no = t.post_no and t.tag_name = #{tag} and category
+		
+		<if test="!category.equals('')">
+			=#{category} 
+		</if>
+		<if test="category.equals('')">
+			Like '%'
+		</if>
+		<if test="search != null">
+			and title Like '%' ||  #{search} || '%' 
+		</if>
+		
+		<if test="area != 'all'"> and area = #{area}</if>
+	 </select>
+	 
 	
 	<select id="getPostListLatest" resultMap="Post">
 		select *
@@ -159,12 +208,7 @@
 		where post_no = #{postNo}
 	</update>
 	 
-	 <select id="countPostTag" resultType="int" parameterType="String">
-	 	select count(*)
-		from sp_post p, sp_tag t
-		where p.post_no = t.post_no and t.tag_name = #{tag} and category= #{category}
-		<if test="area != 'all'"> and area = #{area}</if>
-	 </select>
+	
 	 
 	 <update id="addView">
 	 	update sp_post set
