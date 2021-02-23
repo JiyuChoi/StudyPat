@@ -51,10 +51,10 @@
 		<div class="col-md-12 padding-0" style="padding-bottom: 20px;">
 			<div class="col-md-6" style="padding-left: 10px;">
 				<div>
-					<a onclick="location.href='/studypat/category?category=${category}&sort=createDate&area=${area}&tag=${tag}'" <c:if test="${sort eq 'createDate'}"> style="color:#2196F3 !important;"</c:if>><span>최신순</span></a>
-					<a onclick="location.href='/studypat/category?category=${category}&sort=comment&area=${area}&tag=${tag}'" <c:if test="${sort eq 'comment'}">style="color:#2196F3 !important;"</c:if>><span>댓글순</span></a>
-					<a onclick="location.href='/studypat/category?category=${category}&sort=view&area=${area}&tag=${tag}'" <c:if test="${sort eq 'view'}">style="color:#2196F3 !important;"</c:if>><span>조회순</span></a>
-					<a onclick="location.href='/studypat/category?category=${category}&sort=scrap&area=${area}&tag=${tag}'" <c:if test="${sort eq 'scrap'}">style="color:#2196F3 !important;"</c:if>><span>스크랩순</span></a>
+					<a onclick="location.href='/studypat/category?category=${category}&sort=createDate&area=${area}&tag=${tag}&search=${search}'" <c:if test="${sort eq 'createDate'}"> style="color:#2196F3 !important;"</c:if>><span>최신순</span></a>
+					<a onclick="location.href='/studypat/category?category=${category}&sort=comment&area=${area}&tag=${tag}&search=${search}'" <c:if test="${sort eq 'comment'}">style="color:#2196F3 !important;"</c:if>><span>댓글순</span></a>
+					<a onclick="location.href='/studypat/category?category=${category}&sort=view&area=${area}&tag=${tag}&search=${search}'" <c:if test="${sort eq 'view'}">style="color:#2196F3 !important;"</c:if>><span>조회순</span></a>
+					<a onclick="location.href='/studypat/category?category=${category}&sort=scrap&area=${area}&tag=${tag}&search=${search}'" <c:if test="${sort eq 'scrap'}">style="color:#2196F3 !important;"</c:if>><span>스크랩순</span></a>
 				
 					<select onchange="if(this.value) location.href=(this.value);">
 						<option value="/studypat/category?category=${category}&sort=${sort}&area=all&tag=${tag}">전체</option>
@@ -109,7 +109,7 @@
 						
 					</select> 
 					<c:if test="${tag ne ''}"><span> 태그 [${tag}]으로 검색한 결과입니다.</span></c:if>
-					<a onclick="location.href='/studypat/category?category=${category}&sort=${sort}&area=${area}'"><span>태그검색해제</span></a>
+					<a onclick="location.href='/studypat/category?category=${category}&sort=${sort}&area=${area}&search=${search}'"><span>태그검색해제</span></a>
 				</div>
 			</div>
 			<div class="col-md-6">
@@ -131,7 +131,7 @@
 							<div class="col-md-10 padding-0">
 								<c:forEach var="tag" items="${post.tagList}">
 									<span class="badge-info" style="margin-right:5px;">
-										<a onclick="location.href='/studypat/category?category=${category}&sort=${sort}&area=${area}&tag=${tag.tagName}'">${tag.tagName}</a>
+										<a onclick="location.href='/studypat/category?category=${category}&sort=${sort}&area=${area}&tag=${tag.tagName}&search=${search}'">${tag.tagName}</a>
 									</span>
 								</c:forEach>
 								<h4><a href='/studypat/post/${post.postNo}'>${post.title}</a></h4>
@@ -151,7 +151,7 @@
 	</c:forEach>
 	<div style="display: block; text-align: center;">		
 		<c:if test="${paging.startPage != 1 }">
-			<a href="/studypat/category?category=${category}&sort=${sort}&area=${area}&tag=${tag}&nowPage=${paging.startPage-1}">&lt;</a>
+			<a href="/studypat/category?category=${category}&sort=${sort}&area=${area}&tag=${tag}&search=${search}&nowPage=${paging.startPage-1}">&lt;</a>
 		</c:if>
 		
 		<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="p">
@@ -160,13 +160,13 @@
 					<b>${p}</b>
 				</c:when>
 				<c:when test="${p != paging.nowPage }">
-					<a href="/studypat/category?category=${category}&sort=${sort}&area=${area}&tag=${tag}&nowPage=${p}">${p}</a>
+					<a href="/studypat/category?category=${category}&sort=${sort}&area=${area}&tag=${tag}&search=${search}&nowPage=${p}">${p}</a>
 				</c:when>
 			</c:choose>
 		</c:forEach>
 		
 		<c:if test="${paging.endPage != paging.lastPage}">
-			<a href="/studypat/category?category=${category}&sort=${sort}&area=${area}&tag=${tag}&nowPage=${paging.endPage+1}">&gt;</a>
+			<a href="/studypat/category?category=${category}&sort=${sort}&area=${area}&tag=${tag}&search=${search}&nowPage=${paging.endPage+1}">&gt;</a>
 		</c:if>
 		
 	</div>

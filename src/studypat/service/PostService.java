@@ -4,6 +4,7 @@ package studypat.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,7 +30,7 @@ public class PostService {
 	@Autowired
 	private UserMapper userMapper;
 	
-	public List<Post> getCategoryPost(Paging paging, String category, String sort, String area, String tag){
+	public List<Post> getCategoryPost(Paging paging, String category, String sort, String area, String tag, String search){
 		
 		if(("createDate").equals(sort)) { //최신순으로 정렬
 			sort = "create_date";
@@ -44,23 +45,17 @@ public class PostService {
 			sort = "scrap_count";
 		}
 	 
-		List<Post> postList = postMapper.getCategoryPost(Integer.toString(paging.getStart()), Integer.toString(paging.getEnd()), category, sort, area, tag); // 게시글 가져오고
+		List<Post> postList = postMapper.getCategoryPost(Integer.toString(paging.getStart()), Integer.toString(paging.getEnd()), category, sort, area, tag, search); // 게시글 가져오고
 		for(Post post : postList) {
 			List<Tag> tagList = tagMapper.getTags(post.getPostNo());
 			post.setTagList(tagList);
 		}
 		return postList;
 	}
-	
-	public int countPost(String category, String area) {
-		if(("seoul").equals(area)) {
-			area = "서울";
-		}
-		else if(("gyeonggi").equals(area)) {
-			area = "경기";
-		}
+ 
+	public int countPost(String category, String area, String search) {
 		
-		return postMapper.countPost(category, area);
+		return postMapper.countPost(category, area, search);
 	}
 	
 	public List<Post> getPostListLatest(){
@@ -171,8 +166,8 @@ public class PostService {
 		tagMapper.uploadTags(tagList); // 다시 태그 저장
 	}
 	
-	public int countPostTag(String category, String area, String tag) {
-		return postMapper.countPostTag(category, area, tag);
+	public int countPostTag(String category, String area, String tag, String search) {
+		return postMapper.countPostTag(category, area, tag, search);
 	}
 
 	public void addView(int postNo) {

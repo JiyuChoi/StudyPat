@@ -49,9 +49,8 @@
 						<div class="search">
 							<span class="fa fa-search icon-search" style="font-size: 23px;"></span>
 							<div class="form-group form-animate-text">
-								<input type="text" class="form-text" required> <span
-									class="bar"></span> <label class="label-search">Type
-									anywhere to <b>Search</b>
+								<input type="text" class="form-text" onKeypress="javascript:if(event.keyCode==13) search()" name="searchText" required> 
+									<span class="bar"></span> <label class="label-search"> 검색어를 입력해주세요.
 								</label>
 							</div>
 						</div>
@@ -64,7 +63,6 @@
 	<div id="left-menu">
 		<div class="sub-left-menu scroll">
 			<ul class="nav nav-list">
-
 				<li class="ripple">
 					<a class="tree-toggle nav-header" onclick="location.href='/studypat/category?category=어학'"> 
 						<span class="fa-diamond fa"></span> 
@@ -126,4 +124,16 @@
 		</div>
 	</div>
 </body>
+
+<script>
+
+function search() {
+	  
+	var searchText = $('input[name=searchText]').val();
+	location.href = '/studypat/category?category=&search='+searchText;
+	
+};
+
+
+</script>
 </html>
