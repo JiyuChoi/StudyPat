@@ -150,13 +150,6 @@
 													<span>조회수:${post.viewCount}</span>
 													<span>작성일:${post.createDate}</span>
 													<span>스크랩수:${post.scrapCount}</span>
-													<div class="progress progress-mini">
-														<div class="progress-bar" role="progressbar"
-															aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"
-															style="width: 10%;">
-															<span class="sr-only">60% Complete</span>
-														</div>
-													</div>
 												</div>
 											</div>
 										</div>

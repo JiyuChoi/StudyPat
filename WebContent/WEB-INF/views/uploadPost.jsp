@@ -56,7 +56,7 @@
 		</div>
 		<div class="form-element">
 			<div class="col-md-12 padding-0">
-				<div class="col-md-8">
+				<div class="col-md-8" style="width: 870px;">
 					<div class="panel form-element-padding">
 						<div class="panel-heading">
 							<h4>글쓰기</h4>
