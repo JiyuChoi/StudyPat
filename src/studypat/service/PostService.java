@@ -62,6 +62,7 @@ public class PostService {
 		
 		return postMapper.countPost(category, area);
 	}
+	
 	public List<Post> getPostListLatest(){
 		List<Post> postList = postMapper.getPostListLatest();
 		for(Post post : postList) {
@@ -70,9 +71,14 @@ public class PostService {
 		}
 		return postList;
 	}
+	
 	public List<Post> getUserScrapPost(int userNo){
-		
-		return postMapper.getUserScrapPost(userNo);
+		List<Post> postList = postMapper.getUserScrapPost(userNo);
+		for(Post post : postList) {
+			List<Tag> tagList = tagMapper.getTags(post.getPostNo());
+			post.setTagList(tagList);
+		}
+		return postList;
 	}
 	
 	public List<Post> getPostList() {

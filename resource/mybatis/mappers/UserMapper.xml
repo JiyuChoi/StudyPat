@@ -49,5 +49,13 @@
 		delete sp_user where user_no = #{userNo}
 	</delete>
 
-
+	<!-- 아이디 중복 체크 -->
+	<select id="checkOverId" parameterType="String" resultType="int">
+		select count(*) from sp_user where id = #{id}
+	</select>
+	
+	<!-- 이메일 중복 체크 -->
+	<select id="checkOverEmail" parameterType="String" resultType="int">
+		select count(*) from sp_user where email = #{email}
+	</select>
 </mapper>

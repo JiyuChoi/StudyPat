@@ -75,17 +75,6 @@
 												<span>댓글수:${post.commentCount}</span>
 												<span>스크랩수:${post.scrapCount}</span>
 											</div>
-											<div class="col-md-2 padding-0">
-												<div class="btn-group right-option-v1">
-													<i class="icon-options-vertical icons box-v7-menu"
-														data-toggle="dropdown"></i>
-													<ul class="dropdown-menu" role="menu">
-														<li><a href="/studypat/updatePost/${post.postNo}">수정</a></li>
-														<li><a href="#">삭제</a></li>
-														<li><a href="#">신고하기</a></li>
-													</ul>
-												</div>
-											</div>
 										</div>
 									</div>
 								</div>
@@ -115,7 +104,7 @@
 											<div style="color:black;">
 												<span><a href="forgotid">아이디 찾기</a></span>
 												<span><a href="forgotpass">비밀번호 찾기</a></span>
-												<span><a href="joinForm">회원가입</a></span>
+												<span><a href="join">회원가입</a></span>
 											</div>
 											<input type="submit" class="btn col-md-12" value="네이버 아이디로 로그인" style="margin-top:10px !important;"/>
 											
@@ -123,8 +112,8 @@
 											
 											<c:if test="${session_id ne null}">
 												<div>
-												<p>${session_id}님 환영합니다.</p>
-												<input type="button" onclick="location.href='myPage/${session_id}'" value="마이페이지" class="btn col-md-12">
+												<p>${user.nickName}님 환영합니다.</p>
+												<input type="button" onclick="location.href='myPage/${user.userNo}'" value="마이페이지" class="btn col-md-12">
 												<input type="button" onclick="location.href='logout'" value="로그아웃" id="logoutBtn" class="btn col-md-12">
 												</div>
 											</c:if>

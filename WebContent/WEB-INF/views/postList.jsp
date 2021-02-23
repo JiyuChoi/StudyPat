@@ -37,6 +37,7 @@
 
 <body id="mimin" class="dashboard">
 <jsp:include page="/WEB-INF/views/nav.jsp" />
+	
  <div id="content" class="profile-v1">
 
 		<div class="panel box-shadow-none content-header">
@@ -50,10 +51,10 @@
 		<div class="col-md-12 padding-0" style="padding-bottom: 20px;">
 			<div class="col-md-6" style="padding-left: 10px;">
 				<div>
-					<a onclick="location.href='/studypat/category?category=${category}&sort=createDate&area=${area}&tag=${tag}'" <c:if test="${sort eq 'createDate'}">style=color:#2196F3;</c:if>><span>최신순</span></a>
-					<a onclick="location.href='/studypat/category?category=${category}&sort=comment&area=${area}&tag=${tag}'" <c:if test="${sort eq 'comment'}">style=color:#2196F3;</c:if>><span>댓글순</span></a>
-					<a onclick="location.href='/studypat/category?category=${category}&sort=view&area=${area}&tag=${tag}'" <c:if test="${sort eq 'view'}">style=color:#2196F3;</c:if>><span>조회순</span></a>
-					<a onclick="location.href='/studypat/category?category=${category}&sort=scrap&area=${area}&tag=${tag}'" <c:if test="${sort eq 'scrap'}">style=color:#2196F3;</c:if>><span>스크랩순</span></a>
+					<a onclick="location.href='/studypat/category?category=${category}&sort=createDate&area=${area}&tag=${tag}'" <c:if test="${sort eq 'createDate'}"> style="color:#2196F3 !important;"</c:if>><span>최신순</span></a>
+					<a onclick="location.href='/studypat/category?category=${category}&sort=comment&area=${area}&tag=${tag}'" <c:if test="${sort eq 'comment'}">style="color:#2196F3 !important;"</c:if>><span>댓글순</span></a>
+					<a onclick="location.href='/studypat/category?category=${category}&sort=view&area=${area}&tag=${tag}'" <c:if test="${sort eq 'view'}">style="color:#2196F3 !important;"</c:if>><span>조회순</span></a>
+					<a onclick="location.href='/studypat/category?category=${category}&sort=scrap&area=${area}&tag=${tag}'" <c:if test="${sort eq 'scrap'}">style="color:#2196F3 !important;"</c:if>><span>스크랩순</span></a>
 				
 					<select onchange="if(this.value) location.href=(this.value);">
 						<option value="/studypat/category?category=${category}&sort=${sort}&area=all&tag=${tag}">전체</option>
@@ -112,7 +113,10 @@
 				</div>
 			</div>
 			<div class="col-md-6">
-				<button type="button" class="btn btn-default" onclick="location.href='/studypat/uploadPostForm?category=${category}'">
+				<%-- <button type="button" class="btn btn-default" onclick="location.href='/studypat/uploadPostForm?category=${category}'">
+					글쓰기 
+				</button> --%>
+				<button type="button" class="btn btn-default" onclick="goPage()">
 					글쓰기 
 				</button>
 			</div>
@@ -169,13 +173,6 @@
 </div>
 
 
-
-
-
-
-
-
-
 	<!-- start: Javascript -->
 <script src="/studypat/asset/js/jquery.min.js"></script>
 <script src="/studypat/asset/js/jquery.ui.min.js"></script>
@@ -190,6 +187,8 @@
 
 
 <!-- custom -->
+ 
+
 <script src="/studypat/asset/js/main.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
@@ -203,6 +202,23 @@
             features: ['playpause','progress','volume','fullscreen']
           });
  });
+  
+  function goPage() {
+	  
+	  	var userId = null;
+	  	<% 
+	  		studypat.dto.User user = (studypat.dto.User) session.getAttribute("user"); 
+	  		if(user != null){ %>
+	  		userId = "<%=user.getId()%>";
+	  	<%}%>
+	 	
+		if(userId == null){
+			alert("로그인을 해주세요.");
+			return;
+		}
+		location.href = '/studypat/uploadPostForm?category=${category}';
+	};
+ 
 </script>
 <!-- end: Javascript -->
 </body>
@@ -213,7 +229,7 @@ a {
 }
 
 span a {
-	color : white;
+	color : white !important;
 }
 </style>
 </html>

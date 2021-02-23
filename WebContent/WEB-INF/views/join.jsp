@@ -49,23 +49,30 @@
 					<p class="atomic-mass">스터디를 구하고 있다면</p>
 					<p class="element-name">지금, 바로!</p>
 					<h1 class="atomic-symbol">StudyPat</h1>
+						<!-- 아이디 -->
 						<div class="form-group form-animate-text" style="margin-top: 40px !important;">
-							<input type="text" class="form-text" name="id" required> 
+							<input type="text" class="form-text" name="id" id="id" required> 
 							<span class="bar"></span> <label>아이디</label>
+							<div class="check_font" id="id_check"></div>
 						</div>
+							
+						<!-- 이메일 -->
 						<div class="form-group form-animate-text" style="margin-top: 40px !important;">
-							<input type="text" class="form-text" name="email"required> 
+							<input type="text" class="form-text" name="email" id="email" required> 
 							<span class="bar"></span> <label>이메일</label>
+							<div class="check_font" id="email_check"></div>
 						</div>
+						<!-- 비밀번호 -->
 						<div class="form-group form-animate-text" style="margin-top: 40px !important;">
 							<input type="password" class="form-text" name="password" required> 
 							<span class="bar"></span> <label>비밀번호</label>
 						</div>
+						<!-- 닉네임 -->
 						<div class="form-group form-animate-text" style="margin-top: 40px !important;">
 							<input type="text" class="form-text" name="nickName" required> 
 							<span class="bar"></span> <label>닉네임</label>
 						</div> 
-						<input type="submit" class="btn col-md-12" value="회원가입"/>
+						<input type="submit" class="btn col-md-12" value="회원가입" onclick="DosignUp();"/>
 						<input type="button" class="btn col-md-12" value="네이버계정으로 가입"/>
 				</div>
 				
@@ -103,6 +110,71 @@
 			});
 		});
 	</script>
+	
+	<script>
+        <c:if test="${joinSuccess == false}">
+           alert("StudyPat에 가입되었습니다.");	
+      	</c:if>
+    </script>
+    
+	<!-- 아이디 검사 Ajax -->
+	<script>
+	// 아이디 유효성 검사(1 = 중복 / 0 != 중복)
+		$("#id").blur(function() {
+			var user_id = $('#id').val();
+			$.ajax({
+				url : '/studypat/join/idCheck?id='+ user_id,
+				type : 'get',
+				success : function(data) {
+					console.log("1 = 중복o / 0 = 중복x : "+ data);							
+					
+					if (data == 1) {
+							// 1 : 아이디가 중복되는 문구
+							$("#id_check").text("중복된 아이디가 존재합니다.");
+							$("#id_check").css("color", "red");
+							$("#reg_submit").attr("disabled", true);
+						} else {
+							$("#id_check").text("사용가능한 아이디입니다");
+							$("#id_check").css("color", "blue");
+							$("#reg_submit").attr("disabled", true);
+							
+						}
+					}, error : function() {
+							console.log("실패");
+					}
+				});
+			});
+	</script>
+	
+	<!-- 이메일 검사 Ajax-->
+	<script>
+	// 이메일 유효성 검사(1 = 중복 / 0 != 중복)
+		$("#email").blur(function() {
+			var user_email = $('#email').val();
+			$.ajax({
+				url : '/studypat/join/emailCheck?email='+ user_email,
+				type : 'get',
+				success : function(data) {
+					console.log("1 = 중복o / 0 = 중복x : "+ data);							
+					
+					if (data == 1) {
+							// 1 : 이메일 중복
+							$("#email_check").text("중복된 이메일이 존재합니다.");
+							$("#email_check").css("color", "red");
+							$("#reg_submit").attr("disabled", true);
+						} else {
+							$("#email_check").text("사용가능한 이메일입니다.");
+							$("#email_check").css("color", "blue");
+							$("#reg_submit").attr("disabled", true);
+							
+						}
+					}, error : function() {
+							console.log("실패");
+					}
+				});
+			});
+	</script>
+	
 	<!-- end: Javascript -->
 </body>
 </html>
