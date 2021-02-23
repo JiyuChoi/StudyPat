@@ -56,17 +56,6 @@ public class UserController {
 		return "main";
 	}
 	
-//	@PostMapping("/login")
-//	public String login(User user, HttpSession session, RedirectAttributes rttr) {
-//		User loginUser = userService.login(user);
-//		if (loginUser == null) {
-//			rttr.addAttribute("msg", false);
-//		} else {
-//			session.setAttribute("session_user", loginUser);
-//		}
-//		return "redirect:/";
-//	}
-	
 	@PostMapping("/login")
 	public String login(@RequestParam(name="id", required=true) String id,
 						@RequestParam(name="password", required=true) String password,
@@ -83,7 +72,7 @@ public class UserController {
 				return "redirect:/";
 			}
 		} catch(NullPointerException e) {
-			session.setAttribute("errMsg", "존재하지 않는 아이디 입니다.");
+			session.setAttribute("errMsg", "존재하지않는 아이디 입니다.");
 			return "redirect:/";
 		}
 	}
@@ -130,7 +119,7 @@ public class UserController {
 		if (findId != null) {
 			session.setAttribute("findID", findId);
 		}else {
-		session.setAttribute("errMsg", "존재하지 않는 이메일 입니다.");
+		session.setAttribute("errMsg", "존재하지않는 이메일 입니다.");
 		}
 		return "forgotid";
 		
@@ -173,11 +162,18 @@ public class UserController {
 		return userService.userIdCheck(id);
 	}
 	
-	// id 중복 체크 컨트롤러
+	// email 중복 체크 컨트롤러
 	@GetMapping("/join/emailCheck")
 	@ResponseBody
-	public int email(@RequestParam("email") String email) {
+	public int emailCheck(@RequestParam("email") String email) {
 		return userService.userEmailCheck(email);
+	}
+	
+	// nickName 중복 체크 컨트롤러
+	@GetMapping("/join/nickNameCheck")
+	@ResponseBody
+	public int nickNameCheck(@RequestParam("nickName") String nickName) {
+		return userService.userNickNameCheck(nickName);
 	}
 	
 

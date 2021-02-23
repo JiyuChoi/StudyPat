@@ -20,5 +20,6 @@ public interface UserMapper {
 	public void deleteUser(int userNo);
 	public int checkOverId(String id);
 	public int checkOverEmail(String email);
+	public int checkOverNickName(String nickName);
 
 }

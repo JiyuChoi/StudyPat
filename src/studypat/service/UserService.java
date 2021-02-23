@@ -32,7 +32,6 @@ public class UserService {
 	}
 	
 	public User login(User user) {
-		System.out.println(user.toString());
 		return userMapper.login(user);
 	}
 	
@@ -158,6 +157,11 @@ public class UserService {
 	// 중복 이메일 체크
 	public int userEmailCheck(String email) {
 		return userMapper.checkOverEmail(email);
+	}
+	
+	// 중복 닉네임 체크
+	public int userNickNameCheck(String nickName) {
+		return userMapper.checkOverEmail(nickName);
 	}
 
 }
