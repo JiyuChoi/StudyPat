@@ -76,14 +76,16 @@
 					<div id="commList">
 						<!-- 댓글 List 들어옴 -->
 					</div>
-				<div class="media">
-					<div class="media-body">
-						<textarea class="box-v7-commenttextbox" name="commentText"
-							placeholder="write comments..."></textarea>
-						<input class="icheckbox_flat-red" type="checkbox" name="secret"> 비밀글
-						<button class="btn" id="commentBtn">작성</button>
+				<c:if test="${login}">
+					<div class="media">
+						<div class="media-body">
+							<textarea class="box-v7-commenttextbox" name="commentText"
+								placeholder="write comments..."></textarea>
+							<input class="icheckbox_flat-red" type="checkbox" name="secret"> 비밀글
+							<button class="btn" id="commentBtn">작성</button>
+						</div>
 					</div>
-				</div>
+				</c:if>
 			</div>
 		</div>
 	</div>
@@ -107,8 +109,15 @@
 <!-- custom -->
 <script src="../asset/js/main.js"></script>
 <script type="text/javascript">
+var admin = null;
+var userNo = null;
+var postUserNo = null;
+if(${login}) admin = ${loginUser.admin} + "";
+if(${login}) userNo = ${loginUser.userNo} + "";
+if(${login}) postUserNo = ${post.userNo} + "";
+
 	function addScrap(postNo) {
-		var userNo = ${loginUser.userNo};
+		/* var userNo = ${loginUser.userNo}; */
 		$.ajax({
 			type : "post",
 			url : "/studypat/scrap/add",
@@ -122,7 +131,7 @@
 	}
 	
 	function deleteScrap(postNo) {
-		var userNo = ${loginUser.userNo};
+	/* 	var userNo = ${loginUser.userNo}; */
 		$.ajax({
 			type : "post",
 			url : "/studypat/scrap/delete",
@@ -136,8 +145,8 @@
 	};
 	
 	function isScrap() {
+		console.log(userNo);
 		var postNo = ${post.postNo};
-		var userNo = ${loginUser.userNo};
 		$.ajax({
 			type : "post",
 			url : "/studypat/scrap",
@@ -154,6 +163,8 @@
 						+ "<i class='icon-star icons'></i> 스크랩하기 </button>"
 				}
 				$("#scrap").html(str);
+			}, error : function(e) {
+				
 			}
 		});
 	};
@@ -188,13 +199,13 @@
 		        	str +="<div class='media'>"
 		            	+ "<div class='media-body'>"
 		            	+ "<h4 class='media-heading'>" + this.user.nickName;
-		        		if(this.userNo == ${user.getUserNo()} || ${user.getAdmin()} == 1 ){
+ 		        		if(this.userNo == userNo || admin == 1 ){
 		        			str += "<button onclick='delComm(" + this.commentNo + ")'>x</button>";
 		        		}
 		            str	+= "</h4>";
 			            if(this.secret == 1){
 			 		    	str += "<p> 비밀 댓글 입니다. </p>";
-		 		        	if(this.userNo == ${user.getUserNo()} || ${user.getAdmin()} == 1 || ${user.getUserNo()} == ${post.userNo}) {
+ 		 		        	if(this.userNo == userNo || admin == 1 || userNo == postUserNo ) {
 		 		        		str += "<p>" + this.commentText + "</p>";
 				 		    }
 			            }else{
@@ -210,7 +221,6 @@
 	$(function() {
 		$('#commentBtn').on('click', function() {
 			var postNo = ${post.postNo};
-			var userNo = ${loginUser.userNo};
 			var commentText = $('textarea[name=commentText]').val();
 			var secret = '';
 			if($('input[name=secret]').is(':checked')) {
@@ -239,9 +249,6 @@
 	});
 
 	$(document).ready(function() {
-		var admin = ${loginUser.admin};
-		var userNo = ${loginUser.userNo};
-		var postUserNo = ${post.userNo};
 		getCommentList();		// 댓글 목록
 		isScrap();				// 스크랩 확인
 	});

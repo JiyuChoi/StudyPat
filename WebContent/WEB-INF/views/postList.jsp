@@ -49,7 +49,7 @@
 		</div>
 
 		<div class="col-md-12 padding-0" style="padding-bottom: 20px;">
-			<div class="col-md-6" style="padding-left: 10px;">
+			<div class="col-md-6" style="padding-left: 10px; width: 870px;">
 				<div>
 					<a onclick="location.href='/studypat/category?category=${category}&sort=createDate&area=${area}&tag=${tag}&search=${search}'" <c:if test="${sort eq 'createDate'}"> style="color:#2196F3 !important;"</c:if>><span>최신순</span></a>
 					<a onclick="location.href='/studypat/category?category=${category}&sort=comment&area=${area}&tag=${tag}&search=${search}'" <c:if test="${sort eq 'comment'}">style="color:#2196F3 !important;"</c:if>><span>댓글순</span></a>
@@ -108,17 +108,15 @@
 						</option>
 						
 					</select> 
-					<c:if test="${tag ne ''}"><span> 태그 [${tag}]으로 검색한 결과입니다.</span></c:if>
-					<a onclick="location.href='/studypat/category?category=${category}&sort=${sort}&area=${area}&search=${search}'"><span>태그검색해제</span></a>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<%-- <button type="button" class="btn btn-default" onclick="location.href='/studypat/uploadPostForm?category=${category}'">
-					글쓰기 
-				</button> --%>
-				<button type="button" class="btn btn-default" onclick="goPage()">
+				<button type="button" class="btn btn-default" onclick="goPage()" style="float: right;">
 					글쓰기 
 				</button>
+			</div>
+			<div>
+					<c:if test="${tag ne ''}"><span> 태그 [${tag}]으로 검색한 결과입니다.</span>
+					<a onclick="location.href='/studypat/category?category=${category}&sort=${sort}&area=${area}&search=${search}'"><span>태그검색해제</span></a>
+					</c:if>
+			</div>
 			</div>
 		</div>
 	
