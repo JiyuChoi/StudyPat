@@ -86,6 +86,14 @@
 						</div>
 					</div>
 				</c:if>
+				<c:if test="${login eq false}">
+					<div class="media">
+						<div class="media-body">
+							<textarea class="box-v7-commenttextbox" name="commentText"
+								placeholder="로그인 후 댓글 작성 가능합니다"></textarea>
+						</div>
+					</div>
+				</c:if>
 			</div>
 		</div>
 	</div>
