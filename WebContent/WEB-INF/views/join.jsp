@@ -39,12 +39,10 @@
 
 <body id="mimin" class="dashboard form-signin-wrapper">
 	
-	<div class="container">
-		<jsp:include page="/WEB-INF/views/nav.jsp" />
+	<div class="container" style="margin-top: 100px;">
 		
 		<form class="form-signin" action="join" method="post">
 			<div class="panel periodic-login">
-				<span class="atomic-number">28</span>
 				<div class="panel-body text-center">
 					<p class="atomic-mass">스터디를 구하고 있다면</p>
 					<p class="element-name">지금, 바로!</p>
@@ -59,7 +57,7 @@
 						<!-- 이메일 -->
 						<div class="form-group form-animate-text" style="margin-top: 40px !important;">
 							<input type="email" class="form-text" name="email" id="email" required> 
-							<span class="bar"></span> <label>이메일</label>
+							<span class="bar"></span> <label>Email</label>
 							<div class="check_font" id="email_check"></div>
 						</div>
 						<!-- 비밀번호 -->

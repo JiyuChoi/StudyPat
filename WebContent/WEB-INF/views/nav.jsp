@@ -31,6 +31,10 @@
 		if(session.getAttribute("user") != null){
 			studypat.dto.User user = (studypat.dto.User) session.getAttribute("user");
 			session.setAttribute("loginUser",user);
+			session.setAttribute("login", true);
+		}else {
+			session.setAttribute("loginUser",null);
+			session.setAttribute("login", false);
 		}
 	%>
 
@@ -56,6 +60,17 @@
 						</div>
 					</li>
 				</ul>
+				<ul class="nav navbar-nav navbar-right user-nav">
+					<li class="user-name">
+						<span> 
+							<c:if test="${loginUser ne null}">
+									<a href="myPage/${loginUser.getNickName()}">
+										${loginUser.getNickName()}님 환영합니다. </a>
+							</c:if>
+						</span>
+					</li>
+				</ul>
+
 			</div>
 		</div>
 	</nav>

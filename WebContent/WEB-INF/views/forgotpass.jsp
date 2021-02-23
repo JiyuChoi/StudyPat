@@ -34,7 +34,7 @@
 
     <body id="mimin" class="form-signin-wrapper">
 
-      <div class="container">
+      <div class="container" style="margin-top: 150px;">
 
         <form class="form-signin" action="forgotpass" method="post">
           <div class="panel periodic-login">
@@ -57,12 +57,12 @@
                   </div>
  					<p>해당 이메일로 임시비밀번호가 발송됩니다.</p> 
  					<div id="errMsg" style="color:red;"><%=errMsg %></div>
-                  <input type="submit" class="btn col-md-12" value="submit"/>
+                  <input type="submit" class="btn col-md-12" value="비밀번호 찾기"/>
 
               </div>
                 <div class="text-center" style="padding:5px;">
                     <a href="/studypat/">로그인</a> | 
-                    <a href="joinForm">회원가입</a>
+                    <a href="join">회원가입</a>
                 </div>
           </div>
         </form>
