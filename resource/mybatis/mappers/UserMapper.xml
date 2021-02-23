@@ -58,4 +58,10 @@
 	<select id="checkOverEmail" parameterType="String" resultType="int">
 		select count(*) from sp_user where email = #{email}
 	</select>
+	
+	<!-- 닉네임 중복 체크 -->
+	<select id="checkOverNickName" parameterType="String" resultType="int">
+		select count(*) from sp_user where nickname = #{nickName}
+	</select>
+	
 </mapper>

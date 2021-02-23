@@ -106,7 +106,7 @@
 												<span><a href="forgotpass">비밀번호 찾기</a></span>
 												<span><a href="join">회원가입</a></span>
 											</div>
-											<input type="submit" class="btn col-md-12" value="네이버 아이디로 로그인" style="margin-top:10px !important;"/>
+											<!-- <button class="btn col-md-12" value="네이버 아이디로 로그인" style="margin-top:10px !important;"> </button> -->
 											
 											</c:if>
 											
