@@ -46,7 +46,7 @@ session.invalidate();
 					<h1 class="atomic-symbol">StudyPat</h1>
  					<p class="element-name">아이디 찾기</p>
                   <div class="form-group form-animate-text" style="margin-top:40px !important;">
-                    <input type="text" class="form-text" name="email" required>
+                    <input type="text" class="form-text" name="email" id="email" required>
                     <span class="bar"></span>
                     <label>Email</label>
                     <p>가입시 사용한 이메일을 입력하세요</p>

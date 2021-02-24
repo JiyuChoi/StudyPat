@@ -25,6 +25,7 @@
 	  <!-- end: Css -->
 	
 	  <link rel="shortcut icon" href="/studypat/asset/img/logomi.png">
+	</style>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -53,35 +54,37 @@
 							<h4>회원정보변경</h4>
 						</div>
 
-						<div class="panel-body" style="padding-bottom: 30px;">
+						<div class="panel-body" style="padding: 50px auto;">
 							<div class="col-md-12">
 							<!-- 회원정보 수정 -->
 							<form action="updateUser" method="post">
+							<div style="overflow: hidden">
 								<div class="form-group">
-									<label class="col-sm-2 control-label text-right">닉네임</label>
+									<label class="col-sm-2 control-label text-right" >닉네임</label>
 									<div class="col-sm-10">
-										<div name="nickName">${user.nickName}</div>
+										<div class="nickName">${user.nickName}</div>
 									</div>
 								</div>
 								
 								<div class="form-group">
-									<label class="col-sm-2 control-label text-right">현재 비밀번호</label>
+									<label for="password" class="col-sm-2 control-label text-right" style="margin-top: 7px;">현재 비밀번호</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control"  name="password" id="password" required>
 									</div>
 								</div>
 								
 								<div class="form-group">
-									<label class="col-sm-2 control-label text-right">변경할 비밀번호</label>
+									<label for="updatePassword" class="col-sm-2 control-label text-right" style="margin-top: 7px;">변경할 비밀번호</label>
 									<div class="col-sm-10">
 										<input type="password" class="form-control" name="updatePassword" id="updatePassword" required>
 									</div>
 								</div>
 								<input type="hidden" name="id" value="${user.id}" readonly="readonly">
-								<input type="submit" class="btn" value="변경">
+								<input type="submit" class="btn" value="변경" style="margin:20px 30px;float:right;">
+								</div>
 							</form>
 							</div>
-							<a href=/studypat/mypage/delete/${user.userNo}>회원 탈퇴</a>
+							<a href=/studypat/mypage/delete/${user.userNo} style="margin:8px;">회원 탈퇴</a>
 						</div>
 					</div>
 				</div>

@@ -13,7 +13,7 @@
   <meta name="author" content="Isna Nur Azis">
   <meta name="keyword" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Miminium</title>
+  <title>Study Post</title>
 
   <!-- start: Css -->
   <link rel="stylesheet" type="text/css" href="/studypat/asset/css/bootstrap.min.css">
@@ -48,13 +48,13 @@
 			</div>
 		</div>
 
-		<div class="col-md-12 padding-0" style="padding-bottom: 20px;">
+		<div class="col-md-12 padding-0" style="padding: 0 20px 20px;">
 			<div class="col-md-6" style="padding-left: 10px; width: 870px;">
 				<div>
-					<a onclick="location.href='/studypat/category?category=${category}&sort=createDate&area=${area}&tag=${tag}&search=${search}'" <c:if test="${sort eq 'createDate'}"> style="color:#2196F3 !important;"</c:if>><span>최신순</span></a>
-					<a onclick="location.href='/studypat/category?category=${category}&sort=comment&area=${area}&tag=${tag}&search=${search}'" <c:if test="${sort eq 'comment'}">style="color:#2196F3 !important;"</c:if>><span>댓글순</span></a>
-					<a onclick="location.href='/studypat/category?category=${category}&sort=view&area=${area}&tag=${tag}&search=${search}'" <c:if test="${sort eq 'view'}">style="color:#2196F3 !important;"</c:if>><span>조회순</span></a>
-					<a onclick="location.href='/studypat/category?category=${category}&sort=scrap&area=${area}&tag=${tag}&search=${search}'" <c:if test="${sort eq 'scrap'}">style="color:#2196F3 !important;"</c:if>><span>스크랩순</span></a>
+					<a onclick="location.href='/studypat/category?category=${category}&sort=createDate&area=${area}&tag=${tag}&search=${search}'" <c:if test="${sort eq 'createDate'}"> style="color:#2196F3 !important;"</c:if>><span>최신순 </span></a>
+					<a onclick="location.href='/studypat/category?category=${category}&sort=comment&area=${area}&tag=${tag}&search=${search}'" <c:if test="${sort eq 'comment'}">style="color:#2196F3 !important;"</c:if>><span>댓글순 </span></a>
+					<a onclick="location.href='/studypat/category?category=${category}&sort=view&area=${area}&tag=${tag}&search=${search}'" <c:if test="${sort eq 'view'}">style="color:#2196F3 !important;"</c:if>><span>조회순 </span></a>
+					<a onclick="location.href='/studypat/category?category=${category}&sort=scrap&area=${area}&tag=${tag}&search=${search}'" <c:if test="${sort eq 'scrap'}">style="color:#2196F3 !important;"</c:if>><span>스크랩순 </span></a>
 				
 					<select onchange="if(this.value) location.href=(this.value);">
 						<option value="/studypat/category?category=${category}&sort=${sort}&area=all&tag=${tag}">전체</option>
