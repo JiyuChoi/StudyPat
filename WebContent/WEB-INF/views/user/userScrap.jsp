@@ -3,6 +3,7 @@
 <%@ page import="studypat.dto.*"%>
 <%@ page import="java.util.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -53,15 +54,16 @@
 							<div class="col-md-12 padding-0 box-v7-header">
 								<div class="col-md-12 padding-0">
 									<div class="col-md-10 padding-0">
+										<span class="badge-info" style="background-color: #918C8C !important;">${scrap.category}</span>
+										<span class="badge-info" style="background-color: #918C8C !important;">${scrap.area}</span>
 										<c:forEach var="tag" items="${scrap.tagList}">
 											<span class="badge-info">${tag.tagName}</span>
 										</c:forEach> 
-										<h4><a href='/studypat/post/${scrap.postNo}'>${scrap.title}</a></h4>
-										<span>조회수:${scrap.viewCount}</span>
-										<span>지역:${scrap.area}</span>
-										<span>작성일:${scrap.createDate}</span>
-										<span>댓글수:${scrap.commentCount}</span>
-										<span>스크랩수:${scrap.scrapCount}</span>
+											<h4><a href='/studypat/post/${scrap.postNo}'>${scrap.title}</a></h4>
+											<span><fmt:parseDate value="${scrap.createDate}" var="parseDate" pattern="yyyy-MM-dd HH:mm:ss"/><fmt:formatDate value="${parseDate}"  pattern="yyyy-MM-dd"/></span>
+											<span style="margin-left:5px;"><span class="fa-eye fa"></span> ${scrap.viewCount}</span>
+											<span style="margin-left:5px;"><span class="fa-comment fa"></span> ${scrap.commentCount}</span>
+											<span style="margin-left:5px;"><span class="icon-star icon"></span> ${scrap.scrapCount}</span>
 									</div>
 								</div>
 							</div>

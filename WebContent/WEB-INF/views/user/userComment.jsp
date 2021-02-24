@@ -3,6 +3,7 @@
 <%@ page import="studypat.dto.*"%>
 <%@ page import="java.util.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -54,7 +55,7 @@
 								<div class="col-md-12 padding-0">
 									<div class="col-md-10 padding-0"> 
 										<h4><a href='/studypat/post/${comment.postNo}'>${comment.commentText}</a></h4>
-										<span>작성일:${comment.createDate}</span>
+										<span><fmt:parseDate value="${comment.createDate}" var="parseDate" pattern="yyyy-MM-dd HH:mm:ss"/><fmt:formatDate value="${parseDate}"  pattern="yyyy-MM-dd HH:mm"/></span>
 									</div>
 								</div>
 							</div>

@@ -3,6 +3,7 @@
     <%@ page import="studypat.dto.*"%>
 	<%@ page import="java.util.*"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -43,14 +44,24 @@
 			<div class="col-md-12 padding-0 box-v7-header">
 				<div class="col-md-12 padding-0">
 					<div class="col-md-10 padding-0">
-						<img src="../asset/img/avatar.jpg" class="box-v7-avatar pull-left" />
-						<h4>${post.title}</h4>
-						<p>${post.user.nickName}</p>
-						${post.category}  
-						${post.area}  
-						${post.recruitNo}명  
-						${post.createDate}
+							<span class="badge-info" style="background-color: #918C8C !important;">${post.category}</span>
+							<span class="badge-info" style="background-color: #918C8C !important;">${post.area}</span>
+								<c:forEach var="tag" items="${post.tagList}">
+									<span class="badge-info">${tag.tagName}</span>
+								</c:forEach>
+								<h3>${post.title}</h3>
+								<div style="padding:5px 0;">
+									<strong><span class="icon-pencil icon"></span> ${post.user.nickName}</strong></div>
+								<div>
+									<span><fmt:parseDate value="${post.createDate}" var="parseDate" pattern="yyyy-MM-dd HH:mm:ss"/><fmt:formatDate value="${parseDate}"  pattern="yyyy-MM-dd HH:mm"/></span>
+									<span style="margin-left:5px;"><span class="fa-eye fa"></span> ${post.viewCount}</span>
+									<span style="margin-left:5px;"><span class="fa-comment fa"></span> ${post.commentCount}</span>
+									<span style="margin-left:5px;"><span class="icon-star icon"></span> ${post.scrapCount}</span>
+									<span style="margin-left:5px;"><span class="icon-people icon"></span> ${post.recruitNo}명</span>
+								<div style="margin-top:30px;">${post.postText}</div>
 					</div> 
+					</div>
+					
 					<div class="col-md-2 padding-0">
 						<div class="btn-group right-option-v1">
 							<i class="icon-options-vertical icons box-v7-menu"
@@ -67,7 +78,6 @@
 				</div>
 			</div>
 			<div class="col-md-12 padding-0 box-v7-body">
-				<p>${post.postText}</p>
 				<div class="col-md-12 top-20" id="scrap">
 					<!-- 스크랩 버튼 출력 -->
 				</div>
@@ -81,8 +91,10 @@
 						<div class="media-body">
 							<textarea class="box-v7-commenttextbox" name="commentText"
 								placeholder="write comments..."></textarea>
-							<input class="icheckbox_flat-red" type="checkbox" name="secret"> 비밀글
-							<button class="btn" id="commentBtn">작성</button>
+							<div style="float:right;">
+								<input class="icheckbox_flat-red" type="checkbox" name="secret"> 비밀글
+								<button class="btn" id="commentBtn">작성</button>
+							</div>
 						</div>
 					</div>
 				</c:if>
@@ -208,7 +220,7 @@ if(${login}) postUserNo = ${post.userNo} + "";
 		            	+ "<div class='media-body'>"
 		            	+ "<h4 class='media-heading'>" + this.user.nickName;
  		        		if(this.userNo == userNo || admin == 1 ){
-		        			str += "<button onclick='delComm(" + this.commentNo + ")'>x</button>";
+		        			str += "<span class='fa-trash-o fa' style='float: right;' onclick='delComm(" + this.commentNo + ")'></span>";
 		        		}
 		            str	+= "</h4>";
 			            if(this.secret == 1){

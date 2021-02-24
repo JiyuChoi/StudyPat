@@ -127,13 +127,6 @@
 									</div>
 								</div>
 								
-								<div class="form-group">
-									<label class="col-sm-2 control-label text-right">사용자 닉네임</label> <!-- 굳이 있어야 할까요?  -->
-									<div class="col-sm-10">
-										<input type="text" class="form-control">
-									</div>
-								</div>
-								
 								
 								<div class="form-group">
 									<label class="col-sm-2 control-label text-right">태그</label>
@@ -161,8 +154,7 @@
 										<textarea class="form-control" cols=20 rows=10 name="postText" id="postText" required>${post.postText}</textarea>
 									</div>
 								</div>
-								
-								<button id=submit_btn onclick="return postSubmit();" type=button>수정하기</button>
+								<button id=submit_btn class="btn btn-default" onclick="return postSubmit();" style="float: right; margin: 20px 30px;">수정하기</button>
 							</div>
 							</form>
 						</div>

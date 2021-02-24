@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="studypat.dao.*"%>
 <%@ page import="studypat.dto.*"%>
     
@@ -127,18 +128,18 @@
 					<div class="col-md-12 padding-0 box-v7-header">
 						<div class="col-md-12 padding-0">
 							<div class="col-md-10 padding-0">
+								<span class="badge-info" style="background-color: #918C8C !important;">${post.category}</span>
+								<span class="badge-info" style="background-color: #918C8C !important;">${post.area}</span>
 								<c:forEach var="tag" items="${post.tagList}">
 									<span class="badge-info" style="margin-right:5px;">
 										<a onclick="location.href='/studypat/category?category=${category}&sort=${sort}&area=${area}&tag=${tag.tagName}&search=${search}'">${tag.tagName}</a>
 									</span>
 								</c:forEach>
-								<h4><a href='/studypat/post/${post.postNo}'>${post.title}</a></h4>
-								<span>${post.userNickName}</span>
-								<span>조회수:${post.viewCount}</span>
-								<span>지역:${post.area}</span>
-								<span>작성일:${post.createDate}</span>
-								<span>댓글수:${post.commentCount}</span>
-								<span>스크랩수:${post.scrapCount}</span>
+									<h4><a href='/studypat/post/${post.postNo}'>${post.title}</a></h4>
+									<span><fmt:parseDate value="${post.createDate}" var="parseDate" pattern="yyyy-MM-dd HH:mm:ss"/><fmt:formatDate value="${parseDate}"  pattern="yyyy-MM-dd"/></span>
+									<span style="margin-left:5px;"><span class="fa-eye fa"></span> ${post.viewCount}</span>
+									<span style="margin-left:5px;"><span class="fa-comment fa"></span> ${post.commentCount}</span>
+									<span style="margin-left:5px;"><span class="icon-star icon"></span> ${post.scrapCount}</span>
 							</div>
 							 
 						</div>
