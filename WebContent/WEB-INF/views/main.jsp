@@ -70,7 +70,7 @@ if (errMsg == null)
 										<c:forEach var="tag" items="${post.tagList}">
 											<span class="badge-info">${tag.tagName}</span>
 										</c:forEach>
-										<h4>${post.title}</h4>
+										<h4><a href='/studypat/post/${post.postNo}'>${post.title}</a></h4>
 										<span>${post.userNickName}</span> <span>조회수:${post.viewCount}</span>
 										<span>지역:${post.area}</span> <span>작성일:${post.createDate}</span>
 										<span>댓글수:${post.commentCount}</span> <span>스크랩수:${post.scrapCount}</span>
