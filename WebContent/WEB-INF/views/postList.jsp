@@ -155,7 +155,7 @@
 		<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="p">
 			<c:choose>
 				<c:when test="${p == paging.nowPage }">
-					<b>${p}</b>
+					<b style="color:#2196F3 !important;">${p}</b>
 				</c:when>
 				<c:when test="${p != paging.nowPage }">
 					<a href="/studypat/category?category=${category}&sort=${sort}&area=${area}&tag=${tag}&search=${search}&nowPage=${p}">${p}</a>

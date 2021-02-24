@@ -41,7 +41,7 @@ public class PostService {
 		else if(("view").equals(sort)) { //조회순으로 정렬
 			sort = "view_count";
 		}
-		else if(("scrap").equals(sort)) { //조회순으로 정렬
+		else if(("scrap").equals(sort)) { //스크랩순으로 정렬
 			sort = "scrap_count";
 		}
 	 
@@ -49,6 +49,7 @@ public class PostService {
 		for(Post post : postList) {
 			List<Tag> tagList = tagMapper.getTags(post.getPostNo());
 			post.setTagList(tagList);
+			
 		}
 		return postList;
 	}
@@ -101,7 +102,8 @@ public class PostService {
 		post.setReport(0);
 		postMapper.uploadPost(post);
 		
-		if(tags != null) {
+		
+		if(tags.length() > 0) {
 			List<Tag> tagList = new ArrayList<Tag>(); // 쿼리에서 사용할 tag list 생성 
 			int postNo = getPostListLatest().get(0).getPostNo(); // 현재 postNo 찾기 위해서 최근에 업로드된 포스트 가져오기
 			String[] tagArray = tags.split(",");

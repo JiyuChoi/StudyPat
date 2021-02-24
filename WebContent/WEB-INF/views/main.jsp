@@ -67,7 +67,7 @@
 												<c:forEach var="tag" items="${post.tagList}">
 													<span class="badge-info">${tag.tagName}</span>
 												</c:forEach>
-												<h4>${post.title}</h4>
+												<h4><a href='/studypat/post/${post.postNo}'>${post.title}</a></h4>
 												<span>${post.userNickName}</span>
 												<span>조회수:${post.viewCount}</span>
 												<span>지역:${post.area}</span>

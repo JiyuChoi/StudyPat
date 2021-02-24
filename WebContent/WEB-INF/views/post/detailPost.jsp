@@ -57,8 +57,8 @@
 								data-toggle="dropdown"></i>
 							<ul class="dropdown-menu" role="menu">
 								<c:if test="${user.admin eq '1'.charAt(0) or post.userNo eq user.userNo}">
-									<li><a href="#">수정</a></li>
-									<li><a href="#">삭제</a></li>
+									<li><a href="/studypat/updatePost/${post.postNo}">수정</a></li>
+									<li><a href="/studypat/deletePost/${post.postNo}">삭제</a></li>
 								</c:if>
 								<li><a onclick="report(${post.postNo})">신고하기</a></li>
 							</ul>
