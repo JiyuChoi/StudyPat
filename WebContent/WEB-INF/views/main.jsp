@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,13 +68,16 @@ if (errMsg == null)
 							<c:forEach var="post" items="${postListLatest}">
 								<div class="panel box-v4">
 									<div class="panel-heading bg-white border-none">
+										<span class="badge-info" style="background-color: #918C8C !important;">${post.category}</span>
+										<span class="badge-info" style="background-color: #918C8C !important;">${post.area}</span>
 										<c:forEach var="tag" items="${post.tagList}">
 											<span class="badge-info">${tag.tagName}</span>
 										</c:forEach>
-										<h4><a href='/studypat/post/${post.postNo}'>${post.title}</a></h4>
-										<span>${post.userNickName}</span> <span>조회수:${post.viewCount}</span>
-										<span>지역:${post.area}</span> <span>작성일:${post.createDate}</span>
-										<span>댓글수:${post.commentCount}</span> <span>스크랩수:${post.scrapCount}</span>
+											<h4><a href='/studypat/post/${post.postNo}'>${post.title}</a></h4>
+											<span><fmt:parseDate value="${post.createDate}" var="parseDate" pattern="yyyy-MM-dd HH:mm:ss"/><fmt:formatDate value="${parseDate}"  pattern="yyyy-MM-dd"/></span>
+											<span style="margin-left:5px;"><span class="fa-eye fa"></span> ${post.viewCount}</span>
+											<span style="margin-left:5px;"><span class="fa-comment fa"></span> ${post.commentCount}</span>
+											<span style="margin-left:5px;"><span class="icon-star icon"></span> ${post.scrapCount}</span>
 									</div>
 								</div>
 							</c:forEach>
@@ -158,8 +162,10 @@ if (errMsg == null)
 												</div>
 												<div class="media-body">
 													<h5 class="media-heading">${post.title}</h5>
-													<span>조회수:${post.viewCount}</span> <span>작성일:${post.createDate}</span>
-													<span>스크랩수:${post.scrapCount}</span>
+													<span><fmt:parseDate value="${post.createDate}" var="parseDate" pattern="yyyy-MM-dd HH:mm:ss"/><fmt:formatDate value="${parseDate}"  pattern="yyyy-MM-dd"/></span>
+													<span style="margin-left:5px;"><span class="fa-eye fa"></span> ${post.viewCount}</span>
+													<span style="margin-left:5px;"><span class="fa-comment fa"></span> ${post.commentCount}</span>
+													<span style="margin-left:5px;"><span class="icon-star icon"></span> ${post.scrapCount}</span>
 												</div>
 											</div>
 										</div>
