@@ -175,14 +175,33 @@
 				) where RN BETWEEN 0 AND 5
 	</select>
 	
-	<select id="getUserScrapPost" resultMap="Post">
-		select *
-			from sp_post
-			where post_no in (
-			    select post_no
-			    from sp_scrap
-			    where user_no = #{userNo}
-			)order by create_date DESC
+	<select id="getUserScrapPost" resultType="studypat.dto.Post" resultMap="Post" parameterType="int">
+		SELECT *
+				FROM (
+						SELECT p.*, (
+                            select count(*) 
+                            from sp_comment 
+                            where post_no = p.post_no
+                        )comment_count,
+                        (
+                            select count(*)
+                            from sp_scrap
+                            where post_no = p.post_no
+                        )scrap_count,
+                        (
+                            select nickname
+                            from sp_user
+                            where user_no = p.user_no
+                        )user_nickname
+                        
+						FROM sp_post p
+                        order by create_date DESC
+						) 
+            where post_no in (
+                select post_no
+                from sp_scrap
+                where user_no = #{userNo}
+            )order by create_date DESC
 	</select>
 	
 	<select id="getPost" resultMap="Post">
