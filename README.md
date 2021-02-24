@@ -13,18 +13,21 @@
 ### 회원가입 , 로그인, 아이디/비밀번호 찾기
 
 ### 게시글 작성, 수정, 삭제
-<img src="https://i.imgur.com/FixZ4zr.gif">
-
+![글 작성 수정 삭제](https://user-images.githubusercontent.com/22020545/109011911-c8ecec00-76f4-11eb-88b6-029f4f55f292.gif)
 
 ### 게시물 스크랩
+![스크랩](https://user-images.githubusercontent.com/22020545/109011562-609e0a80-76f4-11eb-96b7-48652abbc322.gif)
 
 ### 게시물 필터
+![필터](https://user-images.githubusercontent.com/22020545/109012017-ddc97f80-76f4-11eb-8804-63e82bc3459a.gif)
 
 ### 게시물 페이징
+![페이징](https://user-images.githubusercontent.com/22020545/109011646-77446180-76f4-11eb-958c-411fced3ca63.gif)
 
 ### 댓글 작성, 삭제 
 
-### 태그, 제목 키워드 검색
+### 제목 키워드 검색
+![검색](https://user-images.githubusercontent.com/22020545/109011791-a4910f80-76f4-11eb-812f-d045c87d8234.gif)
 
 ### 마이페이지 
 
