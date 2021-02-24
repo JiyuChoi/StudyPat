@@ -18,7 +18,7 @@
 ![아이디 비밀번호 찾기](https://user-images.githubusercontent.com/22020545/109015633-b07ed080-76f8-11eb-9d3f-816825785b70.gif)
 
 ### 게시글 작성, 수정, 삭제
-![글 작성 수정 삭제](https://user-images.githubusercontent.com/22020545/109011911-c8ecec00-76f4-11eb-88b6-029f4f55f292.gif)
+![글 작성 수정 삭제 2](https://user-images.githubusercontent.com/22020545/109017389-77dff680-76fa-11eb-9c51-f89fd42295e2.gif)
 
 ### 게시물 스크랩
 ![스크랩](https://user-images.githubusercontent.com/22020545/109011562-609e0a80-76f4-11eb-96b7-48652abbc322.gif)
@@ -26,21 +26,23 @@
 ### 게시물 필터
 ![필터](https://user-images.githubusercontent.com/22020545/109012017-ddc97f80-76f4-11eb-8804-63e82bc3459a.gif)
 
+### 게시물 태그 검색
+![태그 검색](https://user-images.githubusercontent.com/22020545/109019030-f5f0cd00-76fb-11eb-9640-69d54e071ed8.gif)
+
+### 제목 키워드 검색
+![검색](https://user-images.githubusercontent.com/22020545/109011791-a4910f80-76f4-11eb-812f-d045c87d8234.gif)
+
 ### 게시물 페이징
 ![페이징](https://user-images.githubusercontent.com/22020545/109011646-77446180-76f4-11eb-958c-411fced3ca63.gif)
 
 ### 댓글 작성, 삭제 
 ![댓글 비밀댓글 삭제2](https://user-images.githubusercontent.com/22020545/109013008-00a86380-76f6-11eb-880e-e99d80c18f2d.gif)
 
-### 제목 키워드 검색
-![검색](https://user-images.githubusercontent.com/22020545/109011791-a4910f80-76f4-11eb-812f-d045c87d8234.gif)
-
 ### 마이페이지 
 ![마이페이지](https://user-images.githubusercontent.com/22020545/109015087-2171b880-76f8-11eb-8c25-d941017e794e.gif)
 
 ### 관리자
 ![admin](https://user-images.githubusercontent.com/22020545/109014995-03a45380-76f8-11eb-8718-f81dbc98aed5.gif)
-
 
 
 ## 📂디렉토리 구조
