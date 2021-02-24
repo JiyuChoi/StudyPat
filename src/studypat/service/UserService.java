@@ -31,10 +31,17 @@ public class UserService {
 		return result;
 	}
 	
-	public User login(User user) {
-		return userMapper.login(user);
+	public User login(String id, String password, HttpSession session) {
+		if (userMapper.getUser(id).getPassword().equals(password)) {
+			session.setAttribute("session_id", id);
+			session.setAttribute("session_pw", password);
+			session.setAttribute("user", userMapper.getUser(id));
+		} else {
+			session.setAttribute("errMsg", "비밀번호가 틀렸습니다.");
+		}
+		return null;
 	}
-	
+
 	public void logout(HttpSession session) {
 		userMapper.logout();
 		session.invalidate();

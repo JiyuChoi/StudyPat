@@ -1,9 +1,15 @@
 package studypat.utils;
 
 public class Paging {
-	private int nowPage, startPage, endPage, total,lastPage, start, end;
+	private int nowPage; // 현재 페이지 (url로 받아옴)
+	private int startPage; // 현재 페이지에서 갈 수 있는 페이지의 첫번째 숫자 
+	private int endPage;  // 현재 페이지에서 갈 수 있는 페이지의 마지막 숫자
+	private int total; // 전체 글 수 
+	private int lastPage; // 제일 마지막 페이지. total / cntPage
+	private int start; // db에서 사용할 Start 
+	private int end; // db에서 사용할 end 
 	private int cntPage = 5; // 한페이지에서 이동할 수 있는 page수
-	private int cntPerPage = 5; //한페이지당 몇개씩?
+	private int cntPerPage = 5 ; //한페이지당 보여지는 게시물 수 
 
 	public Paging() {
 	}
@@ -11,9 +17,10 @@ public class Paging {
 	public Paging(int total, int nowPage) {
 		setNowPage(nowPage);
 		setTotal(total);
-		calcLastPage(getTotal(), getCntPerPage());
-		calcStartEndPage(getNowPage(), cntPage);
-		calcStartEnd(getNowPage(), getCntPerPage());
+		
+		calcLastPage(getTotal(), getCntPerPage()); // 제일 마지막 페이지 계산
+		calcStartEndPage(getNowPage(), cntPage); // 시작, 끝 페이지 계산
+		calcStartEnd(getNowPage(), getCntPerPage()); //db
 	}
 
 	// 제일 마지막 페이지 계산

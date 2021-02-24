@@ -64,7 +64,7 @@
 					<li class="user-name">
 						<span> 
 							<c:if test="${loginUser ne null}">
-									<a href="myPage/${loginUser.getNickName()}">
+									<a href="myPage/${loginUser.getNickName()}" style="padding-right: 30px;">
 										${loginUser.getNickName()}님 환영합니다. </a>
 							</c:if>
 						</span>

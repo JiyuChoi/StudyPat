@@ -4,7 +4,7 @@
 	<%@ page import="java.util.*"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 
   <meta charset="utf-8">
@@ -12,7 +12,7 @@
   <meta name="author" content="Isna Nur Azis">
   <meta name="keyword" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Miminium</title>
+  <title>Detail Post</title>
 
   <!-- start: Css -->
   <link rel="stylesheet" type="text/css" href="../asset/css/bootstrap.min.css">
@@ -39,7 +39,7 @@
  <div id="content" class="profile-v1">
  <div class="col-md-12 col-sm-12 profile-v1-wrapper">
 	<div class="panel box-v7">
-		<div class="panel-body">
+		<div class="panel-body detailPost">
 			<div class="col-md-12 padding-0 box-v7-header">
 				<div class="col-md-12 padding-0">
 					<div class="col-md-10 padding-0">
@@ -57,8 +57,8 @@
 								data-toggle="dropdown"></i>
 							<ul class="dropdown-menu" role="menu">
 								<c:if test="${user.admin eq '1'.charAt(0) or post.userNo eq user.userNo}">
-									<li><a href="#">수정</a></li>
-									<li><a href="#">삭제</a></li>
+									<li><a href="/studypat/updatePost/${post.postNo}">수정</a></li>
+									<li><a href="/studypat/deletePost/${post.postNo}">삭제</a></li>
 								</c:if>
 								<li><a onclick="report(${post.postNo})">신고하기</a></li>
 							</ul>

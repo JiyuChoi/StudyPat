@@ -57,24 +57,13 @@ public class UserController {
 	}
 	
 	@PostMapping("/login")
-	public String login(@RequestParam(name="id", required=true) String id,
-						@RequestParam(name="password", required=true) String password,
-						Model model, HttpSession session) {
+	public String login(@RequestParam(name="id", required=true) String id, @RequestParam(name="password", required=true) String password, HttpSession session) {
 		try {
-			if(userService.getUser(id).getPassword().equals(password)) {
-				session.setAttribute("session_id", id);
-				session.setAttribute("session_pw", password);
-				session.setAttribute("user", userService.getUser(id));
-
-				return "redirect:/";
-			}else {
-				session.setAttribute("errMsg", "비밀번호가 틀렸습니다.");
-				return "redirect:/";
-			}
+			userService.login(id, password, session);
 		} catch(NullPointerException e) {
-			session.setAttribute("errMsg", "존재하지않는 아이디 입니다.");
-			return "redirect:/";
+			session.setAttribute("errMsg", "존재하지않는 아이디입니다.");
 		}
+		return "redirect:/";
 	}
 	
 	@GetMapping("/logout")

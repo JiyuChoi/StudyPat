@@ -52,10 +52,9 @@
 		<result column="post_no" property="postNo"/>
 	</resultMap>
 	<select id="getCategoryPost" resultType="studypat.dto.Post" resultMap="Post" parameterType="String"> 
-			SELECT * 
-			FROM (
-			SELECT ROWNUM RN, A.*
-				FROM (
+			SELECT * FROM (
+				SELECT ROWNUM RN, A.*
+					FROM (
 						SELECT p.*, (
                             select count(*) 
                             from sp_comment 
@@ -89,8 +88,8 @@
 							and title Like '%' ||  #{search} || '%' 
 						</if>
                         <if test="area != 'all'"> and area = #{area}</if>
-                        
                         <if test="!tag.equals('')">  and t.post_no = p.post_no and t.tag_name = #{tag}</if>
+                        
 						<trim prefix="ORDER BY">
 							<if test="sort == 'create_date'">  create_date DESC </if>   
 					        <if test="sort == 'comment_count'">  comment_count DESC </if>
@@ -149,12 +148,31 @@
 	 </select>
 	 
 	
-	<select id="getPostListLatest" resultMap="Post">
-		select *
-			from (
-			    select * from sp_post order by create_date DESC
-			)
-		where ROWNUM BETWEEN 0 AND 5
+	<select id="getPostListLatest" resultType="studypat.dto.Post" resultMap="Post" parameterType="String">
+	SELECT * 
+			FROM (
+			SELECT ROWNUM RN, A.*
+				FROM (
+						SELECT p.*, (
+                            select count(*) 
+                            from sp_comment 
+                            where post_no = p.post_no
+                        )comment_count,
+                        (
+                            select count(*)
+                            from sp_scrap
+                            where post_no = p.post_no
+                        )scrap_count,
+                        (
+                            select nickname
+                            from sp_user
+                            where user_no = p.user_no
+                        )user_nickname
+                        
+						FROM sp_post p
+                        order by create_date DESC
+						) A
+				) where RN BETWEEN 0 AND 5
 	</select>
 	
 	<select id="getUserScrapPost" resultMap="Post">

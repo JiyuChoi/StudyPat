@@ -82,18 +82,15 @@ public class PostController {
 		if (nowPage == null) { // 페이지 정보가 없으면 첫페이지로 설정
 			nowPage = "1";
 		} 
-		
 		if(sort == null) { //처음에는 최신순으로 정렬 
 			sort = "createDate";
 		}
 		if(area == null) { //처음에는 전체
 			area = "all";
 		}
-
 		if(tag == null) { // 처음에는 태그 검색 X
 			tag = "";
 		}
-		
 		int total = 0;
 		
 		if(("").equals(tag)){ //태그 검색을 안했을 경우 
@@ -102,7 +99,6 @@ public class PostController {
 		else {
 			total = postService.countPostTag(category, area, tag, search); //카테고리, 지역, 태그로 검색한 게시물 갯수
 		}
-		
 		paging = new Paging(total, Integer.parseInt(nowPage));
 		List<Post> postList = postService.getCategoryPost(paging, category, sort, area, tag, search);
 		
@@ -156,6 +152,14 @@ public class PostController {
 	public String updatePost(Post post, RedirectAttributes redirect, @RequestParam(name="tags") String tags) {
 		redirect.addAttribute("category", post.getCategory());
 		postService.updatePost(post, tags);
+		return "redirect:/category";
+	}
+	
+	@GetMapping("/deletePost/{postNo}")
+	public String deletePost(@PathVariable("postNo") int postNo, RedirectAttributes redirect) {
+		Post post = postService.getPost(postNo);
+		redirect.addAttribute("category", post.getCategory());
+		postService.deletePost(postNo);
 		return "redirect:/category";
 	}
 	
