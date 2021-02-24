@@ -30,29 +30,29 @@
 
 
 
-## 🗃️ 디렉토리 구조
+## 📂디렉토리 구조
 
 <img src="https://user-images.githubusercontent.com/22020545/108961973-6fb49680-76bb-11eb-95d7-d4d224ebfd06.png" width="50%" > 
 
-## 🤜 메인테이너
+## 💻메인테이너
 <table>
   <tr>
     <td align="center">
     <a href="https://github.com/hyein15"><b>김혜인</b></a>
     </td>
     <td>
-        <a href="https://github.com/m1ngoDo/StudyPat/commits/hyein" title="Code">📜 Commit Log</a>
+        <a href="https://github.com/m1ngoDo/StudyPat/commits/hyein" title="Code">📈 Commit Log</a>
         <br/>
     </td>
     <tr>
     <td align="center"><a href="https://github.com/m1ngoDo"><b>박성민</b></a></td>
     <td>
-    <a href="https://github.com/m1ngoDo/StudyPat/commits/min" title="Code">📜 Commit Log</a>
+    <a href="https://github.com/m1ngoDo/StudyPat/commits/min" title="Code">📈 Commit Log</a>
     </td>
     <tr>
     <td align="center"><a href="https://github.com/JiyuChoi"><b>최지유</b></a></td>
     <td>
-    <a href="https://github.com/m1ngoDo/StudyPat/commits/jiyu" title="Code">📜 Commit Log</a>
+    <a href="https://github.com/m1ngoDo/StudyPat/commits/jiyu" title="Code">📈 Commit Log</a>
     </td>
    
 </table>
