@@ -129,7 +129,6 @@ public class UserService {
 	}
 	
 	public String forgotpass(HttpServletResponse response, HttpSession session, User user) {
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String result = null;
 		
 		//회원정보 불러오기 
