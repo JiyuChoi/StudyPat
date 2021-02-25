@@ -30,10 +30,4 @@ public class Tag {
 		this.postNo = postNo;
 	}
 
-	@Override
-	public String toString() {
-		return "Tag [tagNo=" + tagNo + ", tagName=" + tagName + ", postNo=" + postNo + "]";
-	}
-	
-	
 }

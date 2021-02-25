@@ -12,7 +12,7 @@
   <meta name="author" content="Isna Nur Azis">
   <meta name="keyword" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>StudyPat</title>
+  <title>StudyPat Admin</title>
 
   <!-- start: Css -->
   <link rel="stylesheet" type="text/css" href="/studypat/asset/css/bootstrap.min.css">
@@ -103,14 +103,11 @@
 	<script src="/studypat/asset/js/jquery.ui.min.js"></script>
 	<script src="/studypat/asset/js/bootstrap.min.js"></script>
 
-
-
 	<!-- plugins -->
 	<script src="/studypat/asset/js/plugins/moment.min.js"></script>
 	<script src="/studypat/asset/js/plugins/jquery.datatables.min.js"></script>
 	<script src="/studypat/asset/js/plugins/datatables.bootstrap.min.js"></script>
 	<script src="/studypat/asset/js/plugins/jquery.nicescroll.js"></script>
-
 
 	<!-- custom -->
 	<script src="/studypat/asset/js/main.js"></script>

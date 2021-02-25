@@ -59,7 +59,7 @@ if (errMsg == null)
 							<div class="panel box-v4">
 								<div class="panel-heading bg-white border-none">
 									<h4>
-										<span class="fa-bullhorn fa"> 스터디 모집글</span> 
+										<span class="fa-bullhorn fa"><strong> 스터디 모집글</strong></span> 
 									</h4>
 								</div>
 							</div>

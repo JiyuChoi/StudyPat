@@ -6,7 +6,7 @@
 <%@ page import="studypat.dto.*"%>
     
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 
   <meta charset="utf-8">

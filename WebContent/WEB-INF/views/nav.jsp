@@ -143,12 +143,9 @@
 <script>
 
 function search() {
-	  
 	var searchText = $('input[name=searchText]').val();
 	location.href = '/studypat/category?category=&search='+searchText;
-	
 };
-
 
 </script>
 </html>
