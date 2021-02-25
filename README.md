@@ -27,7 +27,7 @@
 ![필터](https://user-images.githubusercontent.com/22020545/109012017-ddc97f80-76f4-11eb-8804-63e82bc3459a.gif)
 
 ### 게시물 태그 검색
-![태그 검색](https://user-images.githubusercontent.com/22020545/109019030-f5f0cd00-76fb-11eb-9640-69d54e071ed8.gif)
+![태그](https://user-images.githubusercontent.com/22020545/109160978-da4bfc00-77b9-11eb-8b81-3ddfc2ebaf1a.gif)
 
 ### 제목 키워드 검색
 ![검색](https://user-images.githubusercontent.com/22020545/109011791-a4910f80-76f4-11eb-812f-d045c87d8234.gif)
