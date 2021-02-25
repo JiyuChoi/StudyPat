@@ -158,17 +158,4 @@ public class Post {
 		this.tagList = tagList;
 	}
 
-	@Override
-	public String toString() {
-		return "Post [postNo=" + postNo + ", userNo=" + userNo + ", title=" + title + ", postText=" + postText
-				+ ", category=" + category + ", recruitNo=" + recruitNo + ", area=" + area + ", createDate="
-				+ createDate + ", viewCount=" + viewCount + ", report=" + report + ", user=" + user + ", scrap=" + scrap
-				+ ", comment=" + comment + ", commentCount=" + commentCount + ", scrapCount=" + scrapCount
-				+ ", userNickName=" + userNickName + "]";
-	}
-	
-	
-	
-	
-	
 }

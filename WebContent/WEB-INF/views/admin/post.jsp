@@ -79,8 +79,6 @@
 												<td>${post.postNo}</td>
 												<td>${post.userNo}</td>
 												<td>
-													<%-- <a href='javascript:void(0);'
-													onclick="viewPost(${post.postNo});"> ${post.title}</a> --%>
 													<a href='/studypat/post/${post.postNo}'> ${post.title}</a>
 												</td>
 												<td>${post.area}</td>
@@ -90,11 +88,6 @@
 												<td><a href="/studypat/admin/post/delete/${post.postNo}">게시글
 														삭제</a></td>
 											</tr>
-													<div class="td2" id="${post.postNo}">
-													제목 : ${post.title} <br>
-													카테고리 : ${post.category} <br>
-													게시글 : ${post.postText} <br>
-													</div>	
 										</c:forEach>
 									</tbody>
 								</table>
@@ -114,20 +107,16 @@
 	<script src="/studypat/asset/js/jquery.ui.min.js"></script>
 	<script src="/studypat/asset/js/bootstrap.min.js"></script>
 
-
-
 	<!-- plugins -->
 	<script src="/studypat/asset/js/plugins/moment.min.js"></script>
 	<script src="/studypat/asset/js/plugins/jquery.datatables.min.js"></script>
 	<script src="/studypat/asset/js/plugins/datatables.bootstrap.min.js"></script>
 	<script src="/studypat/asset/js/plugins/jquery.nicescroll.js"></script>
 
-
 	<!-- custom -->
 	<script src="/studypat/asset/js/main.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$(".td2").hide();
 			$('#datatables').DataTable({
 				"order" : [[ 0, "desc"]],
 				"stateSave" : true,
@@ -137,13 +126,6 @@
 			});
 		});
 		
-		function viewPost(postNo) {
-			if($("#"+postNo).css("display") == "none"){
-			    $("#"+postNo).show();
-			}else {
-			    $("#"+postNo).hide();
-			}
-		};
 	</script>
 	<!-- end: Javascript -->
 </body>

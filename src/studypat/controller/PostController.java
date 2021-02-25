@@ -29,9 +29,6 @@ public class PostController {
 	private PostService postService;
 	
 	@Autowired
-	private CommentService commentService;
-	
-	@Autowired
 	private UserService userService;
 
 	@GetMapping

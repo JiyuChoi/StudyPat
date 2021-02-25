@@ -145,7 +145,8 @@
 										<textarea class="form-control" cols=20 rows=10 name="postText" id="postText" required></textarea>
 									</div>
 								</div>
-								<button id=submit_btn class="btn btn-default" onclick="return postSubmit();" style="float: right; margin: 20px 30px;">글쓰기</button>
+								
+								<button id=submit_btn class="btn btn-default" onclick="return postSubmit();" style="float: right; margin: 20px 30px;" type=button>글쓰기</button>
 								<!-- <input type="submit" value="글쓰기" id="submit_btn"> -->
 							</div>
 							</form>

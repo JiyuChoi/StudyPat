@@ -161,7 +161,7 @@ if (errMsg == null)
 													<span class="icon-folder icons" style="font-size: 2em;"></span>
 												</div>
 												<div class="media-body">
-													<h5 class="media-heading">${post.title}</h5>
+													<h5 class="media-heading"><a href='/studypat/post/${post.postNo}' style="color:#918C8C;">${post.title}</a></h5>
 													<span><fmt:parseDate value="${post.createDate}" var="parseDate" pattern="yyyy-MM-dd HH:mm:ss"/><fmt:formatDate value="${parseDate}"  pattern="yyyy-MM-dd"/></span>
 													<span style="margin-left:5px;"><span class="fa-eye fa"></span> ${post.viewCount}</span>
 													<span style="margin-left:5px;"><span class="fa-comment fa"></span> ${post.commentCount}</span>

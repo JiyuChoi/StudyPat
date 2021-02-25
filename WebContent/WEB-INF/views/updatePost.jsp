@@ -154,7 +154,7 @@
 										<textarea class="form-control" cols=20 rows=10 name="postText" id="postText" required>${post.postText}</textarea>
 									</div>
 								</div>
-								<button id=submit_btn class="btn btn-default" onclick="return postSubmit();" style="float: right; margin: 20px 30px;">수정하기</button>
+								<button id=submit_btn class="btn btn-default" onclick="return postSubmit();" style="float: right; margin: 20px 30px;" type=button>수정하기</button>
 							</div>
 							</form>
 						</div>
