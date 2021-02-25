@@ -57,12 +57,4 @@ public class User {
 		this.admin = admin;
 	}
 
-	@Override
-	public String toString() {
-		return "User [userNo=" + userNo + ", id=" + id + ", password=" + password + ", email=" + email + ", nickName="
-				+ nickName + ", admin=" + admin + "]";
-	}
-
-
-	
 }

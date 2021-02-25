@@ -32,10 +32,6 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@Autowired
-	private PostService postService;
-
-	
 	@GetMapping("/join")
 	public String joinForm() {
 		return "join";
@@ -164,6 +160,5 @@ public class UserController {
 	public int nickNameCheck(@RequestParam("nickName") String nickName) {
 		return userService.userNickNameCheck(nickName);
 	}
-	
 
 }
