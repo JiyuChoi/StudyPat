@@ -1,6 +1,6 @@
 <h1 align="center">StudyPat</h1>
 
-![image](https://user-images.githubusercontent.com/22020545/108958229-04b49100-76b6-11eb-8f84-0fe258492cf8.png)
+<img src="https://user-images.githubusercontent.com/22020545/108958229-04b49100-76b6-11eb-8f84-0fe258492cf8.png">
 
 > 스터디를 구할 수 있는 웹 커뮤니티 서비스
 
@@ -8,7 +8,7 @@
 
 ![기술 스택 모음](https://user-images.githubusercontent.com/22020545/108965153-cfad3c00-76bf-11eb-91a2-123a1b66b3d9.png)
 
-## 👨‍💻 주요 기능
+## 👨‍💻 기능
 
 ### 회원가입 
 
@@ -35,7 +35,7 @@
 ### 게시물 페이징
 ![페이징](https://user-images.githubusercontent.com/22020545/109011646-77446180-76f4-11eb-958c-411fced3ca63.gif)
 
-### 댓글 작성, 삭제 
+### 댓글&비밀 댓글 작성,삭제 
 ![댓글 비밀댓글 삭제2](https://user-images.githubusercontent.com/22020545/109013008-00a86380-76f6-11eb-880e-e99d80c18f2d.gif)
 
 ### 마이페이지 
